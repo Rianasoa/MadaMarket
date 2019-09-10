@@ -37,7 +37,7 @@ EQUIPE DE MADAMARKET
         6)-Mr Walter: https://github.com/VerizaWalter, @Walter                                (Full-stack)
         
 PRODUCTION LINK
-🔆 Venez vivre l'expérience Petit Chaton en visitant notre application ➡️
+🔆 Venez vivre les meilleurs produits locaux Malagasy en visitant notre application ➡️
 
 
 Bonne visite

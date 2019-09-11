@@ -1,3 +1,4 @@
+
 Started GET "/" for ::1 at 2019-09-11 10:14:32 +0300
 Processing by AccueilController#index as HTML
   Rendering accueil/index.html.erb within layouts/application

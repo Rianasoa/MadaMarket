@@ -8,6 +8,8 @@ class Product < ApplicationRecord
 	has_many :carts, through: :cartProducts
 	has_many :commandProducts
 	has_many :commands, through: :commandProducts
+	has_many :likes
+	has_many :customers, through: :likes
 	belongs_to :category
 	belongs_to :provider, optional: true, class_name: 'User'
 

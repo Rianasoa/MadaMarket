@@ -3113,4 +3113,323 @@ Processing by Devise::RegistrationsController#new as HTML
   Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 761)
 Completed 200 OK in 12ms (Views: 11.6ms | ActiveRecord: 0.0ms | Allocations: 5461)
 
+=======
+  [1m[35m (1995.3ms)[0m  [1m[35mCREATE DATABASE "MadaMarket_development" ENCODING = 'unicode'[0m
+  [1m[35m (1616.1ms)[0m  [1m[35mCREATE DATABASE "MadaMarket_test" ENCODING = 'unicode'[0m
+  [1m[35m (190.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (163.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3281140153614043980)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20190910114606)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (176.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying DEFAULT '' NOT NULL, "last_name" character varying DEFAULT '' NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "is_admin" boolean DEFAULT FALSE)[0m
+  [1m[35m (60.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (61.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190910114606"]]
+  [1m[35m (18.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20190911051137)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (158.4ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "title" character varying, "description" text, "price" float, "image_url" character varying, "provider_id" bigint, "category_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (64.4ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_provider_id" ON "products"  ("provider_id")[0m
+  [1m[35m (62.7ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_category_id" ON "products"  ("category_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051137"]]
+  [1m[35m (41.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20190911051311)
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (162.6ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "title" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051311"]]
+  [1m[35m (18.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCarts (20190911051333)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (64.2ms)[0m  [1m[35mCREATE TABLE "carts" ("id" bigserial primary key, "customer_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (63.7ms)[0m  [1m[35mCREATE  INDEX  "index_carts_on_customer_id" ON "carts"  ("customer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051333"]]
+  [1m[35m (107.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLikes (20190911051349)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (64.5ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "customer_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (64.6ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_customer_id" ON "likes"  ("customer_id")[0m
+  [1m[35m (64.3ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_product_id" ON "likes"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051349"]]
+  [1m[35m (36.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommands (20190911051441)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (65.9ms)[0m  [1m[35mCREATE TABLE "commands" ("id" bigserial primary key, "customer_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (64.4ms)[0m  [1m[35mCREATE  INDEX  "index_commands_on_customer_id" ON "commands"  ("customer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051441"]]
+  [1m[35m (26.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCartProducts (20190911051729)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (88.8ms)[0m  [1m[35mCREATE TABLE "cart_products" ("id" bigserial primary key, "cart_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (62.8ms)[0m  [1m[35mCREATE  INDEX  "index_cart_products_on_cart_id" ON "cart_products"  ("cart_id")[0m
+  [1m[35m (53.4ms)[0m  [1m[35mCREATE  INDEX  "index_cart_products_on_product_id" ON "cart_products"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051729"]]
+  [1m[35m (24.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommandProducts (20190911051742)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (67.0ms)[0m  [1m[35mCREATE TABLE "command_products" ("id" bigserial primary key, "command_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (106.9ms)[0m  [1m[35mCREATE  INDEX  "index_command_products_on_command_id" ON "command_products"  ("command_id")[0m
+  [1m[35m (54.5ms)[0m  [1m[35mCREATE  INDEX  "index_command_products_on_product_id" ON "command_products"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051742"]]
+  [1m[35m (24.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-09-11 06:02:47.769719"], ["updated_at", "2019-09-11 06:02:47.769719"]]
+  [1m[35m (15.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3281140153614043980)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+Started GET "/" for ::1 at 2019-09-11 10:21:41 +0300
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AccueilController#index as HTML
+  Rendering accueil/index.html.erb within layouts/application
+  Rendered accueil/index.html.erb within layouts/application (Duration: 16.2ms | Allocations: 746)
+Started GET "/" for ::1 at 2019-09-11 10:21:43 +0300
+Processing by AccueilController#index as HTML
+  Rendering accueil/index.html.erb within layouts/application
+  Rendered accueil/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 158)
+[Webpacker] Compiling…
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /home/dev/Documents/riana/THP5/MadaMarket/public/packs
+[Webpacker] Compiled all packs in /home/dev/Documents/riana/THP5/MadaMarket/public/packs
+Completed 200 OK in 12273ms (Views: 12272.5ms | ActiveRecord: 0.0ms | Allocations: 1094185)
+
+
+Completed 200 OK in 14305ms (Views: 14198.6ms | ActiveRecord: 0.0ms | Allocations: 2248038)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-11 10:22:00 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 216)
+  Rendered devise/shared/_links.html.erb (Duration: 12.0ms | Allocations: 544)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 239.3ms | Allocations: 9486)
+Completed 200 OK in 299ms (Views: 254.8ms | ActiveRecord: 5.7ms | Allocations: 27915)
+
+
+Started POST "/users" for ::1 at 2019-09-11 10:22:32 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"eG7BjCckiWbyqcnUXYxvXc27vUylVJQ7QyW5AvLdlAkYX1Ct6QnBPGHP9fc/cLEvnrHQ22Y0EiZy9RGK+lLDoA==", "user"=>{"first_name"=>"Jean", "last_name"=>"Marie", "email"=>"marie@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (38.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "marie@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (12.6ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Jean"], ["last_name", "Marie"], ["email", "marie@gmail.com"], ["encrypted_password", "$2a$11$Mc0Sht6QwiuX9kOqOuCNeeqZB2l0APCIHOj/W6PEkSW8Qr/uREj12"], ["created_at", "2019-09-11 07:22:32.380149"], ["updated_at", "2019-09-11 07:22:32.380149"]]
+  [1m[35m (26.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 396ms (ActiveRecord: 78.9ms | Allocations: 11136)
+
+
+Started GET "/" for ::1 at 2019-09-11 10:22:32 +0300
+Processing by AccueilController#index as HTML
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:2
+  Rendered accueil/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1142)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.5ms | Allocations: 10567)
+
+
+
+  [1m[35m (1832.7ms)[0m  [1m[35mCREATE DATABASE "MadaMarket_development" ENCODING = 'unicode'[0m
+  [1m[35m (1867.8ms)[0m  [1m[35mCREATE DATABASE "MadaMarket_test" ENCODING = 'unicode'[0m
+  [1m[35m (227.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (309.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3281140153614043980)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20190910114606)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (262.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying DEFAULT '' NOT NULL, "last_name" character varying DEFAULT '' NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "is_admin" boolean DEFAULT FALSE)[0m
+  [1m[35m (132.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (101.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190910114606"]]
+  [1m[35m (42.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20190911051137)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (256.9ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "title" character varying, "description" text, "price" float, "image_url" character varying, "provider_id" bigint, "category_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (118.0ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_provider_id" ON "products"  ("provider_id")[0m
+  [1m[35m (165.6ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_category_id" ON "products"  ("category_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051137"]]
+  [1m[35m (43.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20190911051311)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (272.7ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "title" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051311"]]
+  [1m[35m (38.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCarts (20190911051333)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (149.5ms)[0m  [1m[35mCREATE TABLE "carts" ("id" bigserial primary key, "customer_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (118.2ms)[0m  [1m[35mCREATE  INDEX  "index_carts_on_customer_id" ON "carts"  ("customer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051333"]]
+  [1m[35m (42.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLikes (20190911051349)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (139.2ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "customer_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1178.5ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_customer_id" ON "likes"  ("customer_id")[0m
+  [1m[35m (102.7ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_product_id" ON "likes"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051349"]]
+  [1m[35m (22.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommands (20190911051441)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (97.0ms)[0m  [1m[35mCREATE TABLE "commands" ("id" bigserial primary key, "customer_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (99.8ms)[0m  [1m[35mCREATE  INDEX  "index_commands_on_customer_id" ON "commands"  ("customer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051441"]]
+  [1m[35m (29.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCartProducts (20190911051729)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (87.2ms)[0m  [1m[35mCREATE TABLE "cart_products" ("id" bigserial primary key, "cart_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (99.6ms)[0m  [1m[35mCREATE  INDEX  "index_cart_products_on_cart_id" ON "cart_products"  ("cart_id")[0m
+  [1m[35m (100.8ms)[0m  [1m[35mCREATE  INDEX  "index_cart_products_on_product_id" ON "cart_products"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051729"]]
+  [1m[35m (45.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommandProducts (20190911051742)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (106.4ms)[0m  [1m[35mCREATE TABLE "command_products" ("id" bigserial primary key, "command_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (90.9ms)[0m  [1m[35mCREATE  INDEX  "index_command_products_on_command_id" ON "command_products"  ("command_id")[0m
+  [1m[35m (81.2ms)[0m  [1m[35mCREATE  INDEX  "index_command_products_on_product_id" ON "command_products"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051742"]]
+  [1m[35m (31.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-09-11 06:21:00.986566"], ["updated_at", "2019-09-11 06:21:00.986566"]]
+  [1m[35m (25.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(3281140153614043980)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3281140153614043980)[0m
+  [1m[35m (30.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCities (20190911063151)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (335.9ms)[0m  [1m[35mCREATE TABLE "cities" ("id" bigserial primary key, "name" character varying, "zip_code" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911063151"]]
+  [1m[35m (26.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(3281140153614043980)[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3281140153614043980)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveStorageTables (20190911063650)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (194.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (123.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (263.5ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (85.2ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (82.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911063650"]]
+  [1m[35m (29.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(3281140153614043980)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2019-09-11 09:49:46 +0300
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AccueilController#index as HTML
+  Rendering accueil/index.html.erb within layouts/application
+  Rendered accueil/index.html.erb within layouts/application (Duration: 23.9ms | Allocations: 745)
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /home/dev/Bureau/madama/public/packs
+Completed 200 OK in 23358ms (Views: 23302.0ms | ActiveRecord: 0.0ms | Allocations: 1271950)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-11 09:50:59 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 15.3ms | Allocations: 215)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3603.7ms | Allocations: 384682)
+Completed 500 Internal Server Error in 3699ms (ActiveRecord: 17.1ms | Allocations: 394162)
+
+
+
+NameError - undefined local variable or method `form' for #<#<Class:0x00007f3419ccd8b0>:0x00007f3419cd3418>
+Did you mean?  for
+               fork:
+  app/views/devise/registrations/new.html.erb:20
+  app/views/devise/registrations/new.html.erb:3
+
+Started POST "/__better_errors/8071aec194cff66c/variables" for ::1 at 2019-09-11 09:51:06 +0300
+Started GET "/users/sign_up" for ::1 at 2019-09-11 09:51:38 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.5ms | Allocations: 205)
+  Rendered devise/shared/_links.html.erb (Duration: 30.4ms | Allocations: 547)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 130.4ms | Allocations: 5434)
+Completed 200 OK in 321ms (Views: 317.8ms | ActiveRecord: 0.0ms | Allocations: 14724)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-11 09:52:23 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 2.0ms | Allocations: 205)
+  Rendered devise/shared/_links.html.erb (Duration: 3.1ms | Allocations: 488)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 20.6ms | Allocations: 3043)
+Completed 200 OK in 57ms (Views: 53.7ms | ActiveRecord: 0.0ms | Allocations: 12386)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-11 09:52:34 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1438)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 3247)
+
+
+
+SyntaxError - syntax error, unexpected tIDENTIFIER, expecting ')'
+...ffer.append=( f.label :Photo de profil );@output_buffer.safe...
+...                             ^~:
+  app/views/devise/registrations/new.html.erb:19:in `'
+
+Started POST "/__better_errors/61fa719a667c39f8/variables" for ::1 at 2019-09-11 09:52:35 +0300
+Started GET "/users/sign_up" for ::1 at 2019-09-11 09:52:46 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1424)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 2017)
+
+
+
+SyntaxError - syntax error, unexpected tIDENTIFIER, expecting ')'
+...ffer.append=( f.label :Photo de profil );@output_buffer.safe...
+...                             ^~:
+  app/views/devise/registrations/new.html.erb:19:in `'
+
+Started POST "/__better_errors/948b300efeebd6e4/variables" for ::1 at 2019-09-11 09:52:46 +0300
+Started GET "/users/sign_up" for ::1 at 2019-09-11 09:53:02 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.5ms | Allocations: 205)
+  Rendered devise/shared/_links.html.erb (Duration: 3.3ms | Allocations: 500)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 20.0ms | Allocations: 3057)
+Completed 200 OK in 55ms (Views: 52.9ms | ActiveRecord: 0.0ms | Allocations: 12394)
+
+
+Started POST "/users" for ::1 at 2019-09-11 09:58:09 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"dFJrGvF/CUq5iJhO85Rj28/ZpHXYwxTr4tKIwsOyxg4K1+z3hU0OtmtJCm3UDM9WPYqPb3wNgELl95/lf97zPw==", "user"=>{"first_name"=>"aze", "last_name"=>"azer", "email"=>"aze@yopmail.com", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f3419d8b388 @tempfile=#<Tempfile:/tmp/RackMultipart20190911-12105-wqamn4.jpg>, @original_filename="20190909_130945.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"20190909_130945.jpg\"\r\nContent-Type: image/jpeg\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :avatar[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (14.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aze@yopmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.1ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "aze"], ["last_name", "azer"], ["email", "aze@yopmail.com"], ["encrypted_password", "$2a$11$36VsOVfVbCQqJYq.73lWX..Twcd2Iak24EBznH50Hi11BvgQR1gbi"], ["created_at", "2019-09-11 06:58:09.437018"], ["updated_at", "2019-09-11 06:58:09.437018"]]
+  [1m[35m (38.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 462ms (ActiveRecord: 55.3ms | Allocations: 10494)
+
+
+Started GET "/" for ::1 at 2019-09-11 09:58:09 +0300
+Processing by AccueilController#index as HTML
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:2
+  Rendered accueil/index.html.erb within layouts/application (Duration: 24.4ms | Allocations: 1384)
+Completed 200 OK in 59ms (Views: 54.6ms | ActiveRecord: 1.6ms | Allocations: 9808)
+
+
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3281140153614043980)[0m
+  [1m[35m (14.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(3281140153614043980)[0m
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3281140153614043980)[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(3281140153614043980)[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
 

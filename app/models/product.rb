@@ -13,4 +13,6 @@ class Product < ApplicationRecord
 	belongs_to :category
 	belongs_to :provider, optional: true, class_name: 'User'
 
+	has_one_attached :picture
+
 end

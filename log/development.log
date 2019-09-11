@@ -224,6 +224,56 @@ Migrating to CreateCommandProducts (20190911051742)
   [1m[35m (15.8ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3281140153614043980)[0m
   [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+Started GET "/" for ::1 at 2019-09-11 10:21:41 +0300
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AccueilController#index as HTML
+  Rendering accueil/index.html.erb within layouts/application
+  Rendered accueil/index.html.erb within layouts/application (Duration: 16.2ms | Allocations: 746)
+Started GET "/" for ::1 at 2019-09-11 10:21:43 +0300
+Processing by AccueilController#index as HTML
+  Rendering accueil/index.html.erb within layouts/application
+  Rendered accueil/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 158)
+[Webpacker] Compiling…
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /home/dev/Documents/riana/THP5/MadaMarket/public/packs
+[Webpacker] Compiled all packs in /home/dev/Documents/riana/THP5/MadaMarket/public/packs
+Completed 200 OK in 12273ms (Views: 12272.5ms | ActiveRecord: 0.0ms | Allocations: 1094185)
+
+
+Completed 200 OK in 14305ms (Views: 14198.6ms | ActiveRecord: 0.0ms | Allocations: 2248038)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-11 10:22:00 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 216)
+  Rendered devise/shared/_links.html.erb (Duration: 12.0ms | Allocations: 544)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 239.3ms | Allocations: 9486)
+Completed 200 OK in 299ms (Views: 254.8ms | ActiveRecord: 5.7ms | Allocations: 27915)
+
+
+Started POST "/users" for ::1 at 2019-09-11 10:22:32 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"eG7BjCckiWbyqcnUXYxvXc27vUylVJQ7QyW5AvLdlAkYX1Ct6QnBPGHP9fc/cLEvnrHQ22Y0EiZy9RGK+lLDoA==", "user"=>{"first_name"=>"Jean", "last_name"=>"Marie", "email"=>"marie@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (38.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "marie@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (12.6ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Jean"], ["last_name", "Marie"], ["email", "marie@gmail.com"], ["encrypted_password", "$2a$11$Mc0Sht6QwiuX9kOqOuCNeeqZB2l0APCIHOj/W6PEkSW8Qr/uREj12"], ["created_at", "2019-09-11 07:22:32.380149"], ["updated_at", "2019-09-11 07:22:32.380149"]]
+  [1m[35m (26.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 396ms (ActiveRecord: 78.9ms | Allocations: 11136)
+
+
+Started GET "/" for ::1 at 2019-09-11 10:22:32 +0300
+Processing by AccueilController#index as HTML
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:2
+  Rendered accueil/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1142)
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.5ms | Allocations: 10567)
+
+
+
   [1m[35m (1832.7ms)[0m  [1m[35mCREATE DATABASE "MadaMarket_development" ENCODING = 'unicode'[0m
   [1m[35m (1867.8ms)[0m  [1m[35mCREATE DATABASE "MadaMarket_test" ENCODING = 'unicode'[0m
   [1m[35m (227.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
@@ -427,3 +477,4 @@ Completed 200 OK in 59ms (Views: 54.6ms | ActiveRecord: 1.6ms | Allocations: 980
   [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(3281140153614043980)[0m
   [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+

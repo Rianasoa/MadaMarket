@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   before_action :authenticate_user!, only: [:show]
 
   def edit
@@ -20,3 +21,11 @@ class UsersController < ApplicationController
   	@user = current_user
   end
 end
+
+  def index
+  	@products = Product.all
+  	@users = User.all
+  end
+ 
+end
+

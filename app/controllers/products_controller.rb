@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
-  def create
-  end
-
   def new
+   
   end
-
+  def create
+    
+  end
   def index
+     @products = Product.all
   end
 
   def update

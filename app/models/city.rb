@@ -1,3 +1,3 @@
-class City < ApplicationRecor
+class City < ApplicationRecord
 	has_many :users
 end

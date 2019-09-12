@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-	add_flash_type :success, :danger
+	add_flash_types :success, :danger
 	before_action :configure_devise_parameters, if: :devise_controller?
 
 def configure_devise_parameters

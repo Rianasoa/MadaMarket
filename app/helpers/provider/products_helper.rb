@@ -1,2 +1,0 @@
-module Provider::ProductsHelper
-end

@@ -1,2 +1,0 @@
-module Provider::PicturesHelper
-end

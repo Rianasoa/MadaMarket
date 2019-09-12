@@ -1,0 +1,1819 @@
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (548.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "MadaMarket_development"[0m
+  [1m[35m (630.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "MadaMarket_test"[0m
+  [1m[35m (1589.0ms)[0m  [1m[35mCREATE DATABASE "MadaMarket_development" ENCODING = 'unicode'[0m
+  [1m[35m (1713.7ms)[0m  [1m[35mCREATE DATABASE "MadaMarket_test" ENCODING = 'unicode'[0m
+  [1m[35m (171.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (131.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3281140153614043980)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20190910114606)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (149.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying DEFAULT '' NOT NULL, "last_name" character varying DEFAULT '' NOT NULL, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "is_admin" boolean DEFAULT FALSE, "city_id" bigint)[0m
+  [1m[35m (86.1ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_city_id" ON "users"  ("city_id")[0m
+  [1m[35m (62.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (64.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190910114606"]]
+  [1m[35m (25.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20190911051137)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (161.7ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "title" character varying, "description" text, "price" float, "image_url" character varying, "provider_id" bigint, "category_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (63.6ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_provider_id" ON "products"  ("provider_id")[0m
+  [1m[35m (63.0ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_category_id" ON "products"  ("category_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051137"]]
+  [1m[35m (25.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20190911051311)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (162.5ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "title" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051311"]]
+  [1m[35m (26.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCarts (20190911051333)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (66.9ms)[0m  [1m[35mCREATE TABLE "carts" ("id" bigserial primary key, "customer_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (86.3ms)[0m  [1m[35mCREATE  INDEX  "index_carts_on_customer_id" ON "carts"  ("customer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051333"]]
+  [1m[35m (26.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLikes (20190911051349)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (70.5ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "customer_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (63.8ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_customer_id" ON "likes"  ("customer_id")[0m
+  [1m[35m (75.0ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_product_id" ON "likes"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051349"]]
+  [1m[35m (24.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommands (20190911051441)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (66.4ms)[0m  [1m[35mCREATE TABLE "commands" ("id" bigserial primary key, "customer_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (88.0ms)[0m  [1m[35mCREATE  INDEX  "index_commands_on_customer_id" ON "commands"  ("customer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051441"]]
+  [1m[35m (44.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCartProducts (20190911051729)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (71.5ms)[0m  [1m[35mCREATE TABLE "cart_products" ("id" bigserial primary key, "cart_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (62.7ms)[0m  [1m[35mCREATE  INDEX  "index_cart_products_on_cart_id" ON "cart_products"  ("cart_id")[0m
+  [1m[35m (75.9ms)[0m  [1m[35mCREATE  INDEX  "index_cart_products_on_product_id" ON "cart_products"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051729"]]
+  [1m[35m (21.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommandProducts (20190911051742)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (75.5ms)[0m  [1m[35mCREATE TABLE "command_products" ("id" bigserial primary key, "command_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (74.8ms)[0m  [1m[35mCREATE  INDEX  "index_command_products_on_command_id" ON "command_products"  ("command_id")[0m
+  [1m[35m (75.9ms)[0m  [1m[35mCREATE  INDEX  "index_command_products_on_product_id" ON "command_products"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051742"]]
+  [1m[35m (20.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCities (20190911063151)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (131.2ms)[0m  [1m[35mCREATE TABLE "cities" ("id" bigserial primary key, "name" character varying, "zip_code" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911063151"]]
+  [1m[35m (20.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveStorageTables (20190911063650)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (126.2ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (53.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (155.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (63.8ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (85.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911063650"]]
+  [1m[35m (17.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-09-11 14:16:36.304449"], ["updated_at", "2019-09-11 14:16:36.304449"]]
+  [1m[35m (19.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3281140153614043980)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (0.5ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "West Nevada"], ["zip_code", "09221-7220"], ["created_at", "2019-09-11 14:16:37.764508"], ["updated_at", "2019-09-11 14:16:37.764508"]]
+  [1m[35m (21.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (0.4ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "New Chris"], ["zip_code", "27769-5824"], ["created_at", "2019-09-11 14:16:37.791038"], ["updated_at", "2019-09-11 14:16:37.791038"]]
+  [1m[35m (16.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (0.5ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "North Nelson"], ["zip_code", "40804"], ["created_at", "2019-09-11 14:16:37.813411"], ["updated_at", "2019-09-11 14:16:37.813411"]]
+  [1m[35m (15.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (0.5ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mirellafort"], ["zip_code", "20657"], ["created_at", "2019-09-11 14:16:37.835493"], ["updated_at", "2019-09-11 14:16:37.835493"]]
+  [1m[35m (16.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (0.5ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "South Johnette"], ["zip_code", "85694-0599"], ["created_at", "2019-09-11 14:16:37.857619"], ["updated_at", "2019-09-11 14:16:37.857619"]]
+  [1m[35m (16.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (0.7ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Port Danelletown"], ["zip_code", "31387-5581"], ["created_at", "2019-09-11 14:16:37.879872"], ["updated_at", "2019-09-11 14:16:37.879872"]]
+  [1m[35m (15.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (0.5ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Armstrongstad"], ["zip_code", "44615"], ["created_at", "2019-09-11 14:16:37.901930"], ["updated_at", "2019-09-11 14:16:37.901930"]]
+  [1m[35m (15.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (0.3ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "North Caleb"], ["zip_code", "32787"], ["created_at", "2019-09-11 14:16:37.924262"], ["updated_at", "2019-09-11 14:16:37.924262"]]
+  [1m[35m (16.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (0.3ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Rennerbury"], ["zip_code", "09661"], ["created_at", "2019-09-11 14:16:37.945541"], ["updated_at", "2019-09-11 14:16:37.945541"]]
+  [1m[35m (17.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCity Create (0.3ms)[0m  [1m[32mINSERT INTO "cities" ("name", "zip_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "South Cecilybury"], ["zip_code", "46913"], ["created_at", "2019-09-11 14:16:37.967869"], ["updated_at", "2019-09-11 14:16:37.967869"]]
+  [1m[35m (17.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bernardo@will.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at", "city_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Mrs. Joslyn Schinner"], ["last_name", "Zona Kunze DVM"], ["email", "bernardo@will.co"], ["encrypted_password", "$2a$11$tw5R.AxPL0OmN09vtQVSS.rLjwCls9XxQSpYlxcGT41XBSRDQj0CC"], ["created_at", "2019-09-11 14:16:38.212937"], ["updated_at", "2019-09-11 14:16:38.212937"], ["city_id", 5]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 1.3ms | Allocations: 271)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.3ms | Allocations: 130)
+UserMailer#welcome_email: processed outbound mail in 133.1ms
+Delivered mail 5d7901c662fba_58832ac951db59a8383fe@lenovoa18.mail (120.1ms)
+Date: Wed, 11 Sep 2019 17:16:38 +0300
+From: madagascar@market.mg
+To: bernardo@will.co
+Message-ID: <5d7901c662fba_58832ac951db59a8383fe@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7901c65c429_58832ac951db59a83825e";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7901c65c429_58832ac951db59a83825e
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgTXJzLiBKb3NseW4gU2NoaW5uZXIgZXQgYmllbnZlbnVlIGNoZXog
+bm91cyAhDQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09DQogDQpUdSB0J2VzIGluc2NyaXQgc3Vy
+IG1hZGFtYXJrZXQgZW4gdXRpbGlzYW50IGwnZS1tYWlsIHN1aXZhbnQgOiBi
+ZXJuYXJkb0B3aWxsLmNvLg0KIA0KIA0Kw4AgdHLDqHMgdml0ZSBzdXIgbWFk
+YW1hcmtldCAhDQo=
+
+----==_mimepart_5d7901c65c429_58832ac951db59a83825e
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Mrs. Joslyn Schinner et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : bern=
+ardo@will.co.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7901c65c429_58832ac951db59a83825e--
+
+  [1m[35m (19.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCity Load (3.0ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kenton@oconnell.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at", "city_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Tyler O'Hara"], ["last_name", "Melva Crona"], ["email", "kenton@oconnell.biz"], ["encrypted_password", "$2a$11$wuSnmZMxZtm/MdplGm1RzetpTNc7MxOqzxbk.iFtijO/oIVepxVse"], ["created_at", "2019-09-11 14:16:38.698823"], ["updated_at", "2019-09-11 14:16:38.698823"], ["city_id", 3]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 7)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+UserMailer#welcome_email: processed outbound mail in 3.4ms
+Delivered mail 5d7901c6ac777_58832ac951db59a83854e@lenovoa18.mail (27.5ms)
+Date: Wed, 11 Sep 2019 17:16:38 +0300
+From: madagascar@market.mg
+To: kenton@oconnell.biz
+Message-ID: <5d7901c6ac777_58832ac951db59a83854e@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7901c6abd5b_58832ac951db59a838493";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7901c6abd5b_58832ac951db59a838493
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgVHlsZXIgTydIYXJhIGV0IGJpZW52ZW51ZSBjaGV6IG5vdXMgIQ0K
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PQ0KIA0KVHUgdCdlcyBpbnNjcml0IHN1ciBtYWRhbWFy
+a2V0IGVuIHV0aWxpc2FudCBsJ2UtbWFpbCBzdWl2YW50IDoga2VudG9uQG9j
+b25uZWxsLmJpei4NCiANCiANCsOAIHRyw6hzIHZpdGUgc3VyIG1hZGFtYXJr
+ZXQgIQ0K
+
+----==_mimepart_5d7901c6abd5b_58832ac951db59a838493
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Tyler O&#39;Hara et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : kent=
+on@oconnell.biz.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7901c6abd5b_58832ac951db59a838493--
+
+  [1m[35m (140.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mariann.kautzer@murphy.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at", "city_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Maxine Ruecker"], ["last_name", "Andre Hyatt"], ["email", "mariann.kautzer@murphy.io"], ["encrypted_password", "$2a$11$Vdeobt7ZeDAkCm7tisylROQR1z6z.FoO6Wi7VFR.Vq69QHdWfnj1G"], ["created_at", "2019-09-11 14:16:39.051611"], ["updated_at", "2019-09-11 14:16:39.051611"], ["city_id", 2]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 7)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+UserMailer#welcome_email: processed outbound mail in 3.0ms
+Delivered mail 5d7901c7e177_58832ac951db59a83873c@lenovoa18.mail (19.9ms)
+Date: Wed, 11 Sep 2019 17:16:39 +0300
+From: madagascar@market.mg
+To: mariann.kautzer@murphy.io
+Message-ID: <5d7901c7e177_58832ac951db59a83873c@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7901c7d897_58832ac951db59a838672";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7901c7d897_58832ac951db59a838672
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgTWF4aW5lIFJ1ZWNrZXIgZXQgYmllbnZlbnVlIGNoZXogbm91cyAh
+DQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09DQogDQpUdSB0J2VzIGluc2NyaXQgc3VyIG1hZGFt
+YXJrZXQgZW4gdXRpbGlzYW50IGwnZS1tYWlsIHN1aXZhbnQgOiBtYXJpYW5u
+LmthdXR6ZXJAbXVycGh5LmlvLg0KIA0KIA0Kw4AgdHLDqHMgdml0ZSBzdXIg
+bWFkYW1hcmtldCAhDQo=
+
+----==_mimepart_5d7901c7d897_58832ac951db59a838672
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Maxine Ruecker et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : mari=
+ann.kautzer@murphy.io.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7901c7d897_58832ac951db59a838672--
+
+  [1m[35m (29.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  [1m[35m (2.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (6.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "wm_langosh@stracke.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at", "city_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Dr. Leonila Towne"], ["last_name", "Patrick Monahan"], ["email", "wm_langosh@stracke.co"], ["encrypted_password", "$2a$11$7JsZdslZBvece248nIrkx.gBlrP1WIliMQTxUqfgePD3XF4ikrw/i"], ["created_at", "2019-09-11 14:16:39.431432"], ["updated_at", "2019-09-11 14:16:39.431432"], ["city_id", 9]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 7)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+UserMailer#welcome_email: processed outbound mail in 3.1ms
+Delivered mail 5d7901c76afc2_58832ac951db59a8389f8@lenovoa18.mail (18.7ms)
+Date: Wed, 11 Sep 2019 17:16:39 +0300
+From: madagascar@market.mg
+To: wm_langosh@stracke.co
+Message-ID: <5d7901c76afc2_58832ac951db59a8389f8@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7901c76a5f5_58832ac951db59a8388a4";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7901c76a5f5_58832ac951db59a8388a4
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgRHIuIExlb25pbGEgVG93bmUgZXQgYmllbnZlbnVlIGNoZXogbm91
+cyAhDQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09DQogDQpUdSB0J2VzIGluc2NyaXQgc3VyIG1h
+ZGFtYXJrZXQgZW4gdXRpbGlzYW50IGwnZS1tYWlsIHN1aXZhbnQgOiB3bV9s
+YW5nb3NoQHN0cmFja2UuY28uDQogDQogDQrDgCB0csOocyB2aXRlIHN1ciBt
+YWRhbWFya2V0ICENCg==
+
+----==_mimepart_5d7901c76a5f5_58832ac951db59a8388a4
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Dr. Leonila Towne et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : wm_l=
+angosh@stracke.co.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7901c76a5f5_58832ac951db59a8388a4--
+
+  [1m[35m (291.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pamila@weberhagenes.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (15.6ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at", "city_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Jeannetta Olson"], ["last_name", "Deane Kemmer"], ["email", "pamila@weberhagenes.name"], ["encrypted_password", "$2a$11$tSlMch7sXDJG0z4C92Snu.zowDd8SocYUgN9v.PTOC2uVAGRqOyNu"], ["created_at", "2019-09-11 14:16:40.022251"], ["updated_at", "2019-09-11 14:16:40.022251"], ["city_id", 9]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 7)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+UserMailer#welcome_email: processed outbound mail in 19.3ms
+Delivered mail 5d7901c81194c_58832ac951db59a839155@lenovoa18.mail (35.6ms)
+Date: Wed, 11 Sep 2019 17:16:40 +0300
+From: madagascar@market.mg
+To: pamila@weberhagenes.name
+Message-ID: <5d7901c81194c_58832ac951db59a839155@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7901c8e247_58832ac951db59a8390a8";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7901c8e247_58832ac951db59a8390a8
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgSmVhbm5ldHRhIE9sc29uIGV0IGJpZW52ZW51ZSBjaGV6IG5vdXMg
+IQ0KPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PQ0KIA0KVHUgdCdlcyBpbnNjcml0IHN1ciBtYWRh
+bWFya2V0IGVuIHV0aWxpc2FudCBsJ2UtbWFpbCBzdWl2YW50IDogcGFtaWxh
+QHdlYmVyaGFnZW5lcy5uYW1lLg0KIA0KIA0Kw4AgdHLDqHMgdml0ZSBzdXIg
+bWFkYW1hcmtldCAhDQo=
+
+----==_mimepart_5d7901c8e247_58832ac951db59a8390a8
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Jeannetta Olson et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : pami=
+la@weberhagenes.name.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7901c8e247_58832ac951db59a8390a8--
+
+  [1m[35m (74.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "[\"quo\", \"consequatur\", \"atque\"]"], ["created_at", "2019-09-11 14:16:40.182818"], ["updated_at", "2019-09-11 14:16:40.182818"]]
+  [1m[35m (38.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "[\"quibusdam\", \"error\", \"maxime\"]"], ["created_at", "2019-09-11 14:16:40.255625"], ["updated_at", "2019-09-11 14:16:40.255625"]]
+  [1m[35m (43.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "[\"magni\", \"placeat\", \"ducimus\"]"], ["created_at", "2019-09-11 14:16:40.304309"], ["updated_at", "2019-09-11 14:16:40.304309"]]
+  [1m[35m (39.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "[\"a\", \"ipsam\", \"illum\"]"], ["created_at", "2019-09-11 14:16:40.347700"], ["updated_at", "2019-09-11 14:16:40.347700"]]
+  [1m[35m (28.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "[\"ipsum\", \"debitis\", \"impedit\"]"], ["created_at", "2019-09-11 14:16:40.381083"], ["updated_at", "2019-09-11 14:16:40.381083"]]
+  [1m[35m (26.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "[\"consequuntur\", \"magnam\", \"aut\"]"], ["created_at", "2019-09-11 14:16:40.414265"], ["updated_at", "2019-09-11 14:16:40.414265"]]
+  [1m[35m (29.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "[\"optio\", \"occaecati\", \"provident\"]"], ["created_at", "2019-09-11 14:16:40.447603"], ["updated_at", "2019-09-11 14:16:40.447603"]]
+  [1m[35m (17.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "[\"dolor\", \"deserunt\", \"fugit\"]"], ["created_at", "2019-09-11 14:16:40.471391"], ["updated_at", "2019-09-11 14:16:40.471391"]]
+  [1m[35m (123.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "[\"facilis\", \"atque\", \"id\"]"], ["created_at", "2019-09-11 14:16:40.602403"], ["updated_at", "2019-09-11 14:16:40.602403"]]
+  [1m[35m (29.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "[\"est\", \"rerum\", \"aspernatur\"]"], ["created_at", "2019-09-11 14:16:40.637790"], ["updated_at", "2019-09-11 14:16:40.637790"]]
+  [1m[35m (37.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "provider_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "[\"non\", \"placeat\", \"praesentium\"]"], ["description", "Esse ad fuga. Quas voluptatem enim. Quaerat natus autem."], ["price", 49.26], ["image_url", "http://www.shmadrid.fr/blog/fr/wp-content/uploads/2018/06/bio.jpg"], ["provider_id", 3], ["category_id", 3], ["created_at", "2019-09-11 14:16:40.844093"], ["updated_at", "2019-09-11 14:16:40.844093"]]
+  [1m[35m (64.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "provider_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "[\"et\", \"maxime\", \"ipsam\"]"], ["description", "Vitae et illum. Minus corporis culpa. Accusamus consequatur provident."], ["price", 95.63], ["image_url", "https://img.over-blog-kiwi.com/2/82/53/47/20180530/ob_906b07_gamba.jpg"], ["provider_id", 5], ["category_id", 10], ["created_at", "2019-09-11 14:16:40.921266"], ["updated_at", "2019-09-11 14:16:40.921266"]]
+  [1m[35m (31.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "provider_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "[\"velit\", \"et\", \"autem\"]"], ["description", "Est quasi dicta. Corporis ducimus quia. Beatae commodi ipsa."], ["price", 22.01], ["image_url", "https://scontent-atl3-1.cdninstagram.com/vp/076455296bd5e469a4955bfb87e3fec5/5DF73416/t51.2885-15/e35/s480x480/31878220_647038518968301_6465523147536859136_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com"], ["provider_id", 1], ["category_id", 10], ["created_at", "2019-09-11 14:16:40.964935"], ["updated_at", "2019-09-11 14:16:40.964935"]]
+  [1m[35m (32.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "provider_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "[\"autem\", \"cupiditate\", \"voluptatem\"]"], ["description", "Dolor ratione sunt. Labore est consequatur. Illo non ut."], ["price", 49.95], ["image_url", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrkeDHV8UGRHN0iHyWr6jXcr1H5Pa4K6-F9ifTpn1M8yyrY8ecVw"], ["provider_id", 2], ["category_id", 8], ["created_at", "2019-09-11 14:16:41.007204"], ["updated_at", "2019-09-11 14:16:41.007204"]]
+  [1m[35m (23.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2019-09-12 08:53:39 +0300
+  [1m[35m (85.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (63.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  [1m[36mUser Load (57.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 323.2ms | Allocations: 19729)
+Completed 200 OK in 2100ms (Views: 1782.4ms | ActiveRecord: 235.3ms | Allocations: 1288558)
+
+
+Started GET "/" for ::1 at 2019-09-12 09:35:41 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 15.4ms | Allocations: 4038)
+Completed 200 OK in 33ms (Views: 26.4ms | ActiveRecord: 5.0ms | Allocations: 15723)
+
+
+Started GET "/" for ::1 at 2019-09-12 11:10:55 +0300
+Processing by ProductsController#index as HTML
+Completed 401 Unauthorized in 15ms (ActiveRecord: 0.0ms | Allocations: 1036)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-09-12 11:10:57 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 640)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 64.1ms | Allocations: 2228)
+Completed 200 OK in 176ms (Views: 154.5ms | ActiveRecord: 0.0ms | Allocations: 29754)
+
+
+Started GET "/provider/products" for ::1 at 2019-09-12 11:11:14 +0300
+Processing by Provider::ProductsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :only_admin rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 506)
+
+
+Started GET "/" for ::1 at 2019-09-12 11:11:14 +0300
+Processing by ProductsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 310)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-09-12 11:11:14 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 132)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 624)
+Completed 200 OK in 21ms (Views: 19.4ms | ActiveRecord: 0.0ms | Allocations: 13055)
+
+
+Started GET "/provider/products" for ::1 at 2019-09-12 11:11:16 +0300
+Processing by Provider::ProductsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :only_admin rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 425)
+
+
+Started GET "/" for ::1 at 2019-09-12 11:11:16 +0300
+Processing by ProductsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 311)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-09-12 11:11:16 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 132)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 619)
+Completed 200 OK in 67ms (Views: 65.2ms | ActiveRecord: 0.0ms | Allocations: 13000)
+
+
+Started GET "/provider/users" for ::1 at 2019-09-12 11:11:16 +0300
+
+NameError - uninitialized constant Provider::UsersController:
+
+Started POST "/__better_errors/a310351f147093f4/variables" for ::1 at 2019-09-12 11:11:16 +0300
+Started GET "/provider/products" for ::1 at 2019-09-12 11:11:27 +0300
+Processing by Provider::ProductsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :only_admin rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 408)
+
+
+Started GET "/" for ::1 at 2019-09-12 11:11:27 +0300
+Processing by ProductsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 305)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-09-12 11:11:27 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 132)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 619)
+Completed 200 OK in 47ms (Views: 45.9ms | ActiveRecord: 0.0ms | Allocations: 12991)
+
+
+Started GET "/provider/products" for ::1 at 2019-09-12 11:11:28 +0300
+Processing by Provider::ProductsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :only_admin rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms | Allocations: 421)
+
+
+Started GET "/" for ::1 at 2019-09-12 11:11:28 +0300
+Processing by ProductsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 316)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-09-12 11:11:28 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 132)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 618)
+Completed 200 OK in 41ms (Views: 39.4ms | ActiveRecord: 0.0ms | Allocations: 12979)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 11:11:31 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 6.7ms | Allocations: 215)
+  Rendered devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 123)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 47.4ms | Allocations: 1865)
+Completed 200 OK in 122ms (Views: 121.3ms | ActiveRecord: 0.0ms | Allocations: 14928)
+
+
+Started POST "/users" for ::1 at 2019-09-12 11:12:00 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"2ODPkjrScB38uWsQCLzIYPr+81AVsqVSqtHDEHkGen1uzTa/XkelrAPSEwwKfr1lQIky1b8MXqzpXnZTJb10EQ==", "user"=>{"last_name"=>"Rianasoa", "first_name"=>"Rabearison", "email"=>"rina@yopmail", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (19.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rina@yopmail"], ["LIMIT", 1]]
+  [1m[36mUser Create (64.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Rabearison"], ["last_name", "Rianasoa"], ["email", "rina@yopmail"], ["encrypted_password", "$2a$11$.ijyEfnEXXMCIQ3R7yK8N.FHxs.SI2EfcOzExmXAJMP3jVl9AlLmq"], ["created_at", "2019-09-12 08:12:01.086396"], ["updated_at", "2019-09-12 08:12:01.086396"]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 16.0ms | Allocations: 155)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.7ms | Allocations: 130)
+UserMailer#welcome_email: processed outbound mail in 44.7ms
+Delivered mail 5d79fdd13f3bc_16282b147aeb9ec033359@lenovoa18.mail (216.4ms)
+Date: Thu, 12 Sep 2019 11:12:01 +0300
+From: madagascar@market.mg
+To: rina@yopmail
+Message-ID: <5d79fdd13f3bc_16282b147aeb9ec033359@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d79fdd1387c2_16282b147aeb9ec03321d";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d79fdd1387c2_16282b147aeb9ec03321d
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgUmFiZWFyaXNvbiBldCBiaWVudmVudWUgY2hleiBub3VzICENCj09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT0NCiANClR1IHQnZXMgaW5zY3JpdCBzdXIgbWFkYW1hcmtl
+dCBlbiB1dGlsaXNhbnQgbCdlLW1haWwgc3VpdmFudCA6IHJpbmFAeW9wbWFp
+bC4NCiANCiANCsOAIHRyw6hzIHZpdGUgc3VyIG1hZGFtYXJrZXQgIQ0K
+
+----==_mimepart_5d79fdd1387c2_16282b147aeb9ec03321d
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Rabearison et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : rina=
+@yopmail.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d79fdd1387c2_16282b147aeb9ec03321d--
+
+  [1m[35m (22.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 733ms (ActiveRecord: 107.5ms | Allocations: 50323)
+
+
+Started GET "/" for ::1 at 2019-09-12 11:12:01 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 102ms (ActiveRecord: 1.2ms | Allocations: 8826)
+
+
+
+NoMethodError - undefined method `admin' for #<User:0x00007fea8a0f65c8>:
+  app/controllers/products_controller.rb:7:in `index'
+
+Started POST "/__better_errors/99aa198a7b823dc8/variables" for ::1 at 2019-09-12 11:12:01 +0300
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2019-09-12 11:12:20 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 2.7ms | Allocations: 4212)
+
+
+
+NoMethodError - undefined method `admin' for #<User:0x00005628f4dbd490>:
+  app/controllers/products_controller.rb:7:in `index'
+
+Started POST "/__better_errors/55474f51d02b77f2/variables" for ::1 at 2019-09-12 11:12:20 +0300
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "is_admin" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2019-09-12 08:14:02.883764"], ["is_admin", true], ["id", 6]]
+  [1m[35m (24.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2019-09-12 11:14:07 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.0ms | Allocations: 4179)
+
+
+
+NoMethodError - undefined method `admin' for #<User:0x00007fea8a052748>:
+  app/controllers/products_controller.rb:7:in `index'
+
+Started POST "/__better_errors/4c681e749f8cbaec/variables" for ::1 at 2019-09-12 11:14:07 +0300
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2019-09-12 11:14:13 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.4ms | Allocations: 4179)
+
+
+
+NoMethodError - undefined method `admin' for #<User:0x00007fea899ee2f8>:
+  app/controllers/products_controller.rb:7:in `index'
+
+Started POST "/__better_errors/492b8802e0515f7e/variables" for ::1 at 2019-09-12 11:14:13 +0300
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2019-09-12 11:14:38 +0300
+  [1m[35m (13.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 7.9ms | Allocations: 18222)
+
+
+
+NoMethodError - undefined method `admin' for #<User:0x00007fd40c8beab0>:
+  app/controllers/products_controller.rb:7:in `index'
+
+Started POST "/__better_errors/79e16222fdce0df0/variables" for ::1 at 2019-09-12 11:14:39 +0300
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."is_admin" = $1[0m  [["is_admin", true]]
+Started GET "/" for ::1 at 2019-09-12 11:18:34 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 5.2ms | Allocations: 16041)
+
+
+
+NoMethodError - undefined method `admin' for #<User:0x000056083dd9ded8>:
+  app/controllers/products_controller.rb:6:in `index'
+
+Started POST "/__better_errors/1db0372831169aee/variables" for ::1 at 2019-09-12 11:18:34 +0300
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2019-09-12 11:20:50 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 439ms (ActiveRecord: 6.4ms | Allocations: 192506)
+
+
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+
+NameError - undefined local variable or method `provider' for #<ProductsController:0x00007fd40cb90bf8>:
+  app/controllers/products_controller.rb:6:in `index'
+
+Started POST "/__better_errors/8708f2bbe38788ab/variables" for ::1 at 2019-09-12 11:20:51 +0300
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2019-09-12 11:21:44 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 4.7ms | Allocations: 16055)
+
+
+
+NoMethodError - undefined method `provider' for #<User:0x000056083ea3a290>:
+  app/controllers/products_controller.rb:6:in `index'
+
+Started POST "/__better_errors/2edcc5b7be75b593/variables" for ::1 at 2019-09-12 11:21:44 +0300
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2019-09-12 11:23:45 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Redirected to http://localhost:3000/provider
+Completed 302 Found in 27ms (ActiveRecord: 4.7ms | Allocations: 13629)
+
+
+Started GET "/provider" for ::1 at 2019-09-12 11:23:45 +0300
+
+NameError - uninitialized constant Provider::UsersController:
+
+Started POST "/__better_errors/f9842403a014baf8/variables" for ::1 at 2019-09-12 11:23:45 +0300
+Started GET "/" for ::1 at 2019-09-12 11:43:16 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Redirected to http://localhost:3000/provider
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms | Allocations: 1301)
+
+
+Started GET "/provider" for ::1 at 2019-09-12 11:43:16 +0300
+
+NameError - uninitialized constant Provider::UsersController:
+
+Started POST "/__better_errors/27385e6a9cb2a1bc/variables" for ::1 at 2019-09-12 11:43:17 +0300
+Started GET "/" for ::1 at 2019-09-12 12:35:06 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.8ms | Allocations: 13593)
+
+
+
+ArgumentError - wrong number of arguments (given 1, expected 0):
+  app/controllers/products_controller.rb:6:in `index'
+
+Started POST "/__better_errors/7f0671a49a80b1eb/variables" for ::1 at 2019-09-12 12:35:07 +0300
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2019-09-12 12:35:27 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 15.0ms | Allocations: 13900)
+
+
+
+ArgumentError - wrong number of arguments (given 1, expected 0):
+  app/controllers/products_controller.rb:6:in `index'
+
+Started POST "/__better_errors/3f7b1dcad2e46a19/variables" for ::1 at 2019-09-12 12:35:27 +0300
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2019-09-12 12:35:54 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Redirected to http://localhost:3000/provider
+Completed 302 Found in 27ms (ActiveRecord: 4.6ms | Allocations: 13586)
+
+
+Started GET "/provider" for ::1 at 2019-09-12 12:35:54 +0300
+
+NameError - uninitialized constant Provider::UsersController:
+
+Started POST "/__better_errors/68c02ef78b8f871f/variables" for ::1 at 2019-09-12 12:35:54 +0300
+Started GET "/" for ::1 at 2019-09-12 12:37:23 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Redirected to http://localhost:3000/provider
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 1166)
+
+
+Started GET "/provider" for ::1 at 2019-09-12 12:37:23 +0300
+
+NameError - uninitialized constant Provider::UsersController:
+
+Started POST "/__better_errors/9d4d4764962e2bff/variables" for ::1 at 2019-09-12 12:37:24 +0300
+Started GET "/" for ::1 at 2019-09-12 12:37:38 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Redirected to http://localhost:3000/provider
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1166)
+
+
+Started GET "/provider" for ::1 at 2019-09-12 12:37:38 +0300
+
+NameError - uninitialized constant Provider::UsersController:
+
+Started POST "/__better_errors/2b85f794385a6d32/variables" for ::1 at 2019-09-12 12:37:38 +0300
+Started GET "/" for ::1 at 2019-09-12 12:42:11 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+Redirected to http://localhost:3000/provider
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 1167)
+
+
+Started GET "/provider" for ::1 at 2019-09-12 12:42:11 +0300
+
+NameError - uninitialized constant Provider::UsersController:
+
+Started POST "/__better_errors/d9be90ca1fa6f735/variables" for ::1 at 2019-09-12 12:42:11 +0300
+Started GET "/" for ::1 at 2019-09-12 12:58:17 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  [1m[36mProduct Load (53.6ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 439ms (ActiveRecord: 0.7ms | Allocations: 145178)
+
+
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+
+NameError - undefined local variable or method `provider_root_path' for #<ProductsController:0x00007fd404b8d3c0>:
+  app/controllers/products_controller.rb:7:in `index'
+
+Started POST "/__better_errors/4fc38a32175f6285/variables" for ::1 at 2019-09-12 12:58:18 +0300
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2019-09-12 12:59:29 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 111.4ms | Allocations: 18528)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 1874ms (Views: 1784.4ms | ActiveRecord: 11.8ms | Allocations: 1290929)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2019-09-12 13:05:53 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"CrjQ2goNBsncFO/rxKstwGi67d2el8EVI51EZrgIzt2OBpRJmW6IWVFNHPXc2XqOsXFfw/H2J/14DpuJ/zXkTw=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 1725ms (ActiveRecord: 0.9ms | Allocations: 179077)
+
+
+Started GET "/" for ::1 at 2019-09-12 13:05:54 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 11.4ms | Allocations: 3703)
+Completed 200 OK in 54ms (Views: 49.9ms | ActiveRecord: 3.5ms | Allocations: 15936)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 13:05:57 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 13.8ms | Allocations: 216)
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 914.2ms | Allocations: 396533)
+Completed 500 Internal Server Error in 920ms (ActiveRecord: 1.4ms | Allocations: 398323)
+
+
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1[0m  [["LIMIT", 11]]
+
+NoMethodError - undefined method `is_admin?' for #<#<Class:0x00007fd3fc5943e0>:0x00007fd3fc5b27a0>
+Did you mean?  is_a?:
+  app/views/devise/registrations/new.html.erb:179
+  app/views/devise/registrations/new.html.erb:147
+
+Started POST "/__better_errors/8de224136a36019b/variables" for ::1 at 2019-09-12 13:05:59 +0300
+Started GET "/users/sign_up" for ::1 at 2019-09-12 13:11:03 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 32.2ms | Allocations: 206)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2081.9ms | Allocations: 647593)
+Completed 500 Internal Server Error in 2088ms (ActiveRecord: 0.0ms | Allocations: 649436)
+
+
+
+NameError - undefined local variable or method `is_admin' for #<#<Class:0x000056083f4e2170>:0x000056083f4f3830>
+Did you mean?  is_a?:
+  app/views/devise/registrations/new.html.erb:179
+  app/views/devise/registrations/new.html.erb:147
+
+Started POST "/__better_errors/9d5604b5b9540e96/variables" for ::1 at 2019-09-12 13:11:06 +0300
+Started GET "/users/sign_up" for ::1 at 2019-09-12 14:59:40 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 10.2ms | Allocations: 206)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 56.9ms | Allocations: 4066)
+Completed 500 Internal Server Error in 90ms (ActiveRecord: 0.0ms | Allocations: 12977)
+
+
+
+NoMethodError - undefined method `merge' for :name:Symbol:
+  app/views/devise/registrations/new.html.erb:180
+  app/views/devise/registrations/new.html.erb:147
+
+Started POST "/__better_errors/168854c743952f36/variables" for ::1 at 2019-09-12 14:59:40 +0300
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:00:18 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 206)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 81.4ms | Allocations: 6871)
+Completed 500 Internal Server Error in 86ms (ActiveRecord: 0.0ms | Allocations: 8698)
+
+
+
+NoMethodError - undefined method `#<City::ActiveRecord_Relation:0x00007fd3fe120bb8>' for #<User:0x00007fd3fe0b2230>:
+  app/views/devise/registrations/new.html.erb:180
+  app/views/devise/registrations/new.html.erb:147
+
+Started POST "/__better_errors/cbbd84a7691b7700/variables" for ::1 at 2019-09-12 15:00:18 +0300
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:01:20 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.5ms | Allocations: 206)
+  [1m[36mCity Load (70.8ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:180
+  Rendered devise/shared/_links.html.erb (Duration: 18.1ms | Allocations: 549)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 138.6ms | Allocations: 8882)
+Completed 200 OK in 460ms (Views: 380.8ms | ActiveRecord: 77.9ms | Allocations: 29298)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:01:52 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 206)
+  [1m[36mCity Load (3.0ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:180
+  Rendered devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 489)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 17.8ms | Allocations: 3463)
+Completed 200 OK in 71ms (Views: 66.9ms | ActiveRecord: 3.0ms | Allocations: 18321)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:02:31 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 206)
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:180
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 489)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 13.4ms | Allocations: 3301)
+Completed 200 OK in 35ms (Views: 33.3ms | ActiveRecord: 0.4ms | Allocations: 18094)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:04:41 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 206)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "cities"."name", "cities"."id" FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:180
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 489)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 14.5ms | Allocations: 3751)
+Completed 200 OK in 51ms (Views: 49.0ms | ActiveRecord: 0.5ms | Allocations: 18446)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:05:10 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 206)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2397)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 4224)
+
+
+
+ArgumentError - wrong number of arguments (given 2, expected 0):
+  app/views/devise/registrations/new.html.erb:180
+  app/views/devise/registrations/new.html.erb:147
+
+Started POST "/__better_errors/231e21bd7dc549cd/variables" for ::1 at 2019-09-12 15:05:10 +0300
+  [1m[36mCity Load (0.8ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:05:42 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 206)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "cities"."name", "cities"."id" FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:180
+  Rendered devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 501)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 9.8ms | Allocations: 3134)
+Completed 200 OK in 49ms (Views: 47.7ms | ActiveRecord: 0.4ms | Allocations: 17934)
+
+
+Started POST "/users" for ::1 at 2019-09-12 15:06:09 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"y3y0D+oFqhL0+bp1YGq6TMf92f2dOjxfFFooUS0myJtz5BMlKnL/4SyA5pcYMFZkc0/q410NnYtJmQKBWlhxZA==", "user"=>{"last_name"=>"azeaeza", "first_name"=>"ezze", "email"=>"dfsfs@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "city"=>"1"}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :city[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dfsfs@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (4.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "ezze"], ["last_name", "azeaeza"], ["email", "dfsfs@gmail.com"], ["encrypted_password", "$2a$11$bjkM9drY.F78cAK6i.GuQuNTCA6v8JD.gIVuCExMVy1UoJVrEzhJq"], ["created_at", "2019-09-12 12:06:09.659746"], ["updated_at", "2019-09-12 12:06:09.659746"]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 14.1ms | Allocations: 150)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.5ms | Allocations: 130)
+UserMailer#welcome_email: processed outbound mail in 44.6ms
+Delivered mail 5d7a34b1bdc67_287f2b041ee545dc46730@lenovoa18.mail (188.2ms)
+Date: Thu, 12 Sep 2019 15:06:09 +0300
+From: madagascar@market.mg
+To: dfsfs@gmail.com
+Message-ID: <5d7a34b1bdc67_287f2b041ee545dc46730@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7a34b1b7116_287f2b041ee545dc46668";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7a34b1b7116_287f2b041ee545dc46668
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgZXp6ZSBldCBiaWVudmVudWUgY2hleiBub3VzICENCj09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT0NCiANClR1IHQnZXMgaW5zY3JpdCBzdXIgbWFkYW1hcmtldCBlbiB1
+dGlsaXNhbnQgbCdlLW1haWwgc3VpdmFudCA6IGRmc2ZzQGdtYWlsLmNvbS4N
+CiANCiANCsOAIHRyw6hzIHZpdGUgc3VyIG1hZGFtYXJrZXQgIQ0K
+
+----==_mimepart_5d7a34b1b7116_287f2b041ee545dc46668
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut ezze et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : dfsf=
+s@gmail.com.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7a34b1b7116_287f2b041ee545dc46668--
+
+  [1m[35m (80.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 963ms (ActiveRecord: 86.6ms | Allocations: 51960)
+
+
+Started GET "/" for ::1 at 2019-09-12 15:06:10 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 31.2ms | Allocations: 9832)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 96ms (Views: 52.7ms | ActiveRecord: 2.9ms | Allocations: 28754)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 11]]
+Started DELETE "/users/sign_out" for ::1 at 2019-09-12 15:08:35 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tPrNAImTMT+BOGwq7wydjnfzvmrOmvH3Si1u81KDqowMYmoqSeRkzFlBMMiXVnGmw0GNdA6tUCMX7kQjJf0Tcw=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.5ms | Allocations: 2501)
+
+
+Started GET "/" for ::1 at 2019-09-12 15:08:35 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 14.7ms | Allocations: 3865)
+Completed 200 OK in 33ms (Views: 29.2ms | ActiveRecord: 3.0ms | Allocations: 18134)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:08:36 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 206)
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "cities"."name", "cities"."id" FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:180
+  Rendered devise/shared/_links.html.erb (Duration: 1.9ms | Allocations: 489)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 10.8ms | Allocations: 3091)
+Completed 200 OK in 44ms (Views: 40.9ms | ActiveRecord: 1.6ms | Allocations: 17352)
+
+
+Started POST "/users" for ::1 at 2019-09-12 15:10:13 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"pDwq2BCxUgV3qA1QCoTuz8UHC1KtmCVTpQcUEsfdF4rqC5mZLU+J4qKEld0Ji0YoMm9AW5gJRQ8LjYURkv/A1w==", "user"=>{"last_name"=>"jean", "first_name"=>"charles", "email"=>"jean@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "city_id"=>"1"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jean@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at", "city_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "charles"], ["last_name", "jean"], ["email", "jean@gmail.com"], ["encrypted_password", "$2a$11$zm7VIdeWfAnta3FTlZEWyO20YRZRw/bLnps/8u34IBPvUK2WaYSnu"], ["created_at", "2019-09-12 12:10:13.455270"], ["updated_at", "2019-09-12 12:10:13.455270"], ["city_id", 1]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 142)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.4ms | Allocations: 124)
+UserMailer#welcome_email: processed outbound mail in 8.0ms
+Delivered mail 5d7a35a5722d3_287f2b041ee543d4469cc@lenovoa18.mail (45.0ms)
+Date: Thu, 12 Sep 2019 15:10:13 +0300
+From: madagascar@market.mg
+To: jean@gmail.com
+Message-ID: <5d7a35a5722d3_287f2b041ee543d4469cc@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7a35a571748_287f2b041ee543d44686";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7a35a571748_287f2b041ee543d44686
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgY2hhcmxlcyBldCBiaWVudmVudWUgY2hleiBub3VzICENCj09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT0NCiANClR1IHQnZXMgaW5zY3JpdCBzdXIgbWFkYW1hcmtldCBl
+biB1dGlsaXNhbnQgbCdlLW1haWwgc3VpdmFudCA6IGplYW5AZ21haWwuY29t
+Lg0KIA0KIA0Kw4AgdHLDqHMgdml0ZSBzdXIgbWFkYW1hcmtldCAhDQo=
+
+----==_mimepart_5d7a35a571748_287f2b041ee543d44686
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut charles et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : jean=
+@gmail.com.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7a35a571748_287f2b041ee543d44686--
+
+  [1m[35m (21.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 265ms (ActiveRecord: 22.8ms | Allocations: 43493)
+
+
+Started GET "/" for ::1 at 2019-09-12 15:10:13 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 17.6ms | Allocations: 3658)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 69ms (Views: 65.5ms | ActiveRecord: 2.7ms | Allocations: 17561)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 11]]
+Started GET "/" for ::1 at 2019-09-12 15:12:42 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 17.0ms | Allocations: 3889)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 52ms (Views: 43.3ms | ActiveRecord: 8.0ms | Allocations: 18993)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2019-09-12 15:12:44 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"9L2GejptCmtbNkR0RnH3LrQg6/+bmeokzfBZa2YGyGM4e5WTnUnXLwX0uQ0zR/Jtd8sIdlgXhf6c278w+0f4wQ=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.4ms | Allocations: 2213)
+
+
+Started GET "/" for ::1 at 2019-09-12 15:12:44 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 17.0ms | Allocations: 3658)
+Completed 200 OK in 36ms (Views: 29.2ms | ActiveRecord: 6.0ms | Allocations: 16715)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:12:46 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 206)
+  [1m[36mCategory Load (38.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/devise/registrations/new.html.erb:180
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 83.0ms | Allocations: 10394)
+Completed 500 Internal Server Error in 88ms (ActiveRecord: 43.4ms | Allocations: 12051)
+
+
+
+NoMethodError - undefined method `name' for #<Category:0x00007fd3f4874b80>:
+  app/views/devise/registrations/new.html.erb:180
+  app/views/devise/registrations/new.html.erb:147
+
+Started POST "/__better_errors/c7fc43efa1e9ad9b/variables" for ::1 at 2019-09-12 15:12:46 +0300
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:12:55 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 206)
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:180
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 489)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 10.6ms | Allocations: 3303)
+Completed 200 OK in 39ms (Views: 36.9ms | ActiveRecord: 0.4ms | Allocations: 18108)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:13:14 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 206)
+  [1m[36mCity Load (1.9ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:179
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 489)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 12.4ms | Allocations: 3320)
+Completed 200 OK in 33ms (Views: 29.5ms | ActiveRecord: 1.9ms | Allocations: 18110)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:14:45 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 206)
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:179
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 490)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 10.2ms | Allocations: 3302)
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 0.4ms | Allocations: 18094)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:16:40 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 206)
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:179
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 489)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 12.6ms | Allocations: 3301)
+Completed 200 OK in 34ms (Views: 32.4ms | ActiveRecord: 0.5ms | Allocations: 18095)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:16:42 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 15)
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:179
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1812)
+Completed 200 OK in 20ms (Views: 18.7ms | ActiveRecord: 0.4ms | Allocations: 15014)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:16:45 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 15)
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:179
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 77)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1806)
+Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.3ms | Allocations: 15010)
+
+
+Started POST "/users" for ::1 at 2019-09-12 15:16:46 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"UReFVHY/K78zmNVdVVgD1OZL7JLskxollNWb1Osb6s2A1LH5oXRacebr/LwOY8fH4j4rq9qyi3GCn3k4B4rlHA==", "user"=>{"last_name"=>"", "first_name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "city_id"=>"1"}, "commit"=>"Sign up"}
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 2.3ms | Allocations: 357)
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:179
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 77)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 7.8ms | Allocations: 2160)
+Completed 200 OK in 38ms (Views: 32.3ms | ActiveRecord: 0.6ms | Allocations: 18386)
+
+
+Started POST "/users" for ::1 at 2019-09-12 15:16:46 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"/eYBzQ3wjldvW3zpCAydASZ4+lFM2ezDYHpPvZ6ZweksJTVg2rv/mbooVQhTN1kSIg09aHr4fZd2MK1RcgjOOA==", "user"=>{"last_name"=>"", "first_name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "city_id"=>"1"}, "commit"=>"Sign up"}
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 344)
+  [1m[36mCity Load (2.0ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:179
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 77)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 9.4ms | Allocations: 2142)
+Completed 200 OK in 52ms (Views: 45.5ms | ActiveRecord: 2.0ms | Allocations: 17133)
+
+
+Started POST "/users" for ::1 at 2019-09-12 15:16:46 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"9cge5XhT+Z7u+qhuBmgyGBtp1QjijHuKmLOCGfKFVf0kCypIrxiIUDuJgY9dU/YLHxwSMdSt6t6O+WD1HhRaLA==", "user"=>{"last_name"=>"", "first_name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "city_id"=>"1"}, "commit"=>"Sign up"}
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.9ms | Allocations: 344)
+  [1m[36mCity Load (4.0ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:179
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 77)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 11.4ms | Allocations: 2142)
+Completed 200 OK in 52ms (Views: 44.7ms | ActiveRecord: 4.0ms | Allocations: 17136)
+
+
+Started GET "/users" for ::1 at 2019-09-12 15:19:03 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users" for ::1 at 2019-09-12 15:19:04 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users" for ::1 at 2019-09-12 15:19:08 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2019-09-12 15:19:11 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 14.2ms | Allocations: 4023)
+Completed 200 OK in 33ms (Views: 27.3ms | ActiveRecord: 4.5ms | Allocations: 18295)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-12 15:19:13 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.6ms | Allocations: 206)
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  ↳ app/views/devise/registrations/new.html.erb:179
+  Rendered devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 489)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 14.8ms | Allocations: 3300)
+Completed 200 OK in 32ms (Views: 30.6ms | ActiveRecord: 0.5ms | Allocations: 17569)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-09-12 15:22:07 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 213)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 57.0ms | Allocations: 3426)
+Completed 200 OK in 124ms (Views: 121.6ms | ActiveRecord: 0.0ms | Allocations: 17264)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-09-12 15:22:15 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"t2haddZsaHXM31JPboEGvCLK1JcLSwJXpo8nH8F1iHiYcnXqh1xCaREsXz6Jx24eD/CRVEvMQ6OaiWb6gE0q9Q==", "user"=>{"email"=>"jean@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jean@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 339ms (ActiveRecord: 1.6ms | Allocations: 2224)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"t2haddZsaHXM31JPboEGvCLK1JcLSwJXpo8nH8F1iHiYcnXqh1xCaREsXz6Jx24eD/CRVEvMQ6OaiWb6gE0q9Q==", "user"=>{"email"=>"jean@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 132)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 617)
+Completed 200 OK in 167ms (Views: 17.9ms | ActiveRecord: 0.0ms | Allocations: 13783)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-09-12 15:22:31 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"9TrMAEK1Vtn2M8iXQC0QwDq85IuyX2qk+qBTqpuCUM4k+fitlf4nFyNA4XYbFtTTPskjsoR++/Ds6rFGdxNfHw==", "user"=>{"email"=>"jean@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "jean@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 219ms (ActiveRecord: 0.4ms | Allocations: 3851)
+
+
+Started GET "/" for ::1 at 2019-09-12 15:22:31 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:8
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:15
+  Rendered products/index.html.erb within layouts/application (Duration: 17.7ms | Allocations: 3658)
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:17
+Completed 200 OK in 40ms (Views: 26.4ms | ActiveRecord: 12.7ms | Allocations: 17559)
+
+

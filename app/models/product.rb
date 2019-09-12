@@ -15,4 +15,7 @@ class Product < ApplicationRecord
 
 	has_one_attached :picture
 
+	def picture_attached?
+    	picture.attached?
+  	end
 end

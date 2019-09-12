@@ -11,6 +11,8 @@
       <%= product.description %>
       <img class="card-img-top" width="150px" heigth="150px"
       <%= image_tag product.image_url %>
+
+      <p>Vendu par <%= product.provider.first_name%> </p>
   </div>
 </div>
   <%end%>

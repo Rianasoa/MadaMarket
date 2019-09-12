@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+
+  resources :products, only: [:show, :edit, :update] do
+    resources :pictures, only: [:create]
+  end
   resources :carts
   resources :commands
   resources :cities

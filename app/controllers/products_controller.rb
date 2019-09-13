@@ -1,7 +1,13 @@
 class ProductsController < ApplicationController
 
-  def index
+  def show
+    @product = Product.find(params[:id])
+    if user_signed_in?
+      @cart = current_user.cart
+    end
+  end
 
+  def index
      @products = Product.all
   end
 
@@ -11,15 +17,6 @@ class ProductsController < ApplicationController
 
   def create
     
-  end
-  
-  end
-
-  def show
-    @product = Product.find(params[:id])
-    if user_signed_in?
-      @cart = current_user.cart
-    end
   end
 
 end

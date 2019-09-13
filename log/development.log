@@ -32312,3 +32312,212 @@ Processing by ProductsController#show as HTML
 Completed 200 OK in 56ms (Views: 51.9ms | ActiveRecord: 0.7ms | Allocations: 12752)
 
 
+Started GET "/" for 127.0.0.1 at 2019-09-13 16:19:03 +0300
+  [1m[35m (23.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+SyntaxError - syntax error, unexpected end, expecting end-of-input:
+  app/controllers/products_controller.rb:25:in `'
+
+Started POST "/__better_errors/c7d1ac2cc3b49b85/variables" for 127.0.0.1 at 2019-09-13 16:19:03 +0300
+Started GET "/" for 127.0.0.1 at 2019-09-13 16:20:46 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:392
+  Rendered products/index.html.erb within layouts/application (Duration: 26.6ms | Allocations: 7920)
+Completed 200 OK in 163ms (Views: 52.0ms | ActiveRecord: 5.9ms | Allocations: 16127)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-09-13 16:21:06 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.4ms | Allocations: 639)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 64.6ms | Allocations: 2401)
+Completed 200 OK in 103ms (Views: 67.7ms | ActiveRecord: 5.0ms | Allocations: 11465)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at 2019-09-13 16:21:09 +0300
+Processing by Devise::PasswordsController#new as HTML
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 215)
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 176)
+  Rendered devise/passwords/new.html.erb within layouts/application (Duration: 20.1ms | Allocations: 1491)
+Completed 200 OK in 25ms (Views: 23.2ms | ActiveRecord: 0.0ms | Allocations: 2982)
+
+
+Started POST "/users/password" for 127.0.0.1 at 2019-09-13 16:21:11 +0300
+Processing by Devise::PasswordsController#create as HTML
+  Parameters: {"authenticity_token"=>"VWjjODHJE0RNi3aV09z0BBNKLithn4ddn+Kn0YkCiJETVHr6Xj9/9SNtlzCEL0WUhEiKFPaYw70MZyeTTVPg1Q==", "user"=>{"first_name"=>"", "email"=>""}, "commit"=>"Send me reset password instructions"}
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 227)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 129)
+  Rendered devise/passwords/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 856)
+Completed 200 OK in 1265ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 179996)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2019-09-13 16:21:32 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"V07mEzqeynhB/kO41sl4vfzu7ULeTY3mCkOGhygFrKPRDnRiyBN7l1fUOadKPBGohebCmbL23CkYY9Un0joZXA==", "user"=>{"email"=>"manalintsoa@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "manalintsoa@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users/password
+Completed 302 Found in 252ms (ActiveRecord: 0.8ms | Allocations: 6134)
+
+
+Started GET "/users/password" for 127.0.0.1 at 2019-09-13 16:21:33 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"password"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `show'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.8ms | Allocations: 2772)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=password:
+  app/controllers/users_controller.rb:20:in `show'
+
+Started POST "/__better_errors/0e432cec8032e6f9/variables" for 127.0.0.1 at 2019-09-13 16:21:33 +0300
+Started GET "/users/password" for 127.0.0.1 at 2019-09-13 19:22:35 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"password"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `show'
+Completed 404 Not Found in 7ms (ActiveRecord: 1.4ms | Allocations: 2702)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=password:
+  app/controllers/users_controller.rb:20:in `show'
+
+Started POST "/__better_errors/a252f8166a8521c8/variables" for 127.0.0.1 at 2019-09-13 19:22:35 +0300
+Started GET "/" for 127.0.0.1 at 2019-09-13 19:22:41 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:307
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:392
+  Rendered products/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1832)
+Completed 200 OK in 7ms (Views: 4.2ms | ActiveRecord: 2.0ms | Allocations: 2432)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2019-09-13 19:22:47 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:17:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:18:in `show'
+Completed 500 Internal Server Error in 178ms (ActiveRecord: 4.2ms | Allocations: 7684)
+
+
+
+PG::UndefinedColumn - ERREUR:  la colonne carts.user_id n'existe pas
+LINE 1: SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = $1 L...
+                                            ^
+:
+  app/controllers/products_controller.rb:19:in `show'
+
+Started POST "/__better_errors/3a8e356037897c7b/variables" for 127.0.0.1 at 2019-09-13 19:22:47 +0300
+Started GET "/products/1" for 127.0.0.1 at 2019-09-13 19:22:58 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:17:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:18:in `show'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.7ms | Allocations: 2539)
+
+
+
+PG::UndefinedColumn - ERREUR:  la colonne carts.user_id n'existe pas
+LINE 1: SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = $1 L...
+                                            ^
+:
+  app/controllers/products_controller.rb:19:in `show'
+
+Started POST "/__better_errors/2a876eba86a162f0/variables" for 127.0.0.1 at 2019-09-13 19:22:58 +0300
+Started GET "/" for 127.0.0.1 at 2019-09-13 19:23:17 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:307
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:392
+  Rendered products/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1776)
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 0.9ms | Allocations: 2368)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2019-09-13 19:23:35 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:17:in `show'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:18:in `show'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.7ms | Allocations: 2548)
+
+
+
+PG::UndefinedColumn - ERREUR:  la colonne carts.user_id n'existe pas
+LINE 1: SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = $1 L...
+                                            ^
+:
+  app/controllers/products_controller.rb:19:in `show'
+
+Started POST "/__better_errors/55f3389d21183b33/variables" for 127.0.0.1 at 2019-09-13 19:23:35 +0300
+Started GET "/products/2" for 127.0.0.1 at 2019-09-13 19:25:50 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:4:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:5:in `show'
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 11.2ms | Allocations: 21988)
+
+
+
+PG::UndefinedColumn - ERREUR:  la colonne carts.user_id n'existe pas
+LINE 1: SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = $1 L...
+                                            ^
+:
+  app/controllers/products_controller.rb:6:in `show'
+
+Started POST "/__better_errors/94848b56f8067ab7/variables" for 127.0.0.1 at 2019-09-13 19:25:50 +0300
+Started GET "/products/2" for 127.0.0.1 at 2019-09-13 19:25:51 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:4:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:5:in `show'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.8ms | Allocations: 2548)
+
+
+
+PG::UndefinedColumn - ERREUR:  la colonne carts.user_id n'existe pas
+LINE 1: SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = $1 L...
+                                            ^
+:
+  app/controllers/products_controller.rb:6:in `show'
+
+Started POST "/__better_errors/abba4615fd985d0d/variables" for 127.0.0.1 at 2019-09-13 19:25:51 +0300
+Started GET "/products/2" for 127.0.0.1 at 2019-09-13 19:25:52 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:4:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:5:in `show'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.7ms | Allocations: 2548)
+
+
+
+PG::UndefinedColumn - ERREUR:  la colonne carts.user_id n'existe pas
+LINE 1: SELECT "carts".* FROM "carts" WHERE "carts"."user_id" = $1 L...
+                                            ^
+:
+  app/controllers/products_controller.rb:6:in `show'
+
+Started POST "/__better_errors/d88d4029938615a3/variables" for 127.0.0.1 at 2019-09-13 19:25:52 +0300

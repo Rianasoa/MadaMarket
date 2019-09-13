@@ -1,0 +1,746 @@
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (426.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "MadaMarket_development"[0m
+  [1m[35m (427.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "MadaMarket_test"[0m
+  [1m[35m (1401.1ms)[0m  [1m[35mCREATE DATABASE "MadaMarket_development" ENCODING = 'unicode'[0m
+  [1m[35m (1548.4ms)[0m  [1m[35mCREATE DATABASE "MadaMarket_test" ENCODING = 'unicode'[0m
+  [1m[35m (182.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (153.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3281140153614043980)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20190910114606)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (177.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying DEFAULT '' NOT NULL, "last_name" character varying DEFAULT '' NOT NULL, "email" character varying DEFAULT '' NOT NULL, "address" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "is_admin" boolean DEFAULT FALSE)[0m
+  [1m[35m (80.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (69.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190910114606"]]
+  [1m[35m (17.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20190911051137)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (149.4ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "title" character varying, "description" text, "price" float, "image_url" character varying, "provider_id" bigint, "category_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (64.3ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_provider_id" ON "products"  ("provider_id")[0m
+  [1m[35m (51.9ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_category_id" ON "products"  ("category_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051137"]]
+  [1m[35m (21.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20190911051311)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (134.1ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "title" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051311"]]
+  [1m[35m (21.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCarts (20190911051333)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (115.8ms)[0m  [1m[35mCREATE TABLE "carts" ("id" bigserial primary key, "customer_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (86.6ms)[0m  [1m[35mCREATE  INDEX  "index_carts_on_customer_id" ON "carts"  ("customer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051333"]]
+  [1m[35m (19.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLikes (20190911051349)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (76.3ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "customer_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (87.4ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_customer_id" ON "likes"  ("customer_id")[0m
+  [1m[35m (62.3ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_product_id" ON "likes"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051349"]]
+  [1m[35m (20.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommands (20190911051441)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (178.3ms)[0m  [1m[35mCREATE TABLE "commands" ("id" bigserial primary key, "stripe_customer_id" character varying, "customer_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (62.0ms)[0m  [1m[35mCREATE  INDEX  "index_commands_on_customer_id" ON "commands"  ("customer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051441"]]
+  [1m[35m (17.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCartProducts (20190911051729)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (88.0ms)[0m  [1m[35mCREATE TABLE "cart_products" ("id" bigserial primary key, "cart_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (87.1ms)[0m  [1m[35mCREATE  INDEX  "index_cart_products_on_cart_id" ON "cart_products"  ("cart_id")[0m
+  [1m[35m (52.9ms)[0m  [1m[35mCREATE  INDEX  "index_cart_products_on_product_id" ON "cart_products"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051729"]]
+  [1m[35m (18.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommandProducts (20190911051742)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (69.9ms)[0m  [1m[35mCREATE TABLE "command_products" ("id" bigserial primary key, "command_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (72.9ms)[0m  [1m[35mCREATE  INDEX  "index_command_products_on_command_id" ON "command_products"  ("command_id")[0m
+  [1m[35m (55.1ms)[0m  [1m[35mCREATE  INDEX  "index_command_products_on_product_id" ON "command_products"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051742"]]
+  [1m[35m (15.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveStorageTables (20190911063650)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (119.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (75.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (132.4ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (75.0ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (63.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911063650"]]
+  [1m[35m (15.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-09-13 13:46:20.439175"], ["updated_at", "2019-09-13 13:46:20.439175"]]
+  [1m[35m (19.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3281140153614043980)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "eloy_rippin@grimes.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Mrs. Sharonda Abernathy"], ["last_name", "Solomon Bins MD"], ["email", "eloy_rippin@grimes.org"], ["encrypted_password", "$2a$11$uHxWAcMCuVsZC.mZvEnqtu/3ASluDG9VHUaaCqWYvIM13FvcsrtcS"], ["created_at", "2019-09-13 13:46:20.906613"], ["updated_at", "2019-09-13 13:46:20.906613"]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 271)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.2ms | Allocations: 130)
+UserMailer#welcome_email: processed outbound mail in 6.5ms
+Delivered mail 5d7b9dace1273_6feb2b19ba4b19b010755@lenovoa18.mail (52.1ms)
+Date: Fri, 13 Sep 2019 16:46:20 +0300
+From: madagascar@market.mg
+To: eloy_rippin@grimes.org
+Message-ID: <5d7b9dace1273_6feb2b19ba4b19b010755@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7b9dace08a7_6feb2b19ba4b19b010683";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7b9dace08a7_6feb2b19ba4b19b010683
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgTXJzLiBTaGFyb25kYSBBYmVybmF0aHkgZXQgYmllbnZlbnVlIGNo
+ZXogbm91cyAhDQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09DQogDQpUdSB0J2VzIGluc2NyaXQg
+c3VyIG1hZGFtYXJrZXQgZW4gdXRpbGlzYW50IGwnZS1tYWlsIHN1aXZhbnQg
+OiBlbG95X3JpcHBpbkBncmltZXMub3JnLg0KIA0KIA0Kw4AgdHLDqHMgdml0
+ZSBzdXIgbWFkYW1hcmtldCAhDQo=
+
+----==_mimepart_5d7b9dace08a7_6feb2b19ba4b19b010683
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Mrs. Sharonda Abernathy et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : eloy=
+_rippin@grimes.org.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7b9dace08a7_6feb2b19ba4b19b010683--
+
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (532.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "MadaMarket_development"[0m
+  [1m[35m (529.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "MadaMarket_test"[0m
+  [1m[35m (1236.9ms)[0m  [1m[35mCREATE DATABASE "MadaMarket_development" ENCODING = 'unicode'[0m
+  [1m[35m (1333.8ms)[0m  [1m[35mCREATE DATABASE "MadaMarket_test" ENCODING = 'unicode'[0m
+  [1m[35m (151.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (153.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3281140153614043980)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20190910114606)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (159.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying DEFAULT '' NOT NULL, "last_name" character varying DEFAULT '' NOT NULL, "email" character varying DEFAULT '' NOT NULL, "address" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "is_admin" boolean DEFAULT FALSE)[0m
+  [1m[35m (59.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (63.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190910114606"]]
+  [1m[35m (33.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20190911051137)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (143.5ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "title" character varying, "description" text, "price" float, "image_url" character varying, "provider_id" bigint, "category_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (75.5ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_provider_id" ON "products"  ("provider_id")[0m
+  [1m[35m (51.6ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_category_id" ON "products"  ("category_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051137"]]
+  [1m[35m (24.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20190911051311)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (146.1ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "title" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051311"]]
+  [1m[35m (25.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCarts (20190911051333)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (68.9ms)[0m  [1m[35mCREATE TABLE "carts" ("id" bigserial primary key, "customer_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (79.8ms)[0m  [1m[35mCREATE  INDEX  "index_carts_on_customer_id" ON "carts"  ("customer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051333"]]
+  [1m[35m (19.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLikes (20190911051349)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (69.8ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "customer_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (62.6ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_customer_id" ON "likes"  ("customer_id")[0m
+  [1m[35m (74.1ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_product_id" ON "likes"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051349"]]
+  [1m[35m (23.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommands (20190911051441)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (135.1ms)[0m  [1m[35mCREATE TABLE "commands" ("id" bigserial primary key, "stripe_customer_id" character varying, "customer_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (101.1ms)[0m  [1m[35mCREATE  INDEX  "index_commands_on_customer_id" ON "commands"  ("customer_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051441"]]
+  [1m[35m (19.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCartProducts (20190911051729)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (70.8ms)[0m  [1m[35mCREATE TABLE "cart_products" ("id" bigserial primary key, "cart_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (64.3ms)[0m  [1m[35mCREATE  INDEX  "index_cart_products_on_cart_id" ON "cart_products"  ("cart_id")[0m
+  [1m[35m (88.0ms)[0m  [1m[35mCREATE  INDEX  "index_cart_products_on_product_id" ON "cart_products"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051729"]]
+  [1m[35m (19.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommandProducts (20190911051742)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (71.7ms)[0m  [1m[35mCREATE TABLE "command_products" ("id" bigserial primary key, "command_id" bigint, "product_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (64.5ms)[0m  [1m[35mCREATE  INDEX  "index_command_products_on_command_id" ON "command_products"  ("command_id")[0m
+  [1m[35m (86.4ms)[0m  [1m[35mCREATE  INDEX  "index_command_products_on_product_id" ON "command_products"  ("product_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911051742"]]
+  [1m[35m (18.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveStorageTables (20190911063650)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (129.4ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (63.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (154.5ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (63.6ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (107.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190911063650"]]
+  [1m[35m (20.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-09-13 13:50:12.411269"], ["updated_at", "2019-09-13 13:50:12.411269"]]
+  [1m[35m (18.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3281140153614043980)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "karla.hudson@oconnell.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Chassidy Trantow DDS"], ["last_name", "Mr. Alexander Jaskolski"], ["email", "karla.hudson@oconnell.org"], ["encrypted_password", "$2a$11$eRoDB4XZxg.QWLj32ryvm.TCMDaVsrrosRF0CR/BJvOf4Zo3mE7TC"], ["created_at", "2019-09-13 13:50:12.902867"], ["updated_at", "2019-09-13 13:50:12.902867"]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 271)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.2ms | Allocations: 130)
+UserMailer#welcome_email: processed outbound mail in 6.4ms
+Delivered mail 5d7b9e94dff36_71272acf8c75f9a090755@lenovoa18.mail (20.9ms)
+Date: Fri, 13 Sep 2019 16:50:12 +0300
+From: madagascar@market.mg
+To: karla.hudson@oconnell.org
+Message-ID: <5d7b9e94dff36_71272acf8c75f9a090755@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7b9e94df58d_71272acf8c75f9a090684";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7b9e94df58d_71272acf8c75f9a090684
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgQ2hhc3NpZHkgVHJhbnRvdyBERFMgZXQgYmllbnZlbnVlIGNoZXog
+bm91cyAhDQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09DQogDQpUdSB0J2VzIGluc2NyaXQgc3Vy
+IG1hZGFtYXJrZXQgZW4gdXRpbGlzYW50IGwnZS1tYWlsIHN1aXZhbnQgOiBr
+YXJsYS5odWRzb25Ab2Nvbm5lbGwub3JnLg0KIA0KIA0Kw4AgdHLDqHMgdml0
+ZSBzdXIgbWFkYW1hcmtldCAhDQo=
+
+----==_mimepart_5d7b9e94df58d_71272acf8c75f9a090684
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Chassidy Trantow DDS et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : karl=
+a.hudson@oconnell.org.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7b9e94df58d_71272acf8c75f9a090684--
+
+  [1m[36mCart Create (0.7ms)[0m  [1m[32mINSERT INTO "carts" ("customer_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["customer_id", 1], ["created_at", "2019-09-13 13:50:12.948741"], ["updated_at", "2019-09-13 13:50:12.948741"]]
+  ↳ app/models/user.rb:25:in `add_cart'
+  [1m[35m (35.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "errol@bogisich.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Rex Morar"], ["last_name", "Stanford Schumm DDS"], ["email", "errol@bogisich.com"], ["encrypted_password", "$2a$11$X5ZRcWZUHOL6vXXjcp7w/eiPDm2EYzCZFAOY3dxd5Gz.XAof.QurS"], ["created_at", "2019-09-13 13:50:13.139340"], ["updated_at", "2019-09-13 13:50:13.139340"]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 7)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+UserMailer#welcome_email: processed outbound mail in 2.9ms
+Delivered mail 5d7b9e952380f_71272acf8c75f9a09098e@lenovoa18.mail (26.6ms)
+Date: Fri, 13 Sep 2019 16:50:13 +0300
+From: madagascar@market.mg
+To: errol@bogisich.com
+Message-ID: <5d7b9e952380f_71272acf8c75f9a09098e@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7b9e9522f65_71272acf8c75f9a09081";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7b9e9522f65_71272acf8c75f9a09081
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgUmV4IE1vcmFyIGV0IGJpZW52ZW51ZSBjaGV6IG5vdXMgIQ0KPT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PQ0KIA0KVHUgdCdlcyBpbnNjcml0IHN1ciBtYWRhbWFya2V0
+IGVuIHV0aWxpc2FudCBsJ2UtbWFpbCBzdWl2YW50IDogZXJyb2xAYm9naXNp
+Y2guY29tLg0KIA0KIA0Kw4AgdHLDqHMgdml0ZSBzdXIgbWFkYW1hcmtldCAh
+DQo=
+
+----==_mimepart_5d7b9e9522f65_71272acf8c75f9a09081
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Rex Morar et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : erro=
+l@bogisich.com.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7b9e9522f65_71272acf8c75f9a09081--
+
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("customer_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["customer_id", 2], ["created_at", "2019-09-13 13:50:13.172240"], ["updated_at", "2019-09-13 13:50:13.172240"]]
+  ↳ app/models/user.rb:25:in `add_cart'
+  [1m[35m (33.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "normand_maggio@lynch.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Cruz Schaden"], ["last_name", "Beatrice Ziemann"], ["email", "normand_maggio@lynch.net"], ["encrypted_password", "$2a$11$QvZsqkLEd.VoRC3XrDwfaOlE4ZJxf0Q.nI5jgK2pXl1.YwlYanSbS"], ["created_at", "2019-09-13 13:50:13.446193"], ["updated_at", "2019-09-13 13:50:13.446193"]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 7)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+UserMailer#welcome_email: processed outbound mail in 3.0ms
+Delivered mail 5d7b9e956e6ae_71272acf8c75f9a0911a4@lenovoa18.mail (21.3ms)
+Date: Fri, 13 Sep 2019 16:50:13 +0300
+From: madagascar@market.mg
+To: normand_maggio@lynch.net
+Message-ID: <5d7b9e956e6ae_71272acf8c75f9a0911a4@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7b9e956de23_71272acf8c75f9a091065";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7b9e956de23_71272acf8c75f9a091065
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgQ3J1eiBTY2hhZGVuIGV0IGJpZW52ZW51ZSBjaGV6IG5vdXMgIQ0K
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PQ0KIA0KVHUgdCdlcyBpbnNjcml0IHN1ciBtYWRhbWFy
+a2V0IGVuIHV0aWxpc2FudCBsJ2UtbWFpbCBzdWl2YW50IDogbm9ybWFuZF9t
+YWdnaW9AbHluY2gubmV0Lg0KIA0KIA0Kw4AgdHLDqHMgdml0ZSBzdXIgbWFk
+YW1hcmtldCAhDQo=
+
+----==_mimepart_5d7b9e956de23_71272acf8c75f9a091065
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Cruz Schaden et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : norm=
+and_maggio@lynch.net.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7b9e956de23_71272acf8c75f9a091065--
+
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("customer_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["customer_id", 3], ["created_at", "2019-09-13 13:50:13.473868"], ["updated_at", "2019-09-13 13:50:13.473868"]]
+  ↳ app/models/user.rb:25:in `add_cart'
+  [1m[35m (31.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "berry_rath@gottliebdoyle.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Shana Veum PhD"], ["last_name", "Mario Borer"], ["email", "berry_rath@gottliebdoyle.io"], ["encrypted_password", "$2a$11$ELpUGu55cZFspYI73n8BiO6pPCIao1pI3aaHrG3vf9A3ieMJAF9DK"], ["created_at", "2019-09-13 13:50:13.880511"], ["updated_at", "2019-09-13 13:50:13.880511"]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.2ms | Allocations: 7)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+UserMailer#welcome_email: processed outbound mail in 3.7ms
+Delivered mail 5d7b9e95d8b2f_71272acf8c75f9a09137@lenovoa18.mail (199.4ms)
+Date: Fri, 13 Sep 2019 16:50:13 +0300
+From: madagascar@market.mg
+To: berry_rath@gottliebdoyle.io
+Message-ID: <5d7b9e95d8b2f_71272acf8c75f9a09137@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7b9e95d821c_71272acf8c75f9a091268";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7b9e95d821c_71272acf8c75f9a091268
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgU2hhbmEgVmV1bSBQaEQgZXQgYmllbnZlbnVlIGNoZXogbm91cyAh
+DQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09DQogDQpUdSB0J2VzIGluc2NyaXQgc3VyIG1hZGFt
+YXJrZXQgZW4gdXRpbGlzYW50IGwnZS1tYWlsIHN1aXZhbnQgOiBiZXJyeV9y
+YXRoQGdvdHRsaWViZG95bGUuaW8uDQogDQogDQrDgCB0csOocyB2aXRlIHN1
+ciBtYWRhbWFya2V0ICENCg==
+
+----==_mimepart_5d7b9e95d821c_71272acf8c75f9a091268
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Shana Veum PhD et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : berr=
+y_rath@gottliebdoyle.io.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7b9e95d821c_71272acf8c75f9a091268--
+
+  [1m[36mCart Create (2.8ms)[0m  [1m[32mINSERT INTO "carts" ("customer_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["customer_id", 4], ["created_at", "2019-09-13 13:50:14.156392"], ["updated_at", "2019-09-13 13:50:14.156392"]]
+  ↳ app/models/user.rb:25:in `add_cart'
+  [1m[35m (229.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dorthy.ledner@lynch.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Janeth Kunde"], ["last_name", "Alpha Cartwright"], ["email", "dorthy.ledner@lynch.name"], ["encrypted_password", "$2a$11$hxORcBjSLYxIzjKtFT8A3e71EGXAPioO2gSkQnQTqT9V9mlRVkwGC"], ["created_at", "2019-09-13 13:50:14.544924"], ["updated_at", "2019-09-13 13:50:14.544924"]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 7)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+UserMailer#welcome_email: processed outbound mail in 3.6ms
+Delivered mail 5d7b9e9686c35_71272acf8c75f9a0915b5@lenovoa18.mail (19.7ms)
+Date: Fri, 13 Sep 2019 16:50:14 +0300
+From: madagascar@market.mg
+To: dorthy.ledner@lynch.name
+Message-ID: <5d7b9e9686c35_71272acf8c75f9a0915b5@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d7b9e96861de_71272acf8c75f9a0914a2";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d7b9e96861de_71272acf8c75f9a0914a2
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+U2FsdXQgSmFuZXRoIEt1bmRlIGV0IGJpZW52ZW51ZSBjaGV6IG5vdXMgIQ0K
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PQ0KIA0KVHUgdCdlcyBpbnNjcml0IHN1ciBtYWRhbWFy
+a2V0IGVuIHV0aWxpc2FudCBsJ2UtbWFpbCBzdWl2YW50IDogZG9ydGh5Lmxl
+ZG5lckBseW5jaC5uYW1lLg0KIA0KIA0Kw4AgdHLDqHMgdml0ZSBzdXIgbWFk
+YW1hcmtldCAhDQo=
+
+----==_mimepart_5d7b9e96861de_71272acf8c75f9a0914a2
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Janeth Kunde et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : dort=
+hy.ledner@lynch.name.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d7b9e96861de_71272acf8c75f9a0914a2--
+
+  [1m[36mCart Create (3.0ms)[0m  [1m[32mINSERT INTO "carts" ("customer_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["customer_id", 5], ["created_at", "2019-09-13 13:50:14.572041"], ["updated_at", "2019-09-13 13:50:14.572041"]]
+  ↳ app/models/user.rb:25:in `add_cart'
+  [1m[35m (102.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Artisanal"], ["created_at", "2019-09-13 13:50:14.693983"], ["updated_at", "2019-09-13 13:50:14.693983"]]
+  [1m[35m (27.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Boisson"], ["created_at", "2019-09-13 13:50:14.726154"], ["updated_at", "2019-09-13 13:50:14.726154"]]
+  [1m[35m (138.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Produits laitiers"], ["created_at", "2019-09-13 13:50:14.869954"], ["updated_at", "2019-09-13 13:50:14.869954"]]
+  [1m[35m (40.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Charcuterie"], ["created_at", "2019-09-13 13:50:14.914346"], ["updated_at", "2019-09-13 13:50:14.914346"]]
+  [1m[35m (50.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Fruits et Légumes"], ["created_at", "2019-09-13 13:50:14.969622"], ["updated_at", "2019-09-13 13:50:14.969622"]]
+  [1m[35m (29.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (4.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "provider_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "et"], ["description", "Sed minus quis. Magni unde occaecati. Recusandae iure velit."], ["price", 96.56], ["image_url", "https://cdn.pixabay.com/photo/2017/04/04/17/41/fruits-2202419_960_720.jpg"], ["provider_id", 2], ["category_id", 1], ["created_at", "2019-09-13 13:50:15.050421"], ["updated_at", "2019-09-13 13:50:15.050421"]]
+  [1m[35m (15.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (7.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "provider_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "vel"], ["description", "Suscipit dolorum eum. A porro architecto. Sint ut similique."], ["price", 19.68], ["image_url", "https://image.shutterstock.com/image-photo/packing-frozen-shrimp-buyers-hand-260nw-1060777829.jpg"], ["provider_id", 4], ["category_id", 1], ["created_at", "2019-09-13 13:50:15.081983"], ["updated_at", "2019-09-13 13:50:15.081983"]]
+  [1m[35m (17.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (5.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "provider_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "velit"], ["description", "Qui est voluptas. Aliquid cupiditate fuga. In sed est."], ["price", 47.61], ["image_url", "https://scontent-atl3-1.cdninstagram.com/vp/076455296bd5e469a4955bfb87e3fec5/5DF73416/t51.2885-15/e35/s480x480/31878220_647038518968301_6465523147536859136_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com"], ["provider_id", 2], ["category_id", 3], ["created_at", "2019-09-13 13:50:15.113979"], ["updated_at", "2019-09-13 13:50:15.113979"]]
+  [1m[35m (18.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (4.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "provider_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "ut"], ["description", "Incidunt aliquid aut. Dolorum sit ut. Placeat nisi at."], ["price", 19.45], ["image_url", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrkeDHV8UGRHN0iHyWr6jXcr1H5Pa4K6-F9ifTpn1M8yyrY8ecVw"], ["provider_id", 1], ["category_id", 5], ["created_at", "2019-09-13 13:50:15.145905"], ["updated_at", "2019-09-13 13:50:15.145905"]]
+  [1m[35m (19.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.9ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "provider_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "sakoa"], ["description", "lkdsldjfkfjdofjofjsio"], ["price", 500.0], ["provider_id", 7], ["category_id", 3], ["created_at", "2019-09-13 14:15:15.359492"], ["updated_at", "2019-09-13 14:15:15.359492"]]
+  [1m[35m (19.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "provider_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "manga"], ["description", "lkdsldjfkfjdofjofjsio"], ["price", 600.0], ["provider_id", 7], ["category_id", 4], ["created_at", "2019-09-13 14:15:39.820851"], ["updated_at", "2019-09-13 14:15:39.820851"]]
+  [1m[35m (24.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCartProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 1], ["product_id", 6], ["created_at", "2019-09-13 14:19:06.235906"], ["updated_at", "2019-09-13 14:19:06.235906"]]
+  [1m[35m (22.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCartProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 3], ["product_id", 5], ["created_at", "2019-09-13 14:19:17.237992"], ["updated_at", "2019-09-13 14:19:17.237992"]]
+  [1m[35m (24.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCartProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cart_id", 4], ["product_id", 5], ["created_at", "2019-09-13 14:19:26.086410"], ["updated_at", "2019-09-13 14:19:26.086410"]]
+  [1m[35m (21.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCartProduct Load (0.7ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."product_id" = $1 LIMIT $2[0m  [["product_id", 6], ["LIMIT", 11]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCartProduct Load (0.4ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."product_id" = $1[0m  [["product_id", 6]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCartProduct Load (0.4ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."product_id" = $1 ORDER BY "cart_products"."id" ASC LIMIT $2[0m  [["product_id", 6], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCartProduct Load (0.4ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."product_id" = $1 ORDER BY "cart_products"."id" ASC LIMIT $2[0m  [["product_id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCartProduct Load (0.4ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."product_id" = $1 ORDER BY "cart_products"."id" ASC LIMIT $2[0m  [["product_id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCartProduct Load (0.5ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."product_id" = $1 ORDER BY "cart_products"."id" ASC LIMIT $2[0m  [["product_id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", true], ["updated_at", "2019-09-13 14:29:57.838950"], ["id", 1]]
+  [1m[35m (27.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", true], ["updated_at", "2019-09-13 14:29:57.869713"], ["id", 2]]
+  [1m[35m (18.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", true], ["updated_at", "2019-09-13 14:29:57.891818"], ["id", 3]]
+  [1m[35m (18.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", true], ["updated_at", "2019-09-13 14:29:57.913819"], ["id", 4]]
+  [1m[35m (19.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", true], ["updated_at", "2019-09-13 14:29:57.936182"], ["id", 5]]
+  [1m[35m (18.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", true], ["updated_at", "2019-09-13 14:29:57.958532"], ["id", 7]]
+  [1m[35m (19.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", false], ["updated_at", "2019-09-13 14:30:31.022523"], ["id", 6]]
+  [1m[35m (20.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", false], ["updated_at", "2019-09-13 14:30:31.046072"], ["id", 1]]
+  [1m[35m (19.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", false], ["updated_at", "2019-09-13 14:30:31.068282"], ["id", 2]]
+  [1m[35m (18.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", false], ["updated_at", "2019-09-13 14:30:31.090467"], ["id", 3]]
+  [1m[35m (18.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", false], ["updated_at", "2019-09-13 14:30:31.112111"], ["id", 4]]
+  [1m[35m (19.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", false], ["updated_at", "2019-09-13 14:30:31.134610"], ["id", 5]]
+  [1m[35m (19.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", false], ["updated_at", "2019-09-13 14:30:31.156676"], ["id", 7]]
+  [1m[35m (19.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", true], ["updated_at", "2019-09-13 14:30:51.765888"], ["id", 7]]
+  [1m[35m (21.7ms)[0m  [1m[35mCOMMIT[0m

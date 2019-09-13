@@ -3,8 +3,7 @@ class Admin::UsersController < ApplicationController
 	before_action :check_if_admin
 	
 	def index
-		@commands = Command.all
-		@users = @commands.provider_id
+		@products = Product.all
 	end
 
 	 def check_if_admin

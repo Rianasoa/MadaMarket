@@ -25,28 +25,19 @@
 			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
 				<h2 class="text-center mt-4 mb-4"> Utilisateurs </h2><hr>
 			</div>
-			<div class="container">
-				<div class="row">
-					
-					<% @users.order(created_at: :asc).each do |u| %>
-					
-					<div class="col col-5 card my-2 mx-auto p-3 shadow">
-
-						<!-- We display each user in the dashboard -->
-						<p>
-							<%= "ID: #{u.id}" %><hr>				
-							<%= u.first_name %>
-							<%= "#{u.last_name}" %> <br>
-							<%= u.email %> <br>
-							<%= "Admin: #{u.is_admin}" %> <br>
-						</p>			
-					</div> 
-					<% end %>
-				</div>
-				<div >
-					
-				</div>
-			</div>
+			
 		</main>
+
+		<div>
+			<%@products.each do |product|%>
+				<%if product.provider == current_user%>
+					<%product.cartProducts.each do |cartProduct|%>
+						<%= cartProduct.cart.customer.first_name%><br>
+						
+
+					<%end%>
+				<%end%>
+			<%end%>
+		</div>
 	</div>
 </div>

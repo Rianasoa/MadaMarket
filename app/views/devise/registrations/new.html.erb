@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,16 +27,16 @@
                 <%= f.text_field :first_name , autofocus: true, autocomplete: "first_name", :class=>'zone', :id=>"inputfirstname", :class=>"form-control", :placeholder=>"first name" %> 
                   <label for="inputfirstname">First name</label>
                 </div>
+            <div class="form-label-group">
+              <%= f.text_field :address, autofocus: true, autocomplete: "address", :class=>'zone', :id=>"inputaddress", :class=>"form-control", :placeholder=>"lot...ville" %> 
+                <label for="inputaddress">Adresse</label>
+              </div>
 
             <div class="form-label-group">
                  <%= f.email_field :email, autofocus: true, autocomplete: "email", :class=>'zone', :id=>"inputEmail", :class=>"form-control", :placeholder=>"exemple@gmail.com" %> 
                 <label for="inputEmail">Email address</label>
               </div>
 
-            <div class="form-label-group">
-              <%= f.text_field :address, autofocus: true, autocomplete: "address", :class=>'zone', :id=>"inputaddress", :class=>"form-control", :placeholder=>"lot...ville" %> 
-                <label for="inputaddress">lot..ville</label>
-              </div>
               
               <hr>
                <% if @minimum_password_length %>
@@ -52,9 +51,6 @@
                  <%= f.password_field :password_confirmation, autocomplete: "new-password", :class=>'zone', :id=>"inputConfirmPassword", :class=>"form-control", :placeholder=>"Password" %> 
                 <label for="inputConfirmPassword">Confirm password</label>
               </div>
-             <div class="form-label-group">
-              <%= f.collection_select :city_id, City.all, :id, :name, :class => "form-control" %>  
-             </div>
             
 
 

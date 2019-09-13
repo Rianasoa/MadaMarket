@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-</head>
-<body>
-<div class="card">
-	 <% @products.each do |product|%>
-		 <div class="text-center col-md-4">
-      <%= product.title %><br>
-      <%= product.description %>
-      <img class="card-img-top" width="150px" heigth="150px"
-      <%= image_tag product.image_url %>
-  </div>
-</div>
-  <%end%>
-</body>
+		<head>
+			<title>index</title>
+			<style type="text/css">
+				
+		
+			</style>
+		</head>
+		<body>
+		<div class="row">
+					<% @products.each do |product|%>
+						<div class="col-md-4">
+				<div class="text-center ">
+		      		<%= product.title %><br>
+		     		 <%= product.description[0..20]... %>
+		      		<a href="<%=  product_path(product.id) %>">
+		      	<div  class="image">
+		      		<%= image_tag product.image_url,:class=>"card-img-top"  %></a>
+		      	</div>
+		      	</div>	
+				</div>
+		  		<%end%>
+		  	</div>
+		</div>
+		</body>
 </html>
 
   

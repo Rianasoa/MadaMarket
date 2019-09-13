@@ -37,6 +37,14 @@
     </li>
 
   <% end %>
+  <% if user_signed_in? %>
+      <% if current_user.is_admin == true %>
+        <li class="nav-item">
+          <%= link_to "Dashboard", admin_products_path, class: "nav-item nav-link" %>
+        </li>
+      <% end %>
+    <% end %>
+</ul>
 </ul>
 
 

@@ -9,13 +9,23 @@
 		 <div class="text-center col-md-4">
       <%= product.title %><br>
       <%= product.description %>
-      <img class="card-img-top" width="150px" heigth="150px"
-      <%= image_tag product.image_url %>
+      	<%if product.picture.attached?%>
+      		<%= image_tag product.picture, alt: 'picture', class:"card-img-top" %>
+		<%else%>
+			<img class="card-img-top" height="200px" src="<%= product.image_url %>" alt="Card image cap">
+		<%end%>
+		<div>
+			
+		<%= link_to "Voir produit", product_path(product.id), class: "btn btn-warning btn-sm" %>
+		</div>
+  	</div>
 
-      <p>Vendu par <%= product.provider.first_name%> </p>
-  </div>
-</div>
+	<div >
+	<a href="<%= carts_path(product.id)%>" data-method="post" class="btn btn-primary">Ajouter au panier</a></p>
+	</div>
+
   <%end%>
+</div>
 </body>
 </html>
 

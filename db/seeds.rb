@@ -22,9 +22,12 @@ puts "Villes créées"
  	end
  	puts "User créés"
 
- 10.times do 
-   	  Category.create!(title: Faker::Lorem.words)
- end
+   	  c1 = Category.create!(title: "Artisanal")
+   	  c2 = Category.create!(title: "Boisson")
+   	  c3 = Category.create!(title: "Produits laitiers")
+   	  c4 = Category.create!(title: "Charcuterie")
+   	  c5 = Category.create!(title: "Fruits et Légumes")
+
 puts "Catégories créées"
 
  prod = ["http://www.shmadrid.fr/blog/fr/wp-content/uploads/2018/06/bio.jpg","https://img.over-blog-kiwi.com/2/82/53/47/20180530/ob_906b07_gamba.jpg","https://scontent-atl3-1.cdninstagram.com/vp/076455296bd5e469a4955bfb87e3fec5/5DF73416/t51.2885-15/e35/s480x480/31878220_647038518968301_6465523147536859136_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com",
@@ -35,8 +38,7 @@ puts "Catégories créées"
 				price: Faker::Commerce.price,
                 image_url:prod[i],
                 category_id: Category.all.sample.id,
-                provider_id: User.all.sample.id,
-                
+                provider_id: User.all.sample.id,               
                 )
 
 end

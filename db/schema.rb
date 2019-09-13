@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_063650) do
   end
 
   create_table "commands", force: :cascade do |t|
+    t.string "stripe_customer_id"
     t.bigint "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

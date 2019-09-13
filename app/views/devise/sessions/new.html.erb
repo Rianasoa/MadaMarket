@@ -11,10 +11,10 @@
 
 body {
 
-  background: linear-gradient(to right, #ADD8E6, #E0FFFF);
-  background-image: url(https://cdn.pixabay.com/photo/2013/08/28/00/54/landscape-176602__340.jpg);
+  background-image: url(https://cdn.pixabay.com/photo/2012/04/03/22/49/fruits-25266__340.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  box-shadow: 
 }
 
 .card-signin {
@@ -31,8 +31,11 @@ body {
 
 .card-signin .card-body {
   padding: 2rem;
-  background-color: HoneyDew ;
+  background-image: url(https://cdn.pixabay.com/photo/2013/07/26/06/05/leaves-167478__340.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 10px;
+  box-shadow:  -2px 9px 8px green;
 }
 
 .form-signin {
@@ -146,8 +149,21 @@ body {
   }
 }
 .form-control{
-  background-color: transparent;
+  background-color: white;
 }
+.text-uppercase{
+
+  background-color: blue;
+}
+.container{
+  margin-top: 70px;
+}
+.a{
+  font-size: 25px;
+  font-style: italic;
+  font-family: all;
+  margin-left: 100px;
+ }
 
  </style>
   
@@ -179,9 +195,11 @@ body {
                 </div>
                 <% end %>
                 <%= f.submit "Sign In", :class=>"btn btn-lg btn-primary btn-block text-uppercase actions" %>
+                <div class="a">
                 <hr class="my-4">
                 <%= render "devise/shared/links" %>
               <% end %>
+              </div>
             </div>
           </div>
         </div>

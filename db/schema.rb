@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 2019_09_11_063650) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.string "zip_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "command_products", force: :cascade do |t|
     t.bigint "command_id"
     t.bigint "product_id"

@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   	has_one :cart
-  	belongs_to :city, optional: true
   	has_one_attached :avatar
   	
   	has_many :commands, foreign_key: 'customer_id'

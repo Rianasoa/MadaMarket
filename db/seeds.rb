@@ -5,20 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-	City.destroy_all
+	
 	User.destroy_all
 	Category.destroy_all
 	Product.destroy_all
 
-10.times do
-	City.create!(name: Faker::Address.city,
-				zip_code: Faker::Address.zip_code)
-end
-puts "Villes créées"
 
  5.times do
  	User.create!(first_name: Faker::Name.name,last_name: Faker::Name.name,email: Faker::Internet.email,
-                    password: "123456789", city_id: City.all.sample.id)
+                    password: "123456789")
  	end
  	puts "User créés"
 
@@ -36,7 +31,7 @@ puts "Catégories créées"
                 image_url:prod[i],
                 category_id: Category.all.sample.id,
                 provider_id: User.all.sample.id,
-                
+
                 )
 
 end

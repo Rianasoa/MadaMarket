@@ -5,15 +5,27 @@
 </head>
 <body>
 <div class="card">
-	 <% @products.each do |product|%>
-		 <div class="text-center col-md-4">
-      <%= product.title %><br>
-      <%= product.description %>
-      <img class="card-img-top" width="150px" heigth="150px"
-      <%= image_tag product.image_url %>
-  </div>
-</div>
+  <div class="row">
+    
+     <% @products.each do |product|%>
+     <div class=" col-md-4">
+          <%= product.title %><br>
+          <%= product.description %>
+          <a href="<%= product_path(product.id) %>" class="btn btn-info">
+            <img class="card-img-top" width="70px" heigth="70px"
+           <%= image_tag product.image_url %> 
+          </a>
+              
+     </div>
   <%end%>
+
+
+        
+           
+  </div>
+	
+
+
 </body>
 </html>
 

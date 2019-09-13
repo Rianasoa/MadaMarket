@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	@user = current_user
   end
-end
+
 
   def index
   	@products = Product.all

@@ -9,4 +9,8 @@ class Command < ApplicationRecord
 	def command_send
 		UserMailer.command_email(self).deliver_now
 	end
+
+	def is_already_paid
+    	paid
+  	end
 end

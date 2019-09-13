@@ -9,5 +9,4 @@ def configure_devise_parameters
 
 end
 
-
 end

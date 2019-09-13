@@ -11,17 +11,18 @@ Rails.application.routes.draw do
   root to: 'products#index'
 
   devise_for :users
-  resources :users, only: [:show, :edit, :update] do 
+  resources :users do 
     resources :avatars, only: [:create]
   end
 
 
     # Admin dashboard
   namespace :admin do
-    resources :users, only: [:index]    
-    resources :products, only: [:index, :show, :edit, :update, :destroy, :new, :create] do
-      resources :pictures, only: [:create]
+    resources :users   
+    resources :products do
+      resources :pictures
     end
+    resources :commands
   end
 
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

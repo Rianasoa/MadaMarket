@@ -1,0 +1,57 @@
+<div class="container-fluid">
+	<div class="row">
+		<!-- Dashboard Menu -->
+		<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+			<div class="sidebar-sticky">
+				<ul class="nav flex-column">
+					<li class="nav-item">
+						<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+							<span>Dashboard</span>
+						</h6>
+						<%=link_to "Acceuil", admin_products_path, class: "nav-link active" %>  
+					</li>
+					<li class="nav-item">
+						<%=link_to "Produits", admin_products_path, class: "nav-link active"%> 
+					</li>
+					<li class="nav-item">
+						<%=link_to "Users", admin_users_path, class: "nav-link active" %> 
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+				<h2 class="text-center mt-4 mb-4"> Produits </h2><%= link_to "Créer produit", new_admin_product_path, class: "btn btn-success btn-sm ml-3 mt-4" %><hr>
+			</div>
+			<div class="container">
+				
+				<div class="row">
+
+					<!-- Start of the items loop -->
+					<% @products.order(created_at: :desc).each do |product| %>
+					<!-- For each item, we create a column and a card -->
+					<div class="col col-4 mt-5">
+						<div class="card shadow mb-3">
+							<!-- Item title -->
+							<h5 class="card-header"><%= product.title.truncate(30) %></h5>
+							<!-- Item image -->
+							<%if product.picture.attached?%>
+      							<%= image_tag product.picture, alt: 'picture', class:"card-img-top" %>
+      							<%else%>
+							<img class="card-img-top" height="200px" src="<%= product.image_url %>" alt="Card image cap">
+							<%end%>
+							<div class="card-body">
+								<!-- Item description -->
+								<p class="card-text"><%= product.description %></p>
+								<!-- Button to item -->
+								<%= link_to "Voir produit", admin_product_path(product.id), class: "btn btn-primary btn-sm" %>
+							</div>
+						</div>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>

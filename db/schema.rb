@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_063650) do
   end
 
   create_table "commands", force: :cascade do |t|
+    t.string "stripe_customer_id"
     t.bigint "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -100,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_063650) do
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
     t.string "email", default: "", null: false
+    t.string "address", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -386,29 +387,28 @@ header.masthead{
   </section> 
 
   <div class="card">
+	 <% @products.each do |product|%>
+		 <div class="text-center col-md-4">
+      <%= product.title %><br>
+      <%= product.description %>
+      	<%if product.picture.attached?%>
+      		<%= image_tag product.picture, alt: 'picture', class:"card-img-top" %>
+		<%else%>
+			<img class="card-img-top" height="200px" src="<%= product.image_url %>" alt="Card image cap">
+		<%end%>
+		<div>
+			
+		<%= link_to "Voir produit", product_path(product.id), class: "btn btn-warning btn-sm" %>
+		</div>
+  	</div>
 
-  <div class="row">
-    
-     <% @products.each do |product|%>
-     <div class=" col-md-4">
-          <%= product.title %><br>
-          <%= product.description %>
-          <a href="<%= product_path(product.id) %>" class="btn btn-info">
-            <img class="card-img-top" width="70px" heigth="70px"
-           <%= image_tag product.image_url %> >
-          </a>
-              
-     </div>
-
-</div>
+	<div >
+	<a href="<%= carts_path(product.id)%>" data-method="post" class="btn btn-primary">Ajouter au panier</a></p>
+	</div>
 
   <%end%>
+</div>
 
-
-        
-           
-  </div>
-  
 
 </body>
 <footer>

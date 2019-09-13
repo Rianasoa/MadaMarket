@@ -13,6 +13,7 @@
   <body>
 
 <ul>
+
     <% if user_signed_in? %>
       <li>
         <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
@@ -26,7 +27,33 @@
         <%= link_to "Setting",  edit_user_path(current_user) %>
       </li>
     <% end %>
-  </ul>
+
+
+  <% if user_signed_in? %>
+    <li>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    </li>
+
+    <li>
+      <%= current_user.email %>
+    </li>
+
+    <li>
+      <%= link_to "Setting",  edit_user_path(current_user) %>
+    </li>
+  <% end %>
+
+  <% if user_signed_in? %>
+      <% if current_user.is_admin == true %>
+        <li class="nav-item">
+          <%= link_to "Dashboard", admin_products_path, class: "nav-item nav-link" %>
+        </li>
+      <% end %>
+    <% end %>
+</ul>
+
+
+
     <%= yield %>
   </body>
 </html>

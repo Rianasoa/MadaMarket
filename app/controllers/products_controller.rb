@@ -6,12 +6,20 @@ class ProductsController < ApplicationController
     	redirect_to admin_products_path
     end	
   end
-
   def show
     @product = Product.find(params[:id])
     if user_signed_in?
       @cart = current_user.cart
     end
   end
+
+  def new
+   
+  end
+
+  def create
+    
+  end
+
 
 end

@@ -52,6 +52,11 @@
                  <%= f.password_field :password_confirmation, autocomplete: "new-password", :class=>'zone', :id=>"inputConfirmPassword", :class=>"form-control", :placeholder=>"Password" %> 
                 <label for="inputConfirmPassword">Confirm password</label>
               </div>
+             <div class="form-label-group">
+              <%= f.collection_select :city_id, City.all, :id, :name, :class => "form-control" %>  
+             </div>
+            
+
 
               <%= f.submit "Sign up", :class=>"btn btn-lg btn-primary btn-block text-uppercase"%>
               

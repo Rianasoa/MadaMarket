@@ -1,26 +1,24 @@
 class ProductsController < ApplicationController
-  
-  def new  
+
+  def update
+ end
+  def index
+
+     @products = Product.all
   end
 
-  def show
-  @product = Product.find(params[:id])   
+  def new
+   
   end
 
   def create
     
   end
-
-  def index
-     @products = Product.all
+  def show
+    @product = Product.find(params[:id])
+    if user_signed_in?
+      @cart = current_user.cart
+    end
   end
 
-  def update
-  end
-
-  def edit
-  end
-
-  def destroy
-  end
 end

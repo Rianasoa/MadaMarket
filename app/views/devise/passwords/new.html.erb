@@ -1,20 +1,113 @@
-<h2>Forgot your password?</h2>
+<!DOCTYPE html>
+<html>
+		<head>
+			<title>forgot password</title>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
- <div class="field">
- 	<%= f.label :first_name %>
- 	<%= f.text_field :first_name , autofocus: true, autocomplete: "first_name" %>
- 	
- </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+			<style type="text/css">
+				body{
+					background: #007bff;
+ 				 background: linear-gradient(to right, #ADD8E6, #E0FFFF);
+				}
+				
+				.container{
+					width: 500px;
+					
+				}
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+				.field{
+						margin-bottom: 10px; 
+				}
 
-<%= render "devise/shared/links" %>
+				.input{
+
+					width: 100%;
+					height: 40px;
+					background-color: transparent;
+					border-color: black;
+					border-top: none;
+					border-left: none;
+					border-right: none;
+				}
+				.input:focus{
+					outline: none;
+				}
+
+				.actions{
+					margin-top: 50px;
+
+				}
+				.submit{
+					border-radius: 7px;
+				}
+
+
+				.row{
+					background-color: white;
+					height: 550px;
+					border-radius: 20px;
+					box-shadow: 3px 3px grey, -3px -3px grey;
+					padding-top: 10px;
+					
+					margin-bottom: 25px;
+					
+				
+				}
+
+
+			</style>
+		</head>
+
+		<body>
+			<div class="container">
+				
+				<div class="row">
+					<div class="col-md-2">
+						
+
+					</div>
+
+					<div class="col-md-8">
+						<br><h2>Forgot your password?</h2><br>
+
+						<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+		  					<%= render "devise/shared/error_messages", resource: resource %>
+							
+							<div class="field">
+								
+		 						<%= f.text_field :first_name , autofocus: true, autocomplete: "first_name", class: 'form-control', :class=>"input", :placeholder=>"first name" %>
+							</div>
+
+							<div class="field">
+					
+		    					<%= f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control', :class=>"input",:placeholder=>"email" %>
+							</div>
+
+							<div class="actions">
+								
+		    						<%= f.submit "Send me reset password instructions", :class=>"submit" %><br><br>
+		    						
+		  					</div>
+		  					<%= render "devise/shared/links" %>
+						<% end %>
+
+						
+
+					</div>
+
+					<div class="col-md-2">
+						
+
+					</div>
+
+				</div>
+
+			</div>
+				
+					
+
+		</body>
+</html>
+
+
+ 
+

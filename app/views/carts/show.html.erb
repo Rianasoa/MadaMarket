@@ -1,3 +1,4 @@
+
 <center><h1 style="margin-top:50px;">Your cart</h1></center>
 <%if @price_total != 0%>
 <center><strong>Prix total: <%=@price_total%> €</strong><br/> 
@@ -18,7 +19,7 @@
 		<div style="text-align: center;margin-top: 30px;">
 			<p><strong>Title: <%=cart_product.title%></strong></p>
 	 	
-		 	<p><strong>Price: <%=cart_product.price%> €</strong></p>
+		 	<p><strong>Price: <%=cart_product.price%> Ar</strong></p>
 			 <a href="<%=cart_path(cart_product.id)%>" data-method="delete" class="btn btn-sm btn-danger" data-confirm="Are you sure to delete your carts??">Enlever le panier</a>
 		</div>
 	 	
@@ -29,3 +30,4 @@
 	<%end%>
 </div>
 </div>
+

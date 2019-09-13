@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
     if user_signed_in? && current_user.is_admin == true
     	redirect_to admin_products_path
     end	
-
   end
 
   def show

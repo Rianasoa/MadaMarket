@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -389,3 +390,26 @@ header.masthead{
   
 </footer>
 </html>
+=======
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div class="card">
+	 <% @products.each do |product|%>
+		 <div class="text-center col-md-4">
+      <%= product.title %><br>
+      <%= product.description %>
+      <img class="card-img-top" width="150px" heigth="150px"
+      <%= image_tag product.image_url %>
+
+      <p>Vendu par <%= product.provider.first_name%> </p>
+  </div>
+</div>
+  <%end%>
+</body>
+</html>
+
+  
+>>>>>>> development

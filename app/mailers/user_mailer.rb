@@ -11,4 +11,26 @@ class UserMailer < ApplicationMailer
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
     mail(to: @user.email, subject: 'Bienvenue chez nous !') 
   end
+
+
+  def command_email(command)
+
+    # We get the order
+    @command = command
+
+    #We get the user
+    @user = @order.customer
+
+    # We get the user's cart
+    @cart = @customer.cart
+    
+    # We get all the items from the cart
+    @cart_products_command = @cart.products
+
+    #We define the website url
+    @url  = 'http://madaMarket.herokuapp.com' 
+
+    # We send an email to the user for every order
+    mail(to: @user.email, subject: 'Thank you for your command!') 
+	end
 end

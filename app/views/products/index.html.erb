@@ -296,10 +296,10 @@ header.masthead{
 			
 		<%= link_to "Voir produit", product_path(product.id), class: "btn btn-warning btn-sm" %>
 		</div>
-  	</div>
-
-	<div >
-	<a href="<%= carts_path(product.id)%>" data-method="post" class="btn btn-primary">Ajouter au panier</a></p>
+	   <div>
+        <a href="<%= carts_path(product.id)%>" data-method="post" class="btn btn-primary">Ajouter au panier</a></p>
+      </div>
+      
 	</div>
 
   <%end%>

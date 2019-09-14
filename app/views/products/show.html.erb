@@ -33,9 +33,10 @@
 			background-color: rgba(0, 0, 0, 0.3);; 
 			background-size: 100px;
 		    width: 800px;
-		    height: 400px;
+		    height: 500px;
 		    border-style: none;
 		    box-shadow: -5px 9px 20px 5px  grey ;
+		    margin-bottom: 70px;
 		    }
    p{
    		font-size: 20px;
@@ -98,7 +99,7 @@
 	<ul class="list-group list-group-flush mb-3 mt-3">
 		<li class="list-group-item"><%=@product.description %></li>
 		<li class="list-group-item"><%=@product.price %> Ar</li>
-		<li><a href="<%= cart_path(current_user.id)%>"><span class="panier" style="position: absolute; right: 2%; top: 5%;"><img src="https://cdn.pixabay.com/photo/2014/04/02/10/53/shopping-cart-304843_960_720.png" width="50px" height="50px" ></span></a></li>
+		
 	</ul>
 </div>
 </div>

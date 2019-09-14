@@ -313,7 +313,7 @@ header.masthead{
                         <%= current_user.email %>
                       </li>
                       <li>
-                        <%= link_to "Setting", edit_user_registration_path %>
+                        <%= link_to "Setting", user_path(current_user) %>
                       </li>
                       <% else %>
                       <li>    

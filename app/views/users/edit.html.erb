@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>edit user</title>
+    <style type="text/css">
+
+        .content{
+            background-color: #00CED1;
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 3px 3px #00BFFF, -3px 3px #00BFFF
+        }
+        .input{
+            border-top:none;
+            border-left: none;
+            border-right: none;
+            border-color: black;
+            background-color: transparent;
+            width: 100%;
+            height: 80%;
+        }
+        .input:focus{
+          outline: none;
+        }
+
+        .field{
+          border-spacing: 100px;
+          margin-top: 40px;
+          margin-bottom: 40px;
+        }
+
+        .btn-block{
+          position: absolute;
+          left: 0%;
+          margin-top: 50px;
+          border-radius: 30px;
+
+        }
+
+
+
+      
+    </style>
+
+  </head>
+
+  <body>
+      <div class="container" >
+          <div class="row">
+              <div class="col-md-4">
+                
+              </div>
+
+              <div class="content col-md-4">
+
+                  <%= form_tag url_for(action: "update"), method: "put" do |f| %>
+                  <div class="field">
+                      <%= label_tag 'First name' %>
+                      <%= text_field_tag 'first_name', current_user.first_name, class: 'form-control', :class=>'input'%>
+                  </div>
+
+                  <div class="field">
+                        <%= label_tag 'Last name' %>
+                        <%= text_field_tag 'last_name', current_user.last_name, class: 'form-control', :class=>'input'%>
+                  </div>
+
+                  <div class="field">
+                        <%= label_tag 'Email' %>
+                        <%= text_field_tag 'email', current_user.email, class: 'form-control', :class=>'input'%>
+                  </div>
+                   <div>
+                  <p>Devenir Fournisseur   <%= check_box_tag :is_admin,1, @user.is_admin , data: {url: user_path(@user.id), params:{ id:@user.id, is_admin: @user.is_admin}.to_param, method: "put" }%>
+                  </div></p>
+                  
+                 
+                  <%= submit_tag "Modify profil", class: 'btn btn-lg btn-primary btn-block' %>
+
+                <% end %>
+
+              </div>
+
+              <div class="col-md-4">
+                
+              </div>
+        </div>
+  </div>  
+
+  </body>
+</html>
+
+
+

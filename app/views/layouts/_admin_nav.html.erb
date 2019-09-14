@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div class="row">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top"><i class="fas fa-atom"></i>
+      <a target="_top" href="#" ><img src="https://blog.flamingtext.com/blog/2019/09/12/flamingtext_com_1568287169_479583566.png" border="0" alt="Logo MadaMarket" title="Logo MadaMarket"></a></a>
+      
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item">
+            <%= link_to("Utilisateurs", admin_users_path, class: "nav-link js-scroll-trigger menu")%>
+          </li>
+          <li class="nav-item">
+             <%= link_to("Produits", admin_products_path, class: "nav-link js-scroll-trigger menu") %>
+          </li>
+          
+      </div>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">       
+          
+          <%if current_user%>
+            <li class="nav-item dropdown" style="position: absolute; right: 10%; top: 10%;color: white;">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Profile
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <%= link_to "My profile", user_path(current_user.id), :method => 'get', class: "dropdown-item"%>
+                <%= link_to "Deconnect", destroy_user_session_path, :method => :delete, class: "dropdown-item"%>
+              </div>
+            </li>
+
+          <%else%>
+            <li class="nav-item dropdown" >
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Connexion
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to "Sign up", new_user_registration_path, :method => 'get', class: "dropdown-item"%>
+              <%= link_to "Log in", new_user_session_path, :method => 'get', class: "dropdown-item"%>
+              </div>
+            </li>
+          <%end%>
+        </ul>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+      </div>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h2 class="text-center mt-4 mb-4"> Produit </h2><%= link_to "Créer produit", new_admin_product_path, class: "btn btn-success btn-sm ml-3 mt-4" %><hr>
+      </div>
+
+    </main>
+  </div>
+</div>

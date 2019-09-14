@@ -280,112 +280,7 @@ header.masthead{
 
 </head>
 <body>
-  <header class="masthead">
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top"><i class="fas fa-atom"></i>
-      <a target="_top" href="#" ><img src="https://blog.flamingtext.com/blog/2019/09/12/flamingtext_com_1568287169_479583566.png" border="0" alt="Logo MadaMarket" title="Logo MadaMarket"></a></a>
-      
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger menu" href="#services">Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger menu" href="#portfolio">Produits</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger menu" href="#about">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger menu" href="#about">Contact</a>
-          </li>
-          <li class="nav-item">
-            <div class="dropdown"> <a class="nav-link js-scroll-trigger btn-sm btn-warning" href="#contact">
-             Connexion</a>            
-            <div class="dropdown-content">
-                <ul>
-                    <% if user_signed_in? %>
-                      <li>
-                        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-                      </li>
-                      <li>
-                        <%= current_user.email %>
-                      </li>
-                      <li>
-                        <%= link_to "Setting", user_path(current_user) %>
-                      </li>
-                      <% else %>
-                      <li>    
-                        <%= link_to "Sign in", new_user_session_path %>
-                      </li>
-                      <li>
-                        <%= link_to "Sign up", new_user_registration_path %>
-                      </li>
-                    <% end %>
-                  </ul>
-            </div>
-        
-            </div>  
-            
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="container">
-      <div class="intro-text">
-        <div class="intro-lead-in">Fait votre achat en ligne</div>
-      </div>
-    </div>
-</header>
-  <section class="container-boxes">
-    <div class="box">
-
-      <div class="icon">
-        <a href=""><i class="fas fa-fire"></i></a>
-      </div>
-
-      <div class="text">
-        <a href="">
-          <h3>The Teacher</h3>
-          <p>The best teacher you can have, internationally renowned "hooker".</p>
-        </a>
-      </div>
-
-    </div>
-
-    <div class="box">
-
-      <div class="icon">
-        <a href=""><i class="fas fa-seedling"></i></a>
-      </div>
-
-      <div class="text">
-        <a href="">
-          <h3>The Yarn</h3>
-          <p>We will use only animal-friendly, fair-trade yarn. Only the best!</p>
-        </a>
-      </div>
-
-    </div>
-
-    <div class="box">
-
-      <div class="icon">
-        <a href=""><i class="fas fa-address-card"></i></a>
-      </div>
-
-      <div class="text">
-        <a href="">
-          <h3>The Group</h3>
-          <p>Become a member, become family. Teamwork is everything.</p>
-        </a>
-      </div>
-
-    </div>
-  </section> 
-
+  <%= render 'layouts/navbar'%>
   <div class="card">
 	 <% @products.each do |product|%>
 		 <div class="text-center col-md-4">
@@ -400,10 +295,10 @@ header.masthead{
 			
 		<%= link_to "Voir produit", product_path(product.id), class: "btn btn-warning btn-sm" %>
 		</div>
-  	</div>
-
-	<div >
-	<a href="<%= carts_path(product.id)%>" data-method="post" class="btn btn-primary">Ajouter au panier</a></p>
+	   <div>
+        <a href="<%= carts_path(product.id)%>" data-method="post" class="btn btn-primary">Ajouter au panier</a></p>
+      </div>
+      
 	</div>
 
   <%end%>

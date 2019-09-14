@@ -5,9 +5,10 @@
 
 			<style type="text/css">
 				body{
-					background: #007bff;
- 				 background: linear-gradient(to right, #ADD8E6, #E0FFFF);
-				}
+				background-image: url(https://cdn.pixabay.com/photo/2015/09/01/21/00/coffee-917613__340.jpg);
+				background-repeat: no-repeat;
+				background-size: cover;
+ 				}
 				
 				.container{
 					width: 500px;
@@ -42,17 +43,24 @@
 
 
 				.row{
-					background-color: white;
-					height: 550px;
+					background-image:url(https://cdn.pixabay.com/photo/2016/10/22/20/34/wine-1761613__340.jpg); 
+					background-size: cover;
+					background-repeat: no-repeat;
+					height: 575px;
 					border-radius: 20px;
-					box-shadow: 3px 3px grey, -3px -3px grey;
+					box-shadow: 3px 3px grey;
 					padding-top: 10px;
 					
-					margin-bottom: 25px;
-					
-				
+					margin-bottom: 25px;		
 				}
+				h2{
+					font-size: 30px;
+					font-style: italic;
 
+				}
+				.actions{
+					font-size: 22px;
+				}
 
 			</style>
 		</head>
@@ -86,10 +94,10 @@
 								
 		    						<%= f.submit "Send me reset password instructions", :class=>"submit" %><br><br>
 		    						
-		  					</div>
-		  					<%= render "devise/shared/links" %>
+		  					
+		  					<%= render "devise/shared/links" %><br>
 						<% end %>
-
+							</div>
 						
 
 					</div>

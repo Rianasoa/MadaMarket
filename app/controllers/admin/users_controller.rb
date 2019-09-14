@@ -6,7 +6,7 @@ class Admin::UsersController < ApplicationController
 		@products = Product.all
 	end
 
-	 def check_if_admin
+	def check_if_admin
     if current_user.is_admin == false
       flash[:error] = "Vous n'êtes pas admin !"
       redirect_to root_path

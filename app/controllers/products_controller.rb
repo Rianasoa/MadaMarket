@@ -13,13 +13,5 @@ class ProductsController < ApplicationController
     end
   end
 
-  def new
-   
-  end
-
-  def create
-    
-  end
-
 
 end

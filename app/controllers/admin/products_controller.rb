@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_user!
   before_action :check_if_admin
 
   def index
@@ -42,14 +42,15 @@ class Admin::ProductsController < ApplicationController
       redirect_to admin_products_path
     else
       flash[:alert] = "Erreur existe"
-      redirect_to admin_productspath
+      redirect_to admin_products_path
     end
   end
 
   def check_if_admin
     if current_user.is_admin == false
-      flash[:error] = "Vous n'êtes pas un administrateur !"
+      flash[:error] = "Vous n'êtes pas un administrateur, cochez le check fournisseur sur votre profil pour créer un produit !"
       redirect_to root_path
+    
     end
   end
 end

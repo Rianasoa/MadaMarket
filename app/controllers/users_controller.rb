@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!, only: [:show]
+  
 
   def edit
-       @user = User.find(params[:id])
+       @user = current_user
   end
-  
+
   def update
-  	 @user = User.find(params[:id])
+  	 @user = current_user
 
   	 is_admin = params[:is_admin] 
   	if is_admin.to_i == 1
@@ -17,23 +18,17 @@ class UsersController < ApplicationController
     	@user.is_admin = false
      	@user.save
     end
-    if @user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
+    if @user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], avatar: params[:avatar])
     	redirect_to user_path(@user.id), success: "Mise à jour avec succès"
     else
     	render 'edit'
     end
   end
-
-  def show
-  	@user = User.find(params[:id])
-  	@user = current_user
-  end
-
-
   def index
   	@products = Product.all
   	@users = User.all
   end
+
  
 end
 

@@ -1,26 +1,22 @@
 Rails.application.routes.draw do
-
-
-  resources :products, only: [:show, :edit, :update] do
-    resources :pictures, only: [:create]
-  end
-  resources :carts 
-  resources :commands
-  resources :charges
-
-  root to: 'products#index'
-
+  resources :products
+  resources :carts
+  resources :charges, only: [:new, :create]
   devise_for :users
-  resources :users, only: [:show, :edit, :update] do 
-    resources :avatars, only: [:create]
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
   end
+  resources :users, only: [:show, :edit, :update] do
+    resources :avatars, only: [:create]
 
+  end
+    root to: 'products#index'
 
     # Admin dashboard
   namespace :admin do
-    resources :users, only: [:index]    
-    resources :products, only: [:index, :show, :edit, :update, :destroy, :new, :create] do
-      resources :pictures, only: [:create]
+    resources :users   
+    resources :products do
+      resources :pictures
     end
   end
 

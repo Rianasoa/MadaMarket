@@ -1,43 +1,33 @@
 # MadaMarket
 
-
-​
-En développement:
-​
-Git clone le projet. Placez-vous à la racine de celui-ci, entrez dans le fichier à l'intérieur de celui-ci (cd CatShopGroup2) puis dans le terminal : "bundle install" => "rails db:create db:migrate db:seed" 
-​
-
-Rails vous charge une base de donnée aléatoire.
-​
-
-et puis => "rails server" et ouvrez dans le navigateur "localhost:3000"
-​
-​
+#Projet final THP : MadaMarket
 
 
-Si vous voulez tester en tant qu'utilisateur:
-​
-* email  : 
-* password  : 
-​
+## Récap :
+
+Application d'ecommerce spécialisé dans la vente de produits originaux de Madagascar. Possibilité d'ajouter des articles et de les vendre en tant que fournisseur avec un accès à un dashboard. Pour etre fournisseur il faut éditer son profil et cocher "devenir fournisseur" et vous auriez accès à un dashboard.
+
+Lien heroku : https://mada-market.herokuapp.com
+
+Lien Trello : https://trello.com/b/keA8UHV9/madamarket
+
+Lien GitHub : https://github.com/Rianasoa/MadaMarket.git
 
 
-EQUIPE DE MADAMARKET
+##Localement :
 
-        1)-Mlle Rianasoa: https://github.com/Rianasoa , @Rianasoa                             (Back-end) 
-    
-        2)-Mr Rado: https://github.com/RADONARINDRA ; @Rado Narindra                          (Front-end)
-        
-        3)-Mr Patrick: https://github.com/safidypatrick , @rakotondrarimanana safidy patrick  (Back-end)
-        
-        4)-Mr Manaly: https://github.com/manalintsoa , @HARINJATOVONASOAVINA Aina Manalintsoa (Front-end)
-        
-        5)-Mr Mihary: https://github.com/Miharyrakotonanahary , @mihari                       (Front-end)
-        
-        6)-Mr Walter: https://github.com/VerizaWalter, @Walter                                (Full-stack)
-        
-PRODUCTION LINK
-🔆 Venez vivre les meilleurs produits locaux Malagasy en visitant notre application ➡️
+Lancer $ git clone "lien"
+
+Lancer $ bundle install
+
+Lancer $ rails db:create
+
+Lancer $ rails db:migrate
+
+Lancer $ rails server
+
+Se rendre sur localhost:3000 via votre navigateur
 
 
-Bonne visite
+##SUPER-TEAM :
+Rianasoa, Mihary, Patrick, Rado, Manaly, Walter

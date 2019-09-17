@@ -15,11 +15,9 @@ class User < ApplicationRecord
 
 
 
-  after_create :welcome_send, :add_cart
+  after_create :add_cart
 
-  def welcome_send
-    UserMailer.welcome_email(self).deliver_now
-  end
+ 
 
   def add_cart
     Cart.create(customer_id: self.id)

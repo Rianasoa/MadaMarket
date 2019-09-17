@@ -101,11 +101,11 @@
             <%prod << product%>
           <%end%>
           <%end%>
-           <%if prod = []%>
+           <%if prod.length == 0%>
             <h3>Pas de produits pour <%= @category.title%></h3>
            <%else%>
 
-          <% for i in 0..5%>
+          <% for i in 0..prod.length-1%>
 
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
             <span class="tag">Sale</span>

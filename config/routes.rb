@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   resources :products
   resources :carts
   resources :categories
+
   resources :accueil
+
+  resources :commands
+
   root to: 'products#index'
   resources :charges, only: [:new, :create]
   devise_for :users

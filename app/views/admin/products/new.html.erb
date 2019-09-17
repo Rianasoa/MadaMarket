@@ -17,10 +17,10 @@
  
 
   <b><%= label_tag 'Image url' %></b>
-  <%= text_field_tag 'image_url', @product.image_url, placeholder: "ex: https://my_image", class: "form-control"  %>
+  <%= text_field_tag 'image_url', @product.image_url, placeholder: "ex: https://my_image", class: "form-control"  %><br>
     
-<%=select_tag 'category_id', options_for_select(Category.all.collect{ |c| [c.title, c.id] })%>
-  <%= submit_tag "Create", class: "btn btn-primary col-12 mb-4 mt-3" %>
+<%=select_tag 'category_id', options_for_select(Category.all.collect{ |c| [c.title, c.id] }), class: "form-control"%>
+  <%= submit_tag "Create", class: "btn btn-warning col-12 mb-4 mt-3" %>
 
   <% end %>
 </div>

@@ -29,11 +29,11 @@
                     <%end%>
                   </ul>
                 </li>
-                <li><a href="contact.html">Contact</a></li>                             
+                <li><a href="#contact">Contact</a></li>                             
           <%if current_user%>
             <li class="has-children">
                  <span class="dropdown-toggle"><a href="">Profil</a></span>
-              <ul class="dropdown dropdown-toggle">
+              <ul class="dropdown">
                   <li><a href="<%= user_path(current_user.id)%>" data-method="get">Mon Profil</a></li>
                   <li><a href="<%= destroy_user_session_path%>" data-method="delete">Déconnexion</a></li>
               </ul>

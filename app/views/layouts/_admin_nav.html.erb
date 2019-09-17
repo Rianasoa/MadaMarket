@@ -1,58 +1,50 @@
-<div class="container-fluid">
-  <div class="row">
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top"><i class="fas fa-atom"></i>
-      <a target="_top" href="#" ><img src="https://blog.flamingtext.com/blog/2019/09/12/flamingtext_com_1568287169_479583566.png" border="0" alt="Logo MadaMarket" title="Logo MadaMarket"></a></a>
-      
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-auto">
-          <li class="nav-item">
-            <%= link_to("Utilisateurs", admin_users_path, class: "nav-link js-scroll-trigger menu")%>
-          </li>
-          <li class="nav-item">
-             <%= link_to("Produits", admin_products_path, class: "nav-link js-scroll-trigger menu") %>
-          </li>
-          
+<div class="site-navbar py-2">
+
+      <div class="search-wrap">
+        <div class="container">
+          <form action="#" method="post">
+            <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+          </form>
+        </div>
       </div>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">       
-          
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="/" class="js-logo-clone" data-method="get">Madamarket</a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li class="active"><a href="<%= admin_users_path%>" data-method="get">Clients</a></li>
+                <li><a href="<%= admin_products_path%>" data-method="get">Produits</a></li>
+                <li><a href="<%= new_admin_product_path%>" data-method="get">Créer nouveau produit</a></li>                           
           <%if current_user%>
-            <li class="nav-item dropdown" style="position: absolute; right: 10%; top: 10%;color: white;">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Profile
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <%= link_to "My profile", user_path(current_user.id), :method => 'get', class: "dropdown-item"%>
-                <%= link_to "Deconnect", destroy_user_session_path, :method => :delete, class: "dropdown-item"%>
-              </div>
+            <li class="has-children">
+                 <span class="dropdown-toggle"><a href="">Profil</a></span>
+              <ul class="dropdown">
+                  <li><a href="<%= user_path(current_user.id)%>" data-method="get">Mon Profil</a></li>
+                  <li><a href="<%= destroy_user_session_path%>" data-method="delete">Déconnexion</a></li>
+              </ul>
             </li>
 
           <%else%>
-            <li class="nav-item dropdown" >
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Connexion
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <%= link_to "Sign up", new_user_registration_path, :method => 'get', class: "dropdown-item"%>
-              <%= link_to "Log in", new_user_session_path, :method => 'get', class: "dropdown-item"%>
-              </div>
+           <li class="has-children">
+                <span class="dropdown-toggle"><a href="">Connexion</a></span>
+              <ul class="dropdown">
+                  <li><a href="<%= new_user_registration_path%>" data-method="get">S'inscrire</a></li>
+                  <li><a href="<%= new_user_session_path%>" data-method="get">Se connecter</a></li>
+              </ul>
             </li>
           <%end%>
         </ul>
-        </ul>
+      </nav>
+    </div>
+          <div class="icons">
+            <a href="" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none" data-method="get"><span class="fas fa-bars"></span></a>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
-      </div>
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-        <h2 class="text-center mt-4 mb-4"> Produit </h2><%= link_to "Créer produit", new_admin_product_path, class: "btn btn-success btn-sm ml-3 mt-4" %><hr>
-      </div>
-
-    </main>
-  </div>
-</div>

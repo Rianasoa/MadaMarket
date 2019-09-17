@@ -1,66 +1,70 @@
-<header class="masthead">
-  <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top"><i class="fas fa-atom"></i>
-      <a target="_top" href="#" ><img src="https://blog.flamingtext.com/blog/2019/09/12/flamingtext_com_1568287169_479583566.png" border="0" alt="Logo MadaMarket" title="Logo MadaMarket"></a></a>
-      
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger menu" href="#services">Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger menu" href="#portfolio">Produits</a>
-          </li>
-           <li class="dropdown nav-link catégorie">
-            <span>Catégories</span>
-            <div class="dropdown-content catégorie">
-            <%Category.all.each do |c|%>
-              <a href="#"><%=c.title%></a>
-            <%end%>
-        
-    
+<div class="site-navbar py-2">
+
+      <div class="search-wrap">
+        <div class="container">
+          <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+          <form action="#" method="post">
+            <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+          </form>
         </div>
-        </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger menu" href="#about">Contact</a>
-          </li>
       </div>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">       
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="/" class="js-logo-clone">Madamarket</a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li class="active"><a href="/" data-method="get">Accueil</a></li>
+                <li><a href="shop.html">Magasin</a></li>
+                <li class="has-children">
+                  <a href="">Catégories</a>
+                  <ul class="dropdown">
+                    <%Category.all.each do |c|%>
+                    <li><a href="<%= category_path(c.id)%>" data-method="get"><%= c.title%></a></li>
+                    <%end%>
+                  </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>  
+              </ul>
+          <ul>       
           
           <%if current_user%>
-            <li class="nav-item dropdown" style="position: absolute; right: 10%; top: 10%;color: white;">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Profile
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <%= link_to "My profile", user_path(current_user.id), :method => 'get', class: "dropdown-item"%>
-                <%= link_to "Deconnect", destroy_user_session_path, :method => :delete, class: "dropdown-item"%>
+            <li style="position: absolute; right: 10%; top: 10%;color: white;">
+              <div>
+                <%= link_to "Mon profil", user_path(current_user.id), :method => 'get' %>
+                <%= link_to "Déconnexion", destroy_user_session_path, :method => :delete%>
               </div>
             </li>
-            <a href="<%= cart_path(current_user.id)%>"><span class="panier" style="position: absolute; right: 2%; top: 5%;"><img src="https://cdn.pixabay.com/photo/2014/04/02/10/53/shopping-cart-304843_960_720.png" width="50px" height="50px" ></span></a>
 
           <%else%>
-            <li class="nav-item dropdown" >
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Connexion
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <%= link_to "Sign up", new_user_registration_path, :method => 'get', class: "dropdown-item"%>
-              <%= link_to "Log in", new_user_session_path, :method => 'get', class: "dropdown-item"%>
+           <li style="position: absolute; right: 10%; top: 10%;color: white;">
+              <div>
+              <%= link_to "S'inscrire", new_user_registration_path, :method => 'get'%>
+              <%= link_to "Se connecter", new_user_session_path, :method => 'get'%>
               </div>
             </li>
           <%end%>
         </ul>
-        </ul>
+            </nav>
+          </div>
+          <div class="icons">
+            <a href="" class="icons-btn d-inline-block js-search-open" data-method="get"><span class=" icon-search"></span></a>
+            <a href="" class="icons-btn d-inline-block bag">
+              <span class="fas fa-shopping-cart"></span>
+              <%if current_user%>
+              <span class="number"><%= Cart.find(current_user.cart.id).products.count%></span>
+              <%else%>
+              <span class="number">0</span>
+              <%end%>
+            </a>
+            <a href="" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none" data-method="get"><span
+                class="fas fa-bars"></span></a>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
-  <div class="container">
-      <div class="intro-text">
-        <div class="intro-lead-in">Fait votre achat en ligne</div>
-      </div>
-    </div>
-</header>
- 

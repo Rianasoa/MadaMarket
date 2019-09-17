@@ -12,3 +12,12 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+//= require aos.js
+//= require bootstrap.min.js
+//= require jquery-magnific-popup.min
+//= require jquery-3.3.1.min.js
+//= require jquery-ui.js
+//= require main.js
+//= require owl.carousel.min.js
+//= require popper.min.js
+//= require slick.min.js

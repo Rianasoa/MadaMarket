@@ -9,7 +9,7 @@
               <h2 class="sub-title">Idée Voandalana</h2>
               <h1>FAIT VOTRE ACHAT EN LIGNE</h1>
               <p>
-                <a href="#" class="btn btn-warning px-5 py-3">ACHETER MAINTENANT</a>
+                <a href="#acheter" class="btn btn-warning px-5 py-3" data-method="get">ACHETER MAINTENANT</a>
               </p>
             </div>
           </div>
@@ -65,8 +65,9 @@
             <h2 class="text-uppercase">Popular Products</h2>
           </div>
         </div>
-
-        <div class="row">
+      
+ 
+   <div id="acheter" class="row">
           <%prod = []%>
           <%@products.order(created_at: :ASC).each do |product|%>
             <%prod << product%>
@@ -86,7 +87,8 @@
           </div>
           <%end%>
       </div>
-    </div>
+</div>
+        
 
 
     <div class="site-section">
@@ -172,7 +174,10 @@
         </div>
       </div>
     </div>
-    <%= render 'layouts/footer'%>
+    <span id="contact">
+       <%= render 'layouts/footer'%>
+    </span>
+   
   </div>
 
 

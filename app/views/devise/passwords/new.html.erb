@@ -1,121 +1,213 @@
+
 <!DOCTYPE html>
-<html>
-		<head>
-			<title>forgot password</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
 
-			<style type="text/css">
-				body{
-				background-image: url(https://cdn.pixabay.com/photo/2015/09/01/21/00/coffee-917613__340.jpg);
-				background-repeat: no-repeat;
-				background-size: cover;
- 				}
-				
-				.container{
-					width: 500px;
-					
-				}
-
-				.field{
-						margin-bottom: 10px; 
-				}
-
-				.input{
-
-					width: 100%;
-					height: 40px;
-					background-color: transparent;
-					border-color: black;
-					border-top: none;
-					border-left: none;
-					border-right: none;
-				}
-				.input:focus{
-					outline: none;
-				}
-
-				.actions{
-					margin-top: 50px;
-
-				}
-				.submit{
-					border-radius: 7px;
-				}
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
-				.row{
-					background-image:url(https://cdn.pixabay.com/photo/2016/10/22/20/34/wine-1761613__340.jpg); 
-					background-size: cover;
-					background-repeat: no-repeat;
-					height: 575px;
-					border-radius: 20px;
-					box-shadow: 3px 3px grey;
-					padding-top: 10px;
-					
-					margin-bottom: 25px;		
-				}
-				h2{
-					font-size: 30px;
-					font-style: italic;
+  <style type="text/css">
 
-				}
-				.actions{
-					font-size: 22px;
-				}
+/* @extend list-type-ulli; */
 
-			</style>
-		</head>
 
-		<body>
-			<div class="container">
-				
-				<div class="row">
-					<div class="col-md-2">
-						
 
-					</div>
 
-					<div class="col-md-8">
-						<br><h2>Forgot your password?</h2><br>
+h2 {
+  line-height: 1.56;
+  margin-bottom:20px;
+  padding: 0;
+  font-weight: 900;
+  color: #222;
+  font-family: 'Montserrat';
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px; }
 
-						<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-		  					<%= render "devise/shared/error_messages", resource: resource %>
-							
-							<div class="field">
-								
-		 						<%= f.text_field :first_name , autofocus: true, autocomplete: "first_name", class: 'form-control', :class=>"input", :placeholder=>"first name" %>
-							</div>
+.clear {
+  clear: both; }
 
-							<div class="field">
-					
-		    					<%= f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control', :class=>"input",:placeholder=>"email" %>
-							</div>
+body {
+   background-image: url(http://www.canwa.com.au/wp-content/uploads/2019/06/DWG-background-copy.jpg);
+  font-size: 14px;
+  line-height: 1.8;
+  color: #222;
+  font-weight: 400;
+  font-family: 'Montserrat';
+  background-repeat: no-repeat;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  background-position: center center;
+  padding: 115px 0; }
 
-							<div class="actions">
-								
-		    						<%= f.submit "Send me reset password instructions", :class=>"submit" %><br><br>
-		    						
-		  					
+.container {
+  width: 500px;
+  height: 900px;
+  position: relative;
+  margin: 0 auto; }
+
+
+.display-flex {
+  justify-content: space-between;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  align-items: center;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  -ms-align-items: center; }
+
+.display-flex-center {
+  justify-content: center;
+  -moz-justify-content: center;
+  -webkit-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  align-items: center;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  -ms-align-items: center; }
+
+.position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); }
+
+.signup-content {
+
+  background: #fff;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  padding: 50px 85px; }
+
+.form-group {
+  overflow: hidden;
+  margin-bottom: 10px; }
+
+.form-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ebebeb;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  padding: 17px 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222; 
+  background-color: transparent;
+
+  }
+  .signup{
+    padding-top: 16px;
+  }
+
+
+.text-uppercase {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  background-image: -moz-linear-gradient(to left, #74ebd5, #9face6);
+  background-image: -ms-linear-gradient(to left, #74ebd5, #9face6);
+  background-image: -o-linear-gradient(to left, #74ebd5, #9face6);
+  background-image: -webkit-linear-gradient(to left, #74ebd5, #9face6);
+  background-image: linear-gradient(to left, #74ebd5, #9face6); }
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: calc(100% - 40px);
+    max-width: 100%; } }
+@media screen and (max-width: 480px) {
+  .signup-content {
+    padding: 25px 20px; } }
+
+
+
+/*
+      .a{
+        font-size: 25px;
+        font-style: italic;
+        font-family: all;
+        margin-left: 100px;
+       }
+*/
+ </style>
+
+</head>
+<body>
+
+    <div class="main">
+
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                        <h2 class="form-title">Forgot your password?</h2>
+                        <%= render "devise/shared/error_messages", resource: resource %>
+                        <div class="form-group">    
+                        	<%= f.text_field :first_name , autofocus: true, autocomplete: "first_name", class: 'form-control', :class=>"form-input", :placeholder=>"Prenom" %>                      
+                        </div>
+
+                        <div class="form-group">
+                              <%= f.email_field :email, autofocus: true, autocomplete: "email",class: 'form-control', :class=>"form-input",:placeholder=>"Email" %>          
+                        </div>
+						<div class="actions">		
+		    			<%= f.submit "Reinitialiser mot de passe ", :class=>"submit text-uppercase" %><br><br>
 		  					<%= render "devise/shared/links" %><br>
-						<% end %>
-							</div>
-						
+						<% end %>    
+                </div>
+            </div>
+        </section>
 
-					</div>
+    </div>
 
-					<div class="col-md-2">
-						
-
-					</div>
-
-				</div>
-
-			</div>
-				
-					
-
-		</body>
+</body>
 </html>
 
 
- 
 
+
+
+
+
+
+
+							

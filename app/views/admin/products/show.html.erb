@@ -1,57 +1,11 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>show produit</title>
-
-		<style type="text/css">
-			
-			body{
-			background-image: url(https://cdn.pixabay.com/photo/2016/11/21/14/57/agriculture-1845835_960_720.jpg);
-
-			background-size: cover;
-			background-repeat: no-repeat;
-			
-		}
-
-		
-		.container{
-			margin-top: 70px;
-			background-color: rgba(0, 0, 0, 0.3);; 
-			background-size: 100px;
-		    width: 800px;
-		    height: 500px;
-		    border-style: none;
-		    box-shadow: -5px 9px 20px 5px  grey ;
-		    margin-bottom: 70px;
-		    }
-  
-    
-     .col-md-4{
-
-     	border: 1px;
-     	border-color: black;
-     	border-style: solid;}
-
-     .first{
-     	border-left: none;
-     	border-top: none;
-     	border-bottom: none; 
-     }
- 
-  
-
-		</style>
-	</head>
-
-	<body>
-		<div class="container">			
+<div class="container">			
 			<div class="col col-8 mx-auto text-dark">
 					<h2 class="mt-3"><%= @product.title %></h2>
 
 					<%if @product.picture.attached?%>
 				    	<%= image_tag @product.picture, alt: 'picture', class:"card-img-top"%>
 				    <%else%>
-						<img class="card-img-top" width="100px" height="200px" src="<%= @product.image_url %>" alt="Card image cap">
+						<img class="card-img-top" width="100px" height="300px" src="<%= @product.image_url %>" alt="Card image cap">
 					<%end%>
 					
 					
@@ -63,8 +17,5 @@
 					<%= link_to "Editer", edit_admin_product_path(@product.id), class: "btn btn-primary" %>
 					<%= link_to 'Supprimer', admin_product_path(@product.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger ml-3" %>
 		   </div>			
-		</div>
-	</body>
-</html>
-
+</div>
 

@@ -12,4 +12,14 @@
  *
  *= require_tree .
  *= require_self
+ *= require aos.css
+ *= require bootstrap.min.css
+ *= require jquery-ui.css
+ *= require magnific-popup.css
+ *= require owl.carousel.min.css
+ *= require owl.theme.default.min.css
+ *= require style.css
+ *= require/css/bootstrap.css
+ *= require/css/bootstrap-grid.css
+ *= require/css/bootstrap-reboot.css
  */

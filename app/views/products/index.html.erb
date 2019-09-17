@@ -1,324 +1,125 @@
-<!DOCTYPE html>
+  <div class="site-wrap">
+    <%= render "layouts/nav"%>
 
-
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <title>Acueil</title>
-  <style type="text/css">
-    * {
-  box-sizing: border-box;
-}
-
-html {
-  margin: 0;
-  padding: 0;
-}
-
-body{
-  margin:0;
-  padding: 0;
-  
-  color: black;
-  font-family: "open sans";
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-
-/* ------------------------ TOP SECTION ----------------*/
-
-.titles{
-  color: white;
-  text-align: center;
-  width: 50vw;
-  margin: 0 auto;
-}
-
-.titles h1{
-  font-family: Pacifico;
-  font-size: 2rem;
-  margin-bottom: 0;
-  text-shadow: 1px 1px 0 black;
-
-}
-
-.titles p{
-  letter-spacing: 3px;
-  text-shadow: 1px 1px 0 black;
-}
-/* Style The Dropdown Button */
-
-/* ------------------------ BOT SECTION ----------------*/
-
-.container-boxes{
-  margin: 0 auto;
-  padding: 0;
-  display:flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  max-width: 80vw;
-}
-.box{
-  background: rgba(255,255,255,.5);
-  margin: 1rem;
-  padding: .5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 350px;
-  max-height: 180px;
-  min-height: 180px;
-  transition: all 250ms ease-out;
-}
-
-.box:hover{
-  background: rgba(255,255,255,.7);
-  transform: translateY(-20%);
-}
-
-.box a{
-  text-decoration: none;
-  color: black;
-}
-
-.icon{
-  font-size: 3rem;
-  padding: 1rem;
-}
-
-.text h3{
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  margin-bottom: 0;
-}
-
-.text p{
-  margin-top: 1rem;
-  line-height: 1.5rem;
-  text-align: left;
-}
-
-.text{
-  padding: .5rem;
-}
-
-
-/* MEDIAQUERIES */
-
-
-@media (max-width: 1160px){
-   .icon{
-    font-size: 2rem;
-    padding: 0.5rem;
-  }
-  .text h3{
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    margin-bottom: 0;
-    font-size: 1rem;
-  }
-
-  .text p{
-    margin-top: 1rem;
-    line-height: 1.5rem;
-    text-align: left;
-    font-size: .8rem;
-  }
-  
-}
-
-
-@media (max-width: 850px){
-  body{
-    height: 100%;
-  }
-  .container-boxes{
-    flex-direction: column;
-  }
-  .box:hover{
-    background: rgba(255,255,255,.7);
-    transform: none;
-  }
-  .titles h1{
-  font-size: 3rem;
-  }
-}
-header.masthead{
-  text-align:center;
-  color:#fff;
-  background-image:url(https://cdn.pixabay.com/photo/2017/09/02/19/26/baobabs-2708289_960_720.jpg);
-  background-repeat:no-repeat;
-  background-attachment:scroll;
-  background-position:center center;
-  background-size:cover
-  }
-  header.masthead .intro-text{
-    padding-top:150px;
-    padding-bottom:100px
-    }
-    header.masthead .intro-text .intro-lead-in{
-      font-size:22px;
-      font-style:italic;
-      line-height:22px;
-      margin-bottom:25px;
-      font-family:'Droid Serif',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji'
-      }
-      header.masthead .intro-text .intro-heading{
-        font-size:50px;
-        font-weight:700;
-        line-height:50px;
-        margin-bottom:25px;
-        font-family:Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji'
-        }
-    @media (min-width:768px){
-    header.masthead .intro-text{
-      padding-top:300px;
-      padding-bottom:200px
-      }
-    header.masthead .intro-text .intro-lead-in{
-      font-size:40px;
-      font-style:italic;
-      line-height:40px;
-      margin-bottom:25px;
-      font-family:'Droid Serif',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji'
-              }
-   header.masthead .intro-text .intro-heading{
-     font-size:75px;
-     font-weight:700;
-      line-height:75px;
-      margin-bottom:50px;
-      font-family:Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji'}}
-      .dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: ;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
-}
-
-/* ------------------------ NAVBAR ----------------*/
-@media (min-width:992px){
-  #mainNav{
-    padding-top:25px;
-    padding-bottom:25px;
-    -webkit-transition:padding-top .3s,padding-bottom .3s;
-    transition:padding-top .3s,padding-bottom .3s;
-    border:none;
-    background-color:transparent
-    }
-      #mainNav .navbar-brand{
-      font-size:1.75em;
-      -webkit-transition:all .3s;transition:all .3s
-      }
-      #mainNav .navbar-nav .nav-item .nav-link{
-      padding:1.1em 1em!important
-      }
-      #mainNav.navbar-shrink{
-      padding-top:0;
-      padding-bottom:0;
-      background-color:#212529
-      }
-      #mainNav.navbar-shrink .navbar-brand{
-     font-size:1.25em;
-     padding:12px 0
-            }
-      .navbar-brand{
-        margin-left: -100px;
-      } 
-
-      .menu:hover{
-        color:white;
-        font-size: 30px;
-      }     
-       }
-    
-    </style>
-
-</head>
-<body>
-  <%= render 'layouts/nav'%>
-  <div class="container">
-    <div class="row flex-row">
-    <div class="col d-flex justify-content-center mt-3">
-      <h2 class="h2">Tous les produits</h2>
-    </div>
-  </div>
-
-  <div class="row">
-   <% @products.each do |product|%>
-     <div class="text-center col-md-4">
-      <%= product.title %><br>
-      <%= product.description %>
-        <%if product.picture.attached?%>
-          <%= image_tag product.picture, alt: 'picture', class:"card-img-top" %>
-    <%else%>
-      <img class="card-img-top" height="200px" src="<%= product.image_url %>" alt="Card image cap">
-    <%end%><br><br>
-    <div>
-      
-    <%= link_to "Voir produit", product_path(product.id), class: "btn btn-warning btn-sm" %>
-    <a href="<%= carts_path(product.id)%>" data-method="post" class="btn btn-sm btn-primary">Ajouter au panier</a>
-    </div>
-     <div>
+    <div class="site-blocks-cover" style="background-image: url('https://cdn.pixabay.com/photo/2015/09/21/14/24/supermarket-949913__340.jpg');">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
+            <div class="site-block-cover-content text-center">
+              <h2 class="sub-title">Idée Voandalana</h2>
+              <h1>FAITES VOTRE ACHAT EN LIGNE</h1>
+              <p>
+                <a href="#acheter" class="btn btn-warning px-5 py-3" data-method="get">ACHETER MAINTENANT</a>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row align-items-stretch section-overlap">
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="banner-wrap bg-primary h-100">
+              <a href="#" class="h-100">
+                <h5>Livraison <br> à Domicile</h5>
+                <p>
+                  Partout dans le monde
+                  <strong>Faites-vous livrer dans les plus brefs délais.</strong>
+                </p>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="banner-wrap h-100">
+              <a href="#" class="h-100">
+                <h5>Produits <br> de meilleurs qualités</h5>
+                <p>
+                  La qualité au coeur de nos produits
+                  <strong>Une offre large de produits de qualité aux meilleurs prix.</strong>
+                </p>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <div class="banner-wrap bg-warning h-100">
+              <a href="#" class="h-100">
+                <h5>Paiment <br> en ligne</h5>
+                <p>
+                  Moyen de paiement en ligne sécurisé
+                  <strong>Payez vos achats par carte bleue ou par OrangeMoney.  </strong>
+                </p>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="title-section text-center col-12">
+            <h2 class="text-uppercase">Produits populaires</h2>
+          </div>
+        </div>
       
+ 
+   <div id="acheter" class="row">
+          <%prod = []%>
+          <%@products.order(created_at: :ASC).each do |product|%>
+            <%prod << product%>
+          <%end%>
+          <% for i in 0..5%>
+
+          <div class="col-sm-6 col-lg-4 text-center item mb-4">
+            <span class="tag">Sale</span>
+                <%if prod[i].picture.attached?%>
+                  <a href="/products/<%=prod[i].id%>" data-method="get"><%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top" %></a>
+                <%else%>
+                 <a href="/products/<%=prod[i].id%>" data-method="get"><img class="card-img-top" height="300px" src="<%= prod[i].image_url %>" alt="Card image cap"></a>
+                <%end%>
+                <h3 class="text-dark"><a href="/products/<%=prod[i].id%>" data-method="get"><%= prod[i].title%></a></h3>
+                <p class="price"><%= prod[i].price%></p>
+                <a href="<%= carts_path(prod[i].id)%>" class="btn btn-warning btn-sm" data-method="post">Ajouter au panier</a>
+          </div>
+          <%end%>
+      </div>
+</div>
+        
+
+
+
+    <div class="site-section bg-secondary bg-image" style="background-image: url('https://www.mafermeenville.fr/wp-content/uploads/2017/09/ma-ferme-en-ville-fruits-et-legumes-800x600.jpg');">
+      <div class="container">
+        <div class="row align-items-stretch">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('https://www.mafermeenville.fr/wp-content/uploads/2017/09/ma-ferme-en-ville-fruits-et-legumes-800x600.jpg');">
+              <div class="banner-1-inner align-self-center">
+                <h2>MadaMarket</h2>
+                <p style="color:black;">Une entreprise digitale pour la promotion des produits locaux malagasy.
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('http://www.floralykomba.com/uploads/images/excursion/vil2.jpg');">
+              <div class="banner-1-inner ml-auto  align-self-center">
+                <h2>Partenaires des artisans</h2>
+                <p style="color:black;">Porter ensemble un engagement mutuel pour le développement des entreprises artisanales.
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span id="contact">
+       <%= render 'layouts/footer'%>
+    </span>
+   
   </div>
-
-  <%end%>
-</div>  
-  </div>
-
-  
-
-
-</body>
-<footer>
-  
-</footer>
-</html>
 
 

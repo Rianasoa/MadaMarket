@@ -1,33 +1,109 @@
-
-<center><h1 style="margin-top:50px;">Your cart</h1></center>
-<%if @price_total != 0%>
-<center><strong>Prix total: <%=@price_total%> €</strong><br/> 
- 	<<%= link_to "Buy now", new_charge_path, class: "btn btn-sm btn-success"%></center>
- 	<%else%>
- 	<center><strong>Panier vide</strong></center>
-<%end%>
-	
-<div class="container">
-
-
-
-	<div class="row" style="margin-top: 50px;">
-	
-	<%@cart_products.each do |cart_product|%>
-	<div class="col-md-4">
-		<%= image_tag cart_product.image_url, class: "rounded-circle", width: "100%", heigth: "100%" %>
-		<div style="text-align: center;margin-top: 30px;">
-			<p><strong>Title: <%=cart_product.title%></strong></p>
-	 	
-		 	<p><strong>Price: <%=cart_product.price%> Ar</strong></p>
-			 <a href="<%=cart_path(cart_product.id)%>" data-method="delete" class="btn btn-sm btn-danger" data-confirm="Are you sure to delete your carts??">Enlever le panier</a>
-		</div>
-	 	
-
-	</div>
-	 
-
-	<%end%>
-</div>
-</div>
-
+<%= render 'layouts/nav'%>
+  <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0">
+            <a href="/" data-method="get">Home</a> <span class="mx-2 mb-0">/</span> 
+            <strong class="text-black">Cart</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-12" method="post">
+            <div class="site-blocks-table">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="product-thumbnail">Image</th>
+                    <th class="product-name">Produit</th>
+                    <th class="product-price">Prix</th>
+                    <th class="product-quantity">Quantité</th>
+                    <th class="product-total">Total</th>
+                    <th class="product-remove">Enlever</th>
+                  </tr>
+                </thead>
+                <tbody>
+                	<%@cart_products.each do |cart_product| %>
+                  <tr>
+                    <td class="product-thumbnail">
+                    	 <%if cart_product.picture.attached?%>
+                  		<%= image_tag cart_product.picture, alt: 'picture', class:"img-fluid" %>
+                		<%else%>
+                		<img class="img-fluid"  src="<%= cart_product.image_url %>" alt="Card image cap">
+                		<%end%>
+                 
+                    </td>
+                    <td class="product-name">
+                      <h2 class="h5 text-black">
+                      	<%= cart_product.title%> </h2>
+                    </td>
+                    <td><%=cart_product.price %></td>
+                    <td>
+                      <div class="input-group mb-3" style="max-width: 120px;">
+                        <div class="input-group-prepend">
+                    		<input type="number" name="" min="1" max="1" class="form-control" value="1">
+                        </div>
+                      </div>
+                    </td>
+                    <td><%=cart_product.price%></td>
+                    <td><a href= "<%=cart_path(cart_product.id)%>" data-method='delete' class= "btn btn-warning height-auto btn-sm" data-confirm='Etes-vous sûre de vouloir supprimer?'>X</a></td>
+                  </tr>
+                   <%end%>
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row mb-5">
+              <div class="col-md-6">
+                <a href="/" class="btn btn-outline-warning btn-md btn-block" data-method="get">Continuer l'achat</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 pl-5">
+            <div class="row justify-content-end">
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-12 text-right border-bottom mb-5">
+                    <h3 class="text-black h4 text-uppercase">Commande Totale</h3>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <span class="text-black">Total prix</span>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <strong class="text-black"><%= @price_total%></strong>
+                  </div>
+                </div>
+                <div class="row mb-5">
+                  <div class="col-md-6">
+                    <span class="text-black">Total</span>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <strong class="text-black"><%= @price_total%></strong>
+                  </div>
+                </div>
+    
+                <div class="row">
+                  <div class="col-md-12">
+                    <%if @price_total != 0%>
+                    <a href="<%=new_charge_path%>" class="btn btn-warning btn-lg btn-block" data-method="get">Passer la commande</a>
+                    <%else%>
+                    <span class="btn btn-warning">Panier vide</span>
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<%= render 'layouts/footer'%>

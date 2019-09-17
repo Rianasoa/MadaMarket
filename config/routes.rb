@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   resources :products
   resources :carts
+  resources :categories
+
+  resources :accueil
+
+  resources :commands
+
+  root to: 'products#index'
   resources :charges, only: [:new, :create]
   devise_for :users
   devise_scope :user do
@@ -8,9 +15,8 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show, :edit, :update] do
     resources :avatars, only: [:create]
-
   end
-    root to: 'products#index'
+    
 
     # Admin dashboard
   namespace :admin do

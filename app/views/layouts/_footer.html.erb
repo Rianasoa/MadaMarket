@@ -13,8 +13,8 @@
             <h3 class="footer-heading mb-4">Liens rapides</h3>
             <ul class="list-unstyled">
                 <%Category.all.each do |c|%>
-                <li><a href="#"><%=c.title%></a></li>
-            <%end%>
+                  <li><a href="<%= category_path(c.id)%>" data-method="get"><%= c.title%></a></li>
+                <%end%>
               </ul>
           </div>
 
@@ -23,7 +23,7 @@
               <h3 class="footer-heading mb-4">Nos contacts</h3>
               <ul class="list-unstyled">
                 <span class=" address fas fa-map-marker-alt">&nbsp;&nbsp;&nbsp;&nbsp;Antananarivo 101, Madagascar</span><br><br>
-                <span class="phone fas fa-mobile-alt">&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel://23923929210">+26 13 42 85 89 15</a><span><br><br>
+                <span class="phone fas fa-mobile-alt" >&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel://23923929210" style="color: grey;">+26 13 42 85 89 15</a><span><br><br>
                 <span class="email fas fa-envelope">&nbsp;&nbsp;&nbsp;&nbsp;emailaddress@madamarket.mg</li>
               </ul>
             </div>

@@ -1,83 +1,83 @@
-
 <!DOCTYPE html>
-    <html>
-    <head>
-      <title>profil</title>
-      <style type="text/css">
-          
-          .image{
-              border-radius: 200px;
-              width:200px;
-              height: 200px;
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+  body{
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS54IBhtPTRqHwijvnHKXwXw-8RgmVS3eT3xb1sXWNxWo9bkM3KDA)
+}
 
-          } 
-          .card-img-top{
-              border-radius: 200px;
-              width:200px;
-              height: 200px;
-          }
-        .btn{
-          background-color: #556B2F;
-        }
+.card-top {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  background-color: GoldenRod;
+  margin-top: 30px;
+  
+}
 
-      </style>
-    </head>
+​
+span {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color:Orange;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+​
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+​
+span:hover, a:hover {
+  opacity: 0.7;
+}
 
+.image{
+  width: 300px;
+  height: 300px;
+  border-radius: 200px;
+}
+.color{
+  color: black;
+}
+    </style>
+</head>
 <body>
-
-    <div class="container">
-      <div class="row">
-
-      </div>
-
-      <div class="row flex-row">
-            <div class="col-md-6" >
-              <%if current_user.avatar.attached?%>
+<div class="card-top">
+    <h1 style="color:black;">Mon profil</h1>
+    <%if current_user.avatar.attached?%>
                 <%= image_tag current_user.avatar, alt: 'avatar', class:"image" %>
                 <%else%>
-                <img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png">
+                <img class="image" src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_960_720.png">
             
-                <%end%><br><br><br><br><br>
+                <%end%><br><br>
                 <%= form_tag user_avatars_path(current_user.id), multipart: true do %>
                 <div class="form-group">
-                <%= file_field_tag :avatar, class: 'btn btn-warning btn-sm' %>
+                <%= file_field_tag :avatar, class: 'btn btn-secondary btn-sm' %>
                 
                 </div>
                 <div class="form-group">
-                <%= submit_tag "Update profil", class: 'btn btn-secondary btn-sm' %>
+                <%= submit_tag "Modifier profil", class: 'btn btn-secondary btn-sm' %>
                 </div>
               <%end%>
-            </div>
-              
-
-              <div class="col-md-4">
-                
-                  <h2>Mon Profil: </h2>
-              <ul>
-                <div class="field">
-                   <h4><strong>First Name</strong> :<%=current_user.first_name%></h4><br>
-                </div>
-
-                <div class="field">
-                   <h4><strong>Last_name</strong> :<%=current_user.last_name%></h4><br>
-                </div>
-
-                <div class="field">
-                    <h4><strong>Email</strong> :<%=current_user.email%></h4><br>
-                </div>
-
-              </ul>
-                  <br>
-                <br><%= link_to "Edit my informations", edit_user_path(current_user), :method => 'get', class: "btn btn-info"%><br><br>
-
-
-              </div>
-              
-
-            
-        </div>
+​
+  <h1 class="color"><%=current_user.first_name%></h1>
+  <p class="color"><%=current_user.last_name%></p>
+  <p class="color"><%=current_user.email%></p>
+  <p class="color"><%=current_user.address%></p>
+​
   
-      </div>
-    </div>
+  <p><span class="btn btn-sm btn-secondary" style="margin-bottom: 15px;"><%= link_to "Modifier", edit_user_path(current_user), :method => 'get', style: "color:white;"%></span></p>
+</div>
 </body>
-</html>
+</html>-top

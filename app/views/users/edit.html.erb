@@ -5,18 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
-
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Inscription</title>
 
 
   <style type="text/css">
 
 /* @extend list-type-ulli; */
 
-
-
-
+body{
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS54IBhtPTRqHwijvnHKXwXw-8RgmVS3eT3xb1sXWNxWo9bkM3KDA)
+}
 h2 {
   line-height: 1.56;
   margin-bottom:20px;
@@ -32,72 +30,18 @@ h2 {
 .clear {
   clear: both; }
 
-body {
-   background-image: url(http://www.canwa.com.au/wp-content/uploads/2019/06/DWG-background-copy.jpg);
-  font-size: 14px;
-  line-height: 1.8;
-  color: #222;
-  font-weight: 400;
-  font-family: 'Montserrat';
-  background-repeat: no-repeat;
-  background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  -ms-background-size: cover;
-  background-position: center center;
-  padding: 115px 0; }
-
-.container {
-  width: 500px;
-  height: 900px;
-  position: relative;
-  margin: 0 auto; }
-
-
-.display-flex {
-  justify-content: space-between;
-  -moz-justify-content: space-between;
-  -webkit-justify-content: space-between;
-  -o-justify-content: space-between;
-  -ms-justify-content: space-between;
-  align-items: center;
-  -moz-align-items: center;
-  -webkit-align-items: center;
-  -o-align-items: center;
-  -ms-align-items: center; }
-
-.display-flex-center {
-  justify-content: center;
-  -moz-justify-content: center;
-  -webkit-justify-content: center;
-  -o-justify-content: center;
-  -ms-justify-content: center;
-  align-items: center;
-  -moz-align-items: center;
-  -webkit-align-items: center;
-  -o-align-items: center;
-  -ms-align-items: center; }
-
-.position-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%); }
-
 .signup-content {
 
-  background: #fff;
+  background: GoldenRod;
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
-  padding: 50px 85px; }
+  padding: 50px 85px;
+  margin-top: 40px;
+
+   }
 
 .form-group {
   overflow: hidden;
@@ -106,7 +50,7 @@ body {
 .form-input {
   width: 100%;
   height: 40px;
-  border: 1px solid #ebebeb;
+  border: 0.5px solid black;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -121,35 +65,12 @@ body {
   font-weight: 500;
   color: #222; 
   background-color: transparent;
+  outline: none;
 
   }
   .signup{
     padding-top: 16px;
   }
-
-
-.text-uppercase {
-  margin-top: 30px;
-  margin-bottom: 20px;
-  width: 100%;
-  height: 40px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  padding: 10px 10px;
-  box-sizing: border-box;
-  font-size: 14px;
-  font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-  border: none;
-  background-image: -moz-linear-gradient(to left, #74ebd5, #9face6);
-  background-image: -ms-linear-gradient(to left, #74ebd5, #9face6);
-  background-image: -o-linear-gradient(to left, #74ebd5, #9face6);
-  background-image: -webkit-linear-gradient(to left, #74ebd5, #9face6);
-  background-image: linear-gradient(to left, #74ebd5, #9face6); }
 
 @media screen and (max-width: 768px) {
   .container {
@@ -159,30 +80,27 @@ body {
   .signup-content {
     padding: 25px 20px; } }
 
+  .color{
+    color: black;
+  }
 
-
-/*
-      .a{
-        font-size: 25px;
-        font-style: italic;
-        font-family: all;
-        margin-left: 100px;
-       }
-*/
  </style>
 
 </head>
 <body>
 
-
     <div class="main">
 
         <section class="signup">
             <div class="container">
-                <div class="signup-content">
+              <div class="row">
+                <div class="col-md-3">
+                  
+                </div>
+                <div class="col-md-6">
+                  <div class="signup-content">
                    <%= form_tag url_for(action: "update"), method: "put" do |f| %>
                         <h2 class="form-title">Editez votre profil</h2>
-
                         <div class="form-group">
                            <%= text_field_tag 'first_name', current_user.first_name, class: 'form-control', :class=>'form-input'%>
                     
@@ -199,16 +117,21 @@ body {
                             <%= text_field_tag 'email', current_user.email, class: 'form-control', :class=>'form-input'%>
                             
                            
-                        </div>
+                        </div><br>
 
-                        <p>Devenir Fournisseur   <%= check_box_tag :is_admin,1, @user.is_admin , data: {url: user_path(@user.id), params:{ id:@user.id, is_admin: @user.is_admin}.to_param, method: "put" }%>
+                        <p class="color">Devenir Fournisseur   <%= check_box_tag :is_admin,1, @user.is_admin , data: {url: user_path(@user.id), params:{ id:@user.id, is_admin: @user.is_admin}.to_param, method: "put" }%>
                         </div></p>
 
-                       <%= submit_tag "Modifier le profil", class: 'btn btn-lg btn-primary btn-block' %>
+                       <center> <%= submit_tag "Modifier le profil", class: 'btn btn-sm btn-secondary' %></center>
+                      
                  <%end%>
 
 
                 </div>
+                </div>
+                
+              </div>
+                
             </div>
         </section>
 

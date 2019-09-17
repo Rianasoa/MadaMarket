@@ -33,24 +33,17 @@ h2 {
   clear: both; }
 
 body {
-   background-image: url(http://www.canwa.com.au/wp-content/uploads/2019/06/DWG-background-copy.jpg);
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS54IBhtPTRqHwijvnHKXwXw-8RgmVS3eT3xb1sXWNxWo9bkM3KDA);
   font-size: 14px;
   line-height: 1.8;
   color: #222;
   font-weight: 400;
   font-family: 'Montserrat';
-  background-repeat: no-repeat;
-  background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  -ms-background-size: cover;
-  background-position: center center;
   padding: 115px 0; }
 
 .container {
   width: 500px;
-  height: 900px;
+  height: 600px;
   position: relative;
   margin: 0 auto; }
 
@@ -121,6 +114,7 @@ body {
   font-weight: 500;
   color: #222; 
   background-color: transparent;
+  outline: none;
 
   }
   .signup{
@@ -183,7 +177,7 @@ body {
                         <h2 class="form-title">Forgot your password?</h2>
                         <%= render "devise/shared/error_messages", resource: resource %>
                         <div class="form-group">    
-                        	<%= f.text_field :first_name , autofocus: true, autocomplete: "first_name", class: 'form-control', :class=>"form-input", :placeholder=>"Prenom" %>                      
+                        	<%= f.text_field :first_name , autofocus: true, autocomplete: "first_name", class: 'form-control', :class=>"form-input", :placeholder=>"Nom" %>                      
                         </div>
 
                         <div class="form-group">
@@ -191,7 +185,8 @@ body {
                         </div>
 						<div class="actions">		
 		    			<%= f.submit "Reinitialiser mot de passe ", :class=>"submit text-uppercase" %><br><br>
-		  					<%= render "devise/shared/links" %><br>
+		  					<center><%= render "devise/shared/links" %><br></center>
+             
 						<% end %>    
                 </div>
             </div>

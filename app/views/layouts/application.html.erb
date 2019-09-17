@@ -20,12 +20,11 @@
 
   <% if user_signed_in? %>
       <% if current_user.is_admin == true %>
-      <body class="justify-content-start">
-        <%= render 'layouts/admin_nav' %>
-      </body>
+        <body class="justify-content-start">
+          <%= render 'layouts/admin_nav' %>
+        </body>  
     <% end %>
-
-    <%end%>
+  <%end%>
     <%= yield %>
 
   </body>

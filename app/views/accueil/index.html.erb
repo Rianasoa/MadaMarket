@@ -1,0 +1,58 @@
+  <div class="site-wrap">
+    <%= render "layouts/nav"%>
+
+      <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="/">Accueil</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Magasin</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        
+        <div class="row">
+          <%fournisseur = []%>
+          
+          <div class="col-lg-6">
+            <h3 class="mb-3 h6 text-uppercase text-black d-block">Filtrer par Fournisseur</h3> 
+          <%@products.each do |product|%>
+          <%unless fournisseur.include?(product.provider)%>
+            <%fournisseur << product.provider%>
+          <%end%>
+          <%end%>
+          <span class="dropdown-toggle"><a href="">Fournisseur</a></span>
+              <ul class="dropdown">                   
+          <%fournisseur.each do |f|%>
+                    <li><a href="/accueil/<%= f.id%>" data-method="get"><%=f.first_name%></a></li>
+                     
+         <%end%>
+             </ul>
+          
+          </div>
+        </div>
+    
+        <div class="row">
+          <%Product.where(provider_id: @provider.id).each do |p|%>
+          <div class="col-sm-6 col-lg-4 text-center item mb-4">
+            <span class="tag">Sale</span>
+            <%if p.picture.attached?%>
+                <a href="/products/<%=p.id%>" data-method="get"><%= image_tag p.picture, alt: 'picture', class:"card-img-top" %></a>
+            <%else%>
+                <a href="/products/<%=p.id%>" data-method="get"><img class="card-img-top" height="300px" src="<%= p.image_url %>" alt="Card image cap"></a>
+            <%end%>
+            <h3 class="text-dark"><a href="/products/<%=p.id%>"><%=p.title%></a></h3>
+            <p class="price"><%=p.price%></p>
+          </div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+
+   <span id="contact">
+       <%= render 'layouts/footer'%>
+    </span>
+  </div>
+
+

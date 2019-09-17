@@ -1,23 +1,95 @@
-<%= form_tag charges_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
+  <%= render 'layouts/nav'%>
+  <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0">
+            <a href="/" data-method="get">Accueil</a> <span class="mx-2 mb-0">/</span>
+            <strong class="text-black">Checkout</strong>
+          </div>
+        </div>
       </div>
-    <% end %>
-    </article>
-  <div style="position: absolute;top: 50%;left: 35%; display: block;">
-      <label class="amount" >
+    </div>
 
-        <span>Prix total: <%=@amount%> <b>Ar</b></span><br/>
-      </label>
-       
-
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-12">
+            <div class="bg-light rounded p-3">
+              <p class="mb-0">Passer votre commande</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+    
+            <div class="row mb-5">
+              <div class="col-md-12">
+                <h2 class="h3 mb-3 text-black">Votre commande</h2>
+                <div class="p-3 p-lg-5 border">
+                  <%= form_tag charges_path do %>
+                  <table class="table site-block-order-table mb-5">
+                    <thead>
+                      <th>Produit</th>
+                      <th>Total</th>
+                    </thead>
+                    <tbody>
+                      <%@cart_products.each do |c|%>
+                      <tr>
+                        <td><%= c.title%> <strong class="mx-2">x</strong> 1</td>
+                        <td><%= c.price%></td>
+                      </tr>
+                      <%end%>
+                      <tr>
+                        <td class="text-black font-weight-bold"><strong>Total prix</strong></td>
+                        <td class="text-black"><%= @amount%></td>
+                      </tr>
+                      <tr>
+                        <td class="text-black font-weight-bold"><strong>Commade Total</strong></td>
+                        <td class="text-black font-weight-bold"><strong><%= @amount%></strong></td>
+                      </tr>
+                    </tbody>
+                  </table> 
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="A month's subscription"
           data-amount="<%=@amount * 100 %>"
-          data-locale="auto"></script>
-      <% end %>
-  </div>
+          data-locale="auto" ></script>
+               <%end%>
+                </div>
+              </div>
+            </div>
     
+          </div>
+        </div>
+        <!-- </form> -->
+      </div>
+    </div>
+    
+
+      <div class="site-section bg-secondary bg-image" style="background-image: url('');">
+      <div class="container">
+        <div class="row align-items-stretch">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('');">
+              <div class="banner-1-inner align-self-center">
+                <h2>MadaMarket</h2>
+                <p>Une entreprise digitale pour la promotion des produits locaux malagasy.
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('images/bg_2.jpg');">
+              <div class="banner-1-inner ml-auto  align-self-center">
+                <h2>Partenaires des artisans</h2>
+                <p>Porter ensemble un engagement mutuel pour le développement des entreprises artisanales.
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span id="contact">
+       <%= render 'layouts/footer'%>
+    </span>

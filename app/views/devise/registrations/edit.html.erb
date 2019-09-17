@@ -1,132 +1,248 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
   <style type="text/css">
-    body{
-      background-image: url(https://cdn.pixabay.com/photo/2018/05/31/10/57/africa-3443656__340.jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
 
-    }
-    .container{
-        border-style: none;
-    }
-    .az{
-      background-image: url(https://cdn.pixabay.com/photo/2013/07/26/06/05/leaves-167478__340.jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      border-radius: 9px;
-      text-align: center;
-      width: 200px;
-      margin-bottom: 50px;
-    }
-    .form-control{
-      text-align: center;
-      border-radius: 10px;
-      font-size: 20px;
-    }
-    label{
-      font-size: 22px;
-      font-family: all;
-      font-style: oblique;
-    }
-    h2{
-      font-style: italic;
-      font-family: all;
-    }
-   h3{
-   font-family: all;
-   font-style: oblique;
-
-   }
-   .btn{
-    background-color: blue;    
-   }
+/* @extend list-type-ulli; */
 
 
-  </style>
+
+
+h2 {
+  line-height: 1.56;
+  margin-bottom:20px;
+  padding: 0;
+  font-weight: 900;
+  color: #222;
+  font-family: 'Montserrat';
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px; }
+
+.clear {
+  clear: both; }
+
+body {
+   background-image: url(http://www.canwa.com.au/wp-content/uploads/2019/06/DWG-background-copy.jpg);
+  font-size: 14px;
+  line-height: 1.8;
+  color: #222;
+  font-weight: 400;
+  font-family: 'Montserrat';
+  background-repeat: no-repeat;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  background-position: center center;
+  padding: 115px 0; }
+
+.container {
+  width: 500px;
+  height: 900px;
+  position: relative;
+  margin: 0 auto; }
+
+
+.display-flex {
+  justify-content: space-between;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  align-items: center;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  -ms-align-items: center; }
+
+.display-flex-center {
+  justify-content: center;
+  -moz-justify-content: center;
+  -webkit-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  align-items: center;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  -ms-align-items: center; }
+
+.position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); }
+
+.signup-content {
+
+  background: #fff;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  padding: 50px 85px; }
+
+.form-group {
+  overflow: hidden;
+  margin-bottom: 10px; }
+
+.form-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ebebeb;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  padding: 17px 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222; 
+  background-color: transparent;
+
+  }
+  .signup{
+    padding-top: 16px;
+  }
+
+
+.text-uppercase {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  background-image: -moz-linear-gradient(to left, #74ebd5, #9face6);
+  background-image: -ms-linear-gradient(to left, #74ebd5, #9face6);
+  background-image: -o-linear-gradient(to left, #74ebd5, #9face6);
+  background-image: -webkit-linear-gradient(to left, #74ebd5, #9face6);
+  background-image: linear-gradient(to left, #74ebd5, #9face6); }
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: calc(100% - 40px);
+    max-width: 100%; } }
+@media screen and (max-width: 480px) {
+  .signup-content {
+    padding: 25px 20px; } }
+
+
+
+
+      .a{
+        font-size: 25px;
+        font-style: italic;
+        font-family: all;
+        margin-left: 100px;
+       }
+
+ </style>
+
 </head>
 <body>
-  <div class="container">
-    <div class="row">
 
-        <div class="col-md-4">
-          
-        </div>
+    <div class="main">
 
-        <div class="col-md-5 az">
-             <h2>Edit <%= resource_name.to_s.humanize %></h2>
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                        <h2 class="form-title">Create account</h2>
 
-       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-            <div class="field">
-              <label for="inputname">First name</label>
-                 <%= f.text_field :first_name , autofocus: true, autocomplete: "first_name",placeholder:"first_name", :class=>"form-control" %>
-               
-            </div>
-              <div class="field">
-              <label for="inputname">last name</label>
-             <%= f.text_field :last_name , autofocus: true, autocomplete: "last_name", placeholder: "last_name", :class=>"form-control" %>
-            
-             </div>
-             <div class="field">
-              <label for="inputemail"> email</label>
-             <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"email", :class=>"form-control" %>
-             
-            </div>
+                        <div class="form-group">
+                            <%= f.text_field :first_name , autofocus: true, autocomplete: "firstname", id: "inputname",class: "form-input", placeholder:"Prenom" %>
+                    
+                            
+                        </div>
 
-            <div class="field">
-               <label for="inputaddress"> address</label>
-             <%= f.text_field :address, autofocus: true, autocomplete: "address", :class=>'zone', :id=>"inputaddress", :class=>"form-control", :placeholder=>"lot...ville" %> 
-             
-             </div>
+                        <div class="form-group">
+                               <%= f.text_field :last_name , autofocus: true, autocomplete: "lastname", id: "inputlname",class: "form-input", placeholder:"Nom" %> 
+                            
+                           
+                        </div>
 
-               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                 <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-                <% end %>
+                        <div class="form-group">
+                             <%= f.text_field :email , autofocus: true, autocomplete: "email", id: "inputEmail",class: "form-input", placeholder:"Email" %> 
+                            
+                           
+                        </div>
 
-                <div class="field">
-                <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-                  <%= f.password_field :password, autocomplete: "new-password", :class=>"form-control" %>
-                 <% if @minimum_password_length %>
-                   <br />
-                   <em><%= @minimum_password_length %> characters minimum</em>
-                  <% end %>
-                  </div>
+                        <div class="form-group">
+                            <%= f.text_field :address , autofocus: true, autocomplete: "address", id: "address",class: "form-input", placeholder:"Addresse" %> 
+                            
+                        </div>
 
-                  <div class="field">
-                    <%= f.label :password_confirmation %><br />
-                     <%= f.password_field :password_confirmation, autocomplete:"new-password", :class=>"form-control"  %>
-                    </div>
+                         <% if @minimum_password_length %>
+                         <em>(<%= @minimum_password_length %> characters minimum)</em>
 
-                     <div class="field">
-                       <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-                     <%= f.password_field :current_password, autocomplete:"current-password", :class=>"form-control"  %>
-                    </div><br>
+                        <div class="form-group">
+                            <%= f.password_field :password, autocomplete: "current-password",id:"inputPassword", 
+                  class: "form-input", placeholder:"Mot de Passe" %>
+                            
+                          <%end%>
+                        </div>
 
-                       <div class="actions">
-                      <%= f.submit "Update" %>
-                      </div>
-                        <% end %>
-                      <h3>Cancel my account</h3>
+                        <div class="form-label-group">
+                           <%= f.password_field :password_confirmation, autocomplete: "new-password", :class=>'zone', :id=>"inputConfirmPassword", class: "form-input", placeholder:"Confirmation mot de passe" %>    
+                        </div>
+
+                        <div class="form-label-group">
+                            <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                            <%= f.password_field :current_password, autocomplete:"current-password", :class=>"form-input", placeholder:"Votre mot de passe actuel" %>
+                        </div>
+
+
+                        <%= f.submit "Sign Up", :class=>"btn btn-lg btn-primary btn-block text-uppercase actions" %>
+                    <%end%>   
+                     <h3>Cancel my account</h3>
                       <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete ,class: "btn primary"%></p>
                     <%= link_to "Back", :back %>
-        </div>
-        
-        <div class="col-md-4">
-          
-        </div>
-      
+                        
+                    <div class="a">
+                         <hr class="my-4">
+                         <%= render "devise/shared/links" %>
+                    </div>                             
+                </div>
+            </div>
+        </section>
+
     </div>
-    
-  </div>
+
 </body>
 </html>
 
 
 
-
-
-
-                

@@ -2,7 +2,7 @@ class ChargesController < ApplicationController
 	before_action :authenticate_user!
 	def new
 		@cart = current_user.cart
-		
+		@cart_products = @cart.products
 		@amount = @cart.total_price
 	end
 
@@ -29,19 +29,14 @@ class ChargesController < ApplicationController
 		# We create a new order
 		@command = Command.create(stripe_customer_id: customer.id, customer_id: current_user.id)
 
-		# Each item of this card is put in the order item table (with the id of the current order)
-		@cart_products.each do |cart_product|
-			CommandProduct.create(command_id: @command.id, product_id: product.id)
-		end
-
+		# Each item of this card is put in the order item table (with the id of the current orde
 
 		# we empty the cart
 		CartProduct.where(cart_id: @cart.id).each do |entry|
 			entry.destroy
 		end
 
-		redirect_to user_path(current_user.id)
-		flash[:success] = "Votre commande est faite"
+		redirect_to commands_path
 
 		rescue Stripe::CardError => e
 			flash[:error] = e.message

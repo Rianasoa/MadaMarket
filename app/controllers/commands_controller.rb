@@ -17,4 +17,8 @@ class CommandsController < ApplicationController
     end
   end
 
+  def index
+
+  end
+
 end

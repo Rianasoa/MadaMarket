@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
+    
     @products = Product.all
     if user_signed_in? && current_user.is_admin == true
     	redirect_to admin_products_path

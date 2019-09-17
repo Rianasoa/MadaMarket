@@ -21,3 +21,5 @@ require("channels")
 //= require owl.carousel.min.js
 //= require popper.min.js
 //= require slick.min.js
+
+

@@ -12,7 +12,7 @@
 							<h5 class="card-header"><%= product.title.truncate(30) %></h5>
 							<!-- Item image -->
 							<%if product.picture.attached?%>
-      							<%= image_tag product.picture, alt: 'picture', class:"card-img-top" %>
+      							<%= image_tag product.picture, alt: 'picture', class:"card-img-top", height:"200px"  %>
       							<%else%>
 							<img class="card-img-top" height="200px" src="<%= product.image_url %>" alt="Card image cap">
 							<%end%>

@@ -7,9 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
 Category.destroy_all
-
-
       c1 = Category.create!(title: "Artisanal")
       c2 = Category.create!(title: "Boisson")
       c3 = Category.create!(title: "Produits laitiers")
@@ -18,10 +17,6 @@ Category.destroy_all
       c6 = Category.create!(title: "Produits alimentaires")
       c7 = Category.create!(title: "Produits agricoles")
 
-
 puts "Catégories créées"
-
-
-
 
 

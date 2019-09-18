@@ -1,0 +1,45 @@
+I, [2019-09-14T14:00:20.127421 #14966]  INFO -- : [afcf6bf5-cdda-4ae6-9794-a98492851bd5] Started GET "/" for 127.0.0.1 at 2019-09-14 14:00:20 +0300
+I, [2019-09-14T14:00:20.182178 #14966]  INFO -- : [afcf6bf5-cdda-4ae6-9794-a98492851bd5] Processing by ProductsController#index as HTML
+I, [2019-09-14T14:00:21.165026 #14966]  INFO -- : [afcf6bf5-cdda-4ae6-9794-a98492851bd5]   Rendering products/index.html.erb within layouts/application
+I, [2019-09-14T14:00:21.267347 #14966]  INFO -- : [afcf6bf5-cdda-4ae6-9794-a98492851bd5]   Rendered layouts/_nav.html.erb (Duration: 94.7ms | Allocations: 907)
+I, [2019-09-14T14:00:21.267604 #14966]  INFO -- : [afcf6bf5-cdda-4ae6-9794-a98492851bd5]   Rendered products/index.html.erb within layouts/application (Duration: 96.4ms | Allocations: 1826)
+I, [2019-09-14T14:00:21.267984 #14966]  INFO -- : [afcf6bf5-cdda-4ae6-9794-a98492851bd5] Completed 500 Internal Server Error in 1009ms (Allocations: 4031)
+F, [2019-09-14T14:00:21.269905 #14966] FATAL -- : [afcf6bf5-cdda-4ae6-9794-a98492851bd5]   
+[afcf6bf5-cdda-4ae6-9794-a98492851bd5] ActionView::Template::Error (FATAL:  Peer authentication failed for user "MadaMarket"
+):
+[afcf6bf5-cdda-4ae6-9794-a98492851bd5]     15:            <li class="dropdown nav-link catégorie">
+[afcf6bf5-cdda-4ae6-9794-a98492851bd5]     16:             <span>Catégories</span>
+[afcf6bf5-cdda-4ae6-9794-a98492851bd5]     17:             <div class="dropdown-content catégorie">
+[afcf6bf5-cdda-4ae6-9794-a98492851bd5]     18:             <%Category.all.each do |c|%>
+[afcf6bf5-cdda-4ae6-9794-a98492851bd5]     19:               <a href="#"><%=c.title%></a>
+[afcf6bf5-cdda-4ae6-9794-a98492851bd5]     20:             <%end%>
+[afcf6bf5-cdda-4ae6-9794-a98492851bd5]     21:         
+[afcf6bf5-cdda-4ae6-9794-a98492851bd5]   
+[afcf6bf5-cdda-4ae6-9794-a98492851bd5] app/views/layouts/_nav.html.erb:18
+[afcf6bf5-cdda-4ae6-9794-a98492851bd5] app/views/products/index.html.erb:283
+I, [2019-09-14T14:00:21.386396 #14966]  INFO -- : [511db95a-9416-4cfe-b23f-8bc496c32b05] Started GET "/favicon.ico" for 127.0.0.1 at 2019-09-14 14:00:21 +0300
+F, [2019-09-14T14:00:21.386962 #14966] FATAL -- : [511db95a-9416-4cfe-b23f-8bc496c32b05]   
+[511db95a-9416-4cfe-b23f-8bc496c32b05] ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+[511db95a-9416-4cfe-b23f-8bc496c32b05]   
+[511db95a-9416-4cfe-b23f-8bc496c32b05] actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:77:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] railties (6.0.0) lib/rails/engine.rb:526:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+[511db95a-9416-4cfe-b23f-8bc496c32b05] puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'

@@ -16,8 +16,11 @@ Category.destroy_all
       c5 = Category.create!(title: "Fruits et Légumes")
       c6 = Category.create!(title: "Conserves")
       c7 = Category.create!(title: "Produits de la mer")
-      c7 = Category.create!(title: "Graines")
-      c7 = Category.create!(title: "Assaisonnement")
+      c8 = Category.create!(title: "Graines")
+      c9 = Category.create!(title: "Assaisonnement")
+      c10 = Category.create!(title: "Produits alimentaires")
+      c11 = Category.create!(title: "Produits agricoles")
+
 
 puts "Catégories créées"
 

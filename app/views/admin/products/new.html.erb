@@ -1,37 +1,93 @@
-<div class="text-dark">
-  <h3 class="text-center mt-5 mb-4">Créer nouveau produit</h3> 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>creation produit</title>
+    <style type="text/css">
+      body{
+        background-image: url(https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+      }
+      .text-dark{
+        padding-bottom: 40px;
+        background-image: url(https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+        border: solid 1px white;
+  
+      }
+      .form-group {
+          overflow: hidden;
+          margin-bottom: 30px; 
+        }
 
-  <!-- Zone du formulaire -->
-  <%= form_tag url_for(action: 'create'), method: 'post', class: "col col-4 mx-auto" do %>
+      .form-control{
+            width: 100%;
+            height: 40px;
+            border: 1px solid #ebebeb;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -o-border-radius: 5px;
+            -ms-border-radius: 5px;
+            padding: 17px 20px;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-weight: 500;
+            color: #222; 
+          background-color: transparent;
+            outline: none;
 
-  <b><%= label_tag 'Titre' %></b>
-  <%= text_field_tag 'title', @product.title, class: "form-control mb-3" %>
+      }
+
+      .form-input{
+        width: 420px;
+      }
+    </style>
+  </head>
+  <body>
+
+            <div class="text-dark">
+                <h3 class="text-center mt-5 mb-4">Créer nouveau produit</h3> 
+
+                    <!-- Zone du formulaire -->
+                <%= form_tag url_for(action: 'create'), method: 'post', class: "col col-4 mx-auto" do %>
+
+                  <div class="form-group">
+                      <%= text_field_tag 'title', @product.title, class: "form-control ", placeholder: "Titre" %>
+                  </div>
+
+                  <div class="form-group">
+                     <%= text_field_tag 'description', @product.description, class: "form-control", placeholder: "Description" %>
+                  </div>
+
+                  <div class="form-group">
+                      <%= text_field_tag 'price', @product.price, class: "form-control ", placeholder: "Prix"  %>
+                  </div>
+                    
+                   <div class="form-group">
+                      <%= text_field_tag 'image_url', @product.image_url, placeholder: "ex: https://my_image", class: "form-control", placeholder: "lien image"  %>
+                  </div>
+                    
+                      
+                  <%=select_tag 'category_id', options_for_select(Category.all.collect{ |c| [c.title, c.id] }), class: "form-input"%>
+                    <%= submit_tag "Créer", class: "btn btn-warning col-12 mb-4 mt-3" %>
+
+                    <% end %>
+                  </div>
+
+                  <% if @product.errors.any? %>
+                  <div class="alert alert-danger" role="alert">
+                      <p>The product can't be created for the reasons below:</p>
+                      <ul>
+                        <% @product.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                      </ul>
+               <% end %>
+          </div>
+
+  </body>
+</html>
 
 
-  <b><%= label_tag 'Description' %></b>
-  <%= text_field_tag 'description', @product.description, class: "form-control mb-3" %>
 
-
-  <b><%= label_tag 'Prix' %></b>
-  <%= text_field_tag 'price', @product.price, class: "form-control mb-3"  %>
- 
-
-  <b><%= label_tag 'Image url' %></b>
-  <%= text_field_tag 'image_url', @product.image_url, placeholder: "ex: https://my_image", class: "form-control"  %><br>
-    
-<%=select_tag 'category_id', options_for_select(Category.all.collect{ |c| [c.title, c.id] }), class: "form-control"%>
-  <%= submit_tag "Créer", class: "btn btn-warning col-12 mb-4 mt-3" %>
-
-  <% end %>
-</div>
-
-<% if @product.errors.any? %>
-<div class="alert alert-danger" role="alert">
- <p>The product can't be created for the reasons below:</p>
- <ul>
-   <% @product.errors.full_messages.each do |message| %>
-   <li><%= message %></li>
-   <% end %>
- </ul>
-</div>
-<% end %>

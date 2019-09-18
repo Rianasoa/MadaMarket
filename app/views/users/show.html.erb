@@ -50,9 +50,21 @@ span:hover, a:hover {
 .color{
   color: black;
 }
+.hom{
+
+    width: 80px; 
+    height: 30px; 
+    float: left;
+    position: absolute;
+    top: 4px;
+    right: 40%;
+    text-align: center;
+    border-radius: 5px;
+}
     </style>
 </head>
 <body>
+
 <div class="card-top">
     <h1 style="color:black;">Mon profil</h1>
     <%if current_user.avatar.attached?%>
@@ -76,8 +88,18 @@ span:hover, a:hover {
   <p class="color"><%=current_user.email%></p>
   <p class="color"><%=current_user.address%></p>
 ​
-  
-  <p><span class="btn btn-sm btn-secondary" style="margin-bottom: 15px;"><%= link_to "Modifier", edit_user_path(current_user), :method => 'get', style: "color:white;"%></span></p>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="btn-secondary hom"><%= link_to "Home", root_path %></div>
+        
+    </div>
+
+    <div class="col-md-6">
+        <p><span class="btn btn-sm btn-secondary" style="margin-bottom: 15px;"><%= link_to "Modifier", edit_user_path(current_user), :method => 'get', style: "color:white;"%></span></p>
+    </div>
+
+  </div>
+
 </div>
 </body>
 </html>-top

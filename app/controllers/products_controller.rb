@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
     	redirect_to admin_products_path
     end	
   end
+  
   def show
     @product = Product.find(params[:id])
     if user_signed_in?

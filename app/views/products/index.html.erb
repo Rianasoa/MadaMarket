@@ -68,6 +68,9 @@
       
  
    <div id="acheter" class="row">
+          <%if @products.count == 0%>
+            <h3>Pas de produits</h3>
+          <%else%>
           <%prod = []%>
           <%@products.order(created_at: :ASC).each do |product|%>
             <%prod << product%>
@@ -85,6 +88,7 @@
                 <p class="price"><%= prod[i].price%></p>
                 <a href="<%= carts_path(prod[i].id)%>" class="btn btn-warning btn-sm" data-method="post">Ajouter au panier</a>
           </div>
+          <%end%>
           <%end%>
       </div>
 </div>

@@ -87,8 +87,7 @@
                 <h3 class="text-dark"><a href="/products/<%=prod[i].id%>" data-method="get"><%= prod[i].title%></a></h3>
                 <p class="price"><%= prod[i].price%></p>
                 <a href="<%= carts_path(prod[i].id)%>" class="btn btn-warning btn-sm" data-method="post">Ajouter au panier</a>
-                <p><%= prod[i].likes.count %> <%= (prod[i].likes.count) == 1 ? 'Like' : 'Likes'%></p>
-                <%= button_to 'Like', product_likes_path(prod[i].id), method: :post, class: 'btn btn-secondary btn-sm' %>
+             
           </div>
           <%end%>
           <%end%>

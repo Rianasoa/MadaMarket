@@ -72,7 +72,10 @@
           <%@products.order(created_at: :ASC).each do |product|%>
             <%prod << product%>
           <%end%>
-          <% for i in 0..5%>
+          <%if prod.length == 0%>
+            <h3>Pas de produits pour le moment</h3>
+          <%else%>
+          <% for i in 0..prod.length-1%>
 
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
             <span class="tag">Sale</span>
@@ -84,7 +87,10 @@
                 <h3 class="text-dark"><a href="/products/<%=prod[i].id%>" data-method="get"><%= prod[i].title%></a></h3>
                 <p class="price"><%= prod[i].price%></p>
                 <a href="<%= carts_path(prod[i].id)%>" class="btn btn-warning btn-sm" data-method="post">Ajouter au panier</a>
+                <p><%= prod[i].likes.count %> <%= (prod[i].likes.count) == 1 ? 'Like' : 'Likes'%></p>
+                <%= button_to 'Like', product_likes_path(prod[i].id), method: :post, class: 'btn btn-secondary btn-sm' %>
           </div>
+          <%end%>
           <%end%>
       </div>
 </div>

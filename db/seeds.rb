@@ -14,6 +14,8 @@ Category.destroy_all
       c3 = Category.create!(title: "Produits laitiers")
       c4 = Category.create!(title: "Charcuterie")
       c5 = Category.create!(title: "Fruits et Légumes")
+      c6 = Category.create!(title: "Produits alimentaires")
+      c7 = Category.create!(title: "Produits agricoles")
 
 puts "Catégories créées"
 

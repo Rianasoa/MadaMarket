@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_product
   before_action :find_like, only: [:destroy]
 
@@ -6,14 +7,14 @@ class LikesController < ApplicationController
     if already_liked?
       
     else
-      @product.likes.create(customer_id: current_user_id)
+      @product.likes.create(customer_id: current_user.id)
     end
-    redirect_back fallback_location: root_path
+    redirect_to root_path
   end
 
   def destroy
     @like.destroy
-    redirect_back fallback_location: root_path
+    redirect_to root_path
   end
 
 

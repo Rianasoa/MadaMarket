@@ -7,9 +7,9 @@
           <div class="col-md-5 mr-auto">
             <div class="border text-center">
              <%if @product.picture.attached?%>
-                  <%= image_tag @product.picture, alt: 'picture', class:"card-img-top" %>
+                  <%= image_tag @product.picture, alt: 'picture', class:"card-img-top", heigth: '300px' %>
                 <%else%>
-                <img class="card-img-top"  src="<%= @product.image_url %>" alt="Card image cap">
+                <img class="card-img-top"  src="<%= @product.image_url %>" alt="Card image cap" heigth="300px" >
                 <%end%>
             </div>
           </div>

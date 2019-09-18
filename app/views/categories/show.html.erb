@@ -80,10 +80,10 @@
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
             <span class="tag">Sale</span>
                 <%if prod[i].picture.attached?%>
-                  <%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top" %>
+                 <a href="/products/<%=prod[i].id%>" data-method="get"><%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top", height:"300px" %></a>
                 <%else%>
-                <img class="card-img-top" height="300px" src="<%= prod[i].image_url %>" alt="Card image cap">
-                <%end%>
+                 <a href="/products/<%=prod[i].id%>" data-method="get"><img class="card-img-top" height="300px" src="<%= prod[i].image_url %>" alt="Card image cap"></a>
+                 <%end%>
                 <h3 class="text-dark"><a href="/products/<%=prod[i].id%>" data-method="get"><%= prod[i].title%></a></h3>
                 <p class="price"><%= prod[i].price%></p>
                 <a href="<%= carts_path(prod[i].id)%>" class="btn btn-warning btn-sm" data-method="post">Ajouter au panier</a>

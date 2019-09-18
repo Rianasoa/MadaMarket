@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :commands
 
-  root to: 'categories#index'
+  root to: 'products#index'
   resources :charges, only: [:new, :create]
   devise_for :users
   devise_scope :user do

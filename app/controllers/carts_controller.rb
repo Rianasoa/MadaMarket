@@ -25,7 +25,7 @@ class CartsController < ApplicationController
           @price_total = 0
           @cart_products = current_user.cart.cartProducts
           @cart_products.each do |cart_product|
-          @price_total +=  cart_product.product.price
+          @price_total +=  cart_product.product.price * cart_product.quantity
          end
      else
        redirect_to new_user_session_path

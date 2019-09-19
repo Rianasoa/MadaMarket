@@ -35,8 +35,8 @@
                     <tbody>
                       <%@cart_products.each do |c|%>
                       <tr>
-                        <td><%= c.title%> <strong class="mx-2">x</strong> 1</td>
-                        <td><%= c.price%>Ar</td>
+                        <td><%= c.product.title%> <strong class="mx-2">x</strong><%= c.quantity%></td>
+                        <td><%= c.product.price * c.quantity%>Ar</td>
                       </tr>
                       <%end%>
                       <tr>

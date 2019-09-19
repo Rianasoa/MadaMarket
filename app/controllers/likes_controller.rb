@@ -13,10 +13,10 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    @like = @product.likes.find(params[:id])
     @like.destroy
     redirect_to root_path
   end
-
 
   private
 

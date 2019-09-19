@@ -13,6 +13,22 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
+    <style type="text/css">
+      .chev{
+        
+        position: fixed;
+        right: 5px;
+        top: 550px;
+        border: solid 1px grey;
+        background-color: grey;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border-radius: 8px;
+
+      }
+    </style>
+
   </head>
 
   <body>
@@ -26,6 +42,8 @@
     <% end %>
   <%end%>
     <%= yield %>
-
+    <div class="bord">
+        <a href="#" class="chev"><h1><span class="fas fa-chevron-up "></h1><!-- <img src="https://www.stickpng.com/assets/images/585e4752cb11b227491c3383.png" width="20px" height="50px;"> --></span></a>
+    </div>
   </body>
 </html>

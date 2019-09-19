@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def update
   	 @user = current_user
 
-  	 is_admin = params[:is_admin] 
+  	 is_admin = params[:is_admin]
   	if is_admin.to_i == 1
     	@user.is_admin = true
     	@user.save

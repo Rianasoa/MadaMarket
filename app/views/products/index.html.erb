@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
             <div class="site-block-cover-content text-center">
-              <h2 class="sub-title">Idée Voandalana</h2>
+              <h2 class="sub-title"  id="body">Idée Voandalana</h2>
               <h1>FAITES VOTRE ACHAT EN LIGNE</h1>
               <p>
                 <a href="#acheter" class="btn btn-warning px-5 py-3" data-method="get">ACHETER MAINTENANT</a>
@@ -80,20 +80,18 @@
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
             <span class="tag">Sale</span>
                 <%if prod[i].picture.attached?%>
-                  <a href="/products/<%=prod[i].id%>" data-method="get"><%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top", height:"300px" %></a>
-                <%else%>
-                 <a href="/products/<%=prod[i].id%>" data-method="get"><img class="card-img-top" height="300px" src="<%= prod[i].image_url %>" alt="Card image cap"></a>
+                    <a href="/products/<%=prod[i].id%>" data-method="get"><%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top", height:"300px" %></a>
+                  <%else%>
+                  <a href="/products/<%=prod[i].id%>" data-method="get"><img class="card-img-top" height="300px" src="    <%= prod[i].image_url %>" alt="Card image cap"></a>
                 <%end%>
                 <h3 class="text-dark"><a href="/products/<%=prod[i].id%>" data-method="get"><%= prod[i].title%></a></h3>
-                <p class="price"><%= prod[i].price%> Ar</p>
-                <a href="<%= carts_path(prod[i].id)%>" class="btn btn-warning btn-sm" data-method="post">Ajouter au panier</a>
-                
-               <a href="<%= product_likes_path(prod[i].id) %>" data-method= "post" ><img src="https://image.freepik.com/vecteurs-libre/icone-facebook-like_1017-8081.jpg" width="40px" height="40px" style="border-radius: 5px;"></a>
-               <%= prod[i].likes.count %> <%= (prod[i].likes.count) == 1 ? 'Like' : 'Likes'%>
-             
-          </div>
+                  <p class="price"><%= prod[i].price%> Ar</p>
+                  <a href="<%= carts_path(prod[i].id)%>" class="btn btn-warning btn-sm" data-method="post">Ajouter au panier</a>            
+                  <%= prod[i].likes.count %> <%= (prod[i].likes.count) > 1 ? 'likes' : ''%><%= link_to '👍', product_likes_path(prod[i]), method: :post%>
+
+           </div>
           <%end%>
-          <%end%>
+        <%end%>
       </div>
 </div>
         
@@ -125,7 +123,9 @@
       </div>
     </div>
     <span id="contact">
+      
        <%= render 'layouts/footer'%>
+      
     </span>
    
   </div>

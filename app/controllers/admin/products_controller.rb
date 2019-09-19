@@ -27,7 +27,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    if @product.update(title: params[:title], description: params[:description], price: params[:price], picture: params[:picture], provider_id: current_user.id)
+    if @product.update(title: params[:title], description: params[:description], price: params[:price], picture: params[:picture],category_id: params[:category_id], provider_id: current_user.id)
       flash[:success] = "Produit modifié!"
       redirect_to admin_product_path
     else

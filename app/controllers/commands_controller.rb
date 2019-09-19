@@ -9,7 +9,7 @@ class CommandsController < ApplicationController
 
     
     @cart_products.each do |product|
-      CommandProduct.create(command_id: @command.id, product_id: product.id)
+      CommandProduct.create(command_id: @command.id, product_id: product.id )
     end
 
     CartProduct.where(cart_id: @cart.id).each do |entry|

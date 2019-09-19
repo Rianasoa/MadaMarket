@@ -1,3 +1,51 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title></title>
+    <style type="text/css">
+       .dropbtn {
+ 
+  color: #FF8C00;
+  padding: 16px;
+  font-size: 16px;
+  
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #FF8C00;
+  padding: 12px 16px;
+  text-decoration: none;
+  
+}
+
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.show{
+  margin-left: 50px;
+}
+    </style>
+  </head>
+  <body>
+  
+  
   <div class="site-wrap">
     <%= render "layouts/nav"%>
 
@@ -22,13 +70,16 @@
             <%fournisseur << product.provider%>
           <%end%>
           <%end%>
-           <span class="dropdown-toggle"><a href="">Fournisseur</a></span>
-              <ul class="dropdown">                   
-          <%fournisseur.each do |f|%>
-                    <li><a href="/accueil/<%= f.id%>" data-method="get"><%=f.first_name%></a></li>
-                     
-         <%end%>
-             </ul>
+           <div class="dropdown">
+               <span class="dropbtn">Fournisseur🔽</span>
+               <%fournisseur.each do |f|%>
+               <div class="dropdown-content">
+               <a href="/accueil/<%= f.id%>" data-method="get">👉 <%=f.first_name%></a>
+               </div>
+                <%end%>
+              </div>
+          
+          </div>
           
           </div>
         </div>
@@ -38,7 +89,7 @@
             <h2 class="text-uppercase">Produits de <%= @provider.first_name %></h2>
           </div>
         </div>
-        <div class="row">
+        <div class="row show">
           <%Product.where(provider_id: @provider.id).each do |p|%>
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
             <span class="tag">Sale</span>
@@ -62,4 +113,5 @@
     </span>
   </div>
 
-
+</body>
+  </html>

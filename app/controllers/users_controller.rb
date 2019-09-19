@@ -25,10 +25,8 @@ class UsersController < ApplicationController
     end
   end
   def index
-  	@products = Product.all
-  	@users = User.all
+   @products = Product.all
+    @users = User.all
   end
-
- 
 end
 

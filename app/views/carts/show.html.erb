@@ -3,8 +3,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 mb-0">
-            <a href="/" data-method="get">Home</a> <span class="mx-2 mb-0">/</span> 
-            <strong class="text-black">Cart</strong>
+            <a href="/" data-method="get">Accueil</a> <span class="mx-2 mb-0">/</span> 
+            <strong class="text-black">Panier</strong>
           </div>
         </div>
       </div>
@@ -19,7 +19,7 @@
                   <tr>
                     <th class="product-thumbnail">Image</th>
                     <th class="product-name">Produit</th>
-                    <th class="product-price">Prix</th>
+                    <th class="product-price">Prix unitaire</th>
                     <th class="product-quantity">Quantité</th>
                     <th class="product-total">Total</th>
                     <th class="product-remove">Enlever</th>
@@ -29,29 +29,28 @@
                 	<%@cart_products.each do |cart_product| %>
                   <tr>
                     <td class="product-thumbnail">
-                    	 <%if cart_product.picture.attached?%>
-                  		<%= image_tag cart_product.picture, alt: 'picture', class:"img-fluid" %>
+                    	 <%if cart_product.product.picture.attached?%>
+                  		<%= image_tag cart_product.product.picture, alt: 'picture', class:"img-fluid" %>
                 		<%else%>
-                		<img class="img-fluid"  src="<%= cart_product.image_url %>" alt="Card image cap">
+                		<img class="img-fluid"  src="<%= cart_product.product.image_url %>" alt="Card image cap">
                 		<%end%>
-                 
+                    
                     </td>
                     <td class="product-name">
                       <h2 class="h5 text-black">
-                      	<%= cart_product.title%> </h2>
+                      	<%= cart_product.product.title%> </h2>
                     </td>
-                    <td><%=cart_product.price %></td>
+                    <td><%=cart_product.product.price %></td>
                     <td>
                       <div class="input-group mb-3" style="max-width: 120px;">
                         <div class="input-group-prepend">
-                    		<input type="number" name="" min="1" max="1" class="form-control" value="1">
-                        </div>
+                        <%= cart_product.quantity %>
                       </div>
                     </td>
-                    <td><%=cart_product.price%></td>
-                    <td><a href= "<%=cart_path(cart_product.id)%>" data-method='delete' class= "btn btn-warning height-auto btn-sm" data-confirm='Etes-vous sûre de vouloir supprimer?'>X</a></td>
+                    <td><%= cart_product.product.price * cart_product.quantity %></td>
+                    <td><a href= "<%=cart_path(cart_product.product.id)%>" data-method='delete' class= "btn btn-warning height-auto btn-sm" data-confirm='Etes-vous sûre de vouloir supprimer?'>X</a></td>
                   </tr>
-                   <%end%>
+                     <%end%>
                 </tbody>
               </table>
             </div>
@@ -79,7 +78,7 @@
                     <span class="text-black">Total prix</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black"><%= @price_total%></strong>
+                    <strong class="text-black"><%= @price_total %></strong>
                   </div>
                 </div>
                 <div class="row mb-5">
@@ -87,13 +86,13 @@
                     <span class="text-black">Total</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black"><%= @price_total%></strong>
+                    <strong class="text-black"><%= @price_total  %></strong>
                   </div>
                 </div>
     
                 <div class="row">
                   <div class="col-md-12">
-                    <%if @price_total != 0%>
+                    <%if @price_total!= 0%>
                     <a href="<%=new_charge_path%>" class="btn btn-warning btn-lg btn-block" data-method="get">Passer la commande</a>
                     <%else%>
                     <span class="btn btn-warning">Panier vide</span>

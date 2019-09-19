@@ -34,17 +34,28 @@
         </div>
     
         <div class="row">
-          <%Product.where(provider_id: @provider.id).each do |p|%>
+          <%prod = []%>
+          <%@products.order(created_at: :ASC).each do |product|%>
+            <%prod << product%>
+          <%end%>
+          <%if prod.length == 0%>
+            <h3>Pas de produits pour le moment</h3>
+          <%else%>
+          <% for i in 0..prod.length-1%>
+
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
             <span class="tag">Sale</span>
-            <%if p.picture.attached?%>
-                <a href="/products/<%=p.id%>" data-method="get"><%= image_tag p.picture, alt: 'picture', class:"card-img-top" %></a>
-            <%else%>
-                <a href="/products/<%=p.id%>" data-method="get"><img class="card-img-top" height="300px" src="<%= p.image_url %>" alt="Card image cap"></a>
-            <%end%>
-            <h3 class="text-dark"><a href="/products/<%=p.id%>"><%=p.title%></a></h3>
-            <p class="price"><%=p.price%></p>
+                <%if prod[i].picture.attached?%>
+                  <a href="/products/<%=prod[i].id%>" data-method="get"><%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top", height:"300px" %></a>
+                <%else%>
+                 <a href="/products/<%=prod[i].id%>" data-method="get"><img class="card-img-top" height="300px" src="<%= prod[i].image_url %>" alt="Card image cap"></a>
+                <%end%>
+                <h3 class="text-dark"><a href="/products/<%=prod[i].id%>" data-method="get"><%= prod[i].title%></a></h3>
+                <p class="price"><%= prod[i].price%> Ar</p>
+                <a href="<%= carts_path(prod[i].id)%>" class="btn btn-warning btn-sm" data-method="post">Ajouter au panier</a>
+             
           </div>
+          <%end%>
           <%end%>
         </div>
       </div>

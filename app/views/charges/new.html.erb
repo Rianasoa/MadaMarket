@@ -35,17 +35,17 @@
                     <tbody>
                       <%@cart_products.each do |c|%>
                       <tr>
-                        <td><%= c.title%> <strong class="mx-2">x</strong> 1</td>
-                        <td><%= c.price%></td>
+                        <td><%= c.product.title%> <strong class="mx-2">x</strong><%= c.quantity%></td>
+                        <td><%= c.product.price * c.quantity%>Ar</td>
                       </tr>
                       <%end%>
                       <tr>
                         <td class="text-black font-weight-bold"><strong>Total prix</strong></td>
-                        <td class="text-black"><%= @amount%></td>
+                        <td class="text-black"><%= @amount%>Ar</td>
                       </tr>
                       <tr>
                         <td class="text-black font-weight-bold"><strong>Commade Total</strong></td>
-                        <td class="text-black font-weight-bold"><strong><%= @amount%></strong></td>
+                        <td class="text-black font-weight-bold"><strong><%= @amount%>Ar</strong></td>
                       </tr>
                     </tbody>
                   </table> 
@@ -66,23 +66,23 @@
     </div>
     
 
-      <div class="site-section bg-secondary bg-image" style="background-image: url('');">
+        <div class="site-section bg-secondary bg-image" style="background-image: url('https://www.mafermeenville.fr/wp-content/uploads/2017/09/ma-ferme-en-ville-fruits-et-legumes-800x600.jpg');">
       <div class="container">
         <div class="row align-items-stretch">
           <div class="col-lg-6 mb-5 mb-lg-0">
-            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('');">
+            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('https://www.mafermeenville.fr/wp-content/uploads/2017/09/ma-ferme-en-ville-fruits-et-legumes-800x600.jpg');">
               <div class="banner-1-inner align-self-center">
                 <h2>MadaMarket</h2>
-                <p>Une entreprise digitale pour la promotion des produits locaux malagasy.
+                <p style="color:black;">Une entreprise digitale pour la promotion des produits locaux malagasy.
                 </p>
               </div>
             </a>
           </div>
           <div class="col-lg-6 mb-5 mb-lg-0">
-            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('images/bg_2.jpg');">
+            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('http://www.floralykomba.com/uploads/images/excursion/vil2.jpg');">
               <div class="banner-1-inner ml-auto  align-self-center">
                 <h2>Partenaires des artisans</h2>
-                <p>Porter ensemble un engagement mutuel pour le développement des entreprises artisanales.
+                <p style="color:black;">Porter ensemble un engagement mutuel pour le développement des entreprises artisanales.
                 </p>
               </div>
             </a>

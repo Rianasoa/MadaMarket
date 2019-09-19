@@ -5707,3 +5707,2097 @@ Processing by ChargesController#new as HTML
 Completed 200 OK in 162ms (Views: 83.8ms | ActiveRecord: 21.4ms | Allocations: 66479)
 
 
+Started GET "/admin" for ::1 at 2019-09-19 14:49:02 +0300
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Trestle::DashboardController#index as HTML
+Redirected to http://localhost:3000/admin/users
+Completed 302 Found in 10ms (ActiveRecord: 0.0ms | Allocations: 1522)
+
+
+Started GET "/admin/users" for ::1 at 2019-09-19 14:49:02 +0300
+Processing by UsersAdmin::AdminController#index as HTML
+  Rendering admin/users/index.html.erb within layouts/trestle/admin
+  Rendered admin/users/index.html.erb within layouts/trestle/admin (Duration: 17.5ms | Allocations: 2142)
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 0.0ms | Allocations: 5206)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/admin/users/index.html.erb:3
+
+Started POST "/admin/__better_errors/af422dbe61a48c67/variables" for ::1 at 2019-09-19 14:49:02 +0300
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 11], ["OFFSET", 0]]
+Started GET "/admin" for ::1 at 2019-09-19 14:49:47 +0300
+Processing by Trestle::DashboardController#index as HTML
+Redirected to http://localhost:3000/admin/users
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 550)
+
+
+Started GET "/admin/users" for ::1 at 2019-09-19 14:49:47 +0300
+Processing by UsersAdmin::AdminController#index as HTML
+  Rendering admin/users/index.html.erb within layouts/trestle/admin
+  Rendered admin/users/index.html.erb within layouts/trestle/admin (Duration: 1.2ms | Allocations: 1357)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1956)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/admin/users/index.html.erb:3
+
+Started POST "/admin/__better_errors/6d378c59d3ccfd3b/variables" for ::1 at 2019-09-19 14:49:47 +0300
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 11], ["OFFSET", 0]]
+Started GET "/admin/products" for ::1 at 2019-09-19 14:50:03 +0300
+Processing by Admin::ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :check_if_admin rendered or redirected
+Completed 302 Found in 17ms (ActiveRecord: 0.4ms | Allocations: 3044)
+
+
+Started GET "/" for ::1 at 2019-09-19 14:50:03 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 146.8ms | Allocations: 16672)
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.7ms | Allocations: 1009)
+  Rendered products/index.html.erb within layouts/application (Duration: 169.5ms | Allocations: 28309)
+Started GET "/admin" for ::1 at 2019-09-19 14:50:05 +0300
+Processing by Trestle::DashboardController#index as HTML
+Redirected to http://localhost:3000/admin/users
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 542)
+
+
+Started GET "/admin/users" for ::1 at 2019-09-19 14:50:06 +0300
+Processing by UsersAdmin::AdminController#index as HTML
+  Rendering admin/users/index.html.erb within layouts/trestle/admin
+  Rendered admin/users/index.html.erb within layouts/trestle/admin (Duration: 1.4ms | Allocations: 1355)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1943)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/admin/users/index.html.erb:3
+
+Started POST "/admin/__better_errors/3f89b536f7f5bb9e/variables" for ::1 at 2019-09-19 14:50:06 +0300
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 11], ["OFFSET", 0]]
+Completed 200 OK in 26663ms (Views: 26625.1ms | ActiveRecord: 18.7ms | Allocations: 7297615)
+
+
+Started GET "/admin/user" for ::1 at 2019-09-19 14:52:27 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/admin/user"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/admin" for ::1 at 2019-09-19 14:52:33 +0300
+Processing by Trestle::DashboardController#index as HTML
+Redirected to http://localhost:3000/admin/users
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 550)
+
+
+Started GET "/admin/users" for ::1 at 2019-09-19 14:52:33 +0300
+Processing by UsersAdmin::AdminController#index as HTML
+  Rendering admin/users/index.html.erb within layouts/trestle/admin
+  Rendered admin/users/index.html.erb within layouts/trestle/admin (Duration: 1.4ms | Allocations: 1357)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1945)
+
+
+
+NoMethodError - undefined method `each' for nil:NilClass:
+  app/views/admin/users/index.html.erb:3
+
+Started POST "/admin/__better_errors/cf757aaa293a5641/variables" for ::1 at 2019-09-19 14:52:33 +0300
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1 OFFSET $2[0m  [["LIMIT", 11], ["OFFSET", 0]]
+Started GET "/admin" for ::1 at 2019-09-19 14:55:43 +0300
+Processing by Trestle::DashboardController#index as HTML
+Redirected to http://localhost:3000/admin/products
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms | Allocations: 2780)
+
+
+Started GET "/admin/products" for ::1 at 2019-09-19 14:55:43 +0300
+Processing by ProductsAdmin::AdminController#index as HTML
+  Rendering admin/products/index.html.erb within layouts/trestle/admin
+  Rendered admin/products/index.html.erb within layouts/trestle/admin (Duration: 13.4ms | Allocations: 1669)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms | Allocations: 7038)
+
+
+
+NoMethodError - undefined method `order' for nil:NilClass:
+  app/views/admin/products/index.html.erb:7
+
+Started POST "/admin/__better_errors/2f04c0f6d9c54c38/variables" for ::1 at 2019-09-19 14:55:43 +0300
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1 OFFSET $2[0m  [["LIMIT", 11], ["OFFSET", 0]]
+Started GET "/admin" for ::1 at 2019-09-19 14:56:10 +0300
+Processing by Trestle::DashboardController#index as HTML
+Redirected to http://localhost:3000/admin/carts
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms | Allocations: 2951)
+
+
+Started GET "/admin/carts" for ::1 at 2019-09-19 14:56:10 +0300
+Processing by CartsAdmin::AdminController#index as HTML
+  Rendering /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/resource/index.html.erb within layouts/trestle/admin
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_header.html.erb (Duration: 143.6ms | Allocations: 3749)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/flash/_alert.html.erb (Duration: 0.8ms | Allocations: 1004)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/flash/_flash.html.erb (Duration: 2.2ms | Allocations: 1573)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_utilities.html.erb (Duration: 21.8ms | Allocations: 127)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_tabs.html.erb (Duration: 0.7ms | Allocations: 286)
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/table/_table.html.erb (Duration: 135.1ms | Allocations: 22410)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/table/_pagination.html.erb (Duration: 38.6ms | Allocations: 950)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_layout.html.erb (Duration: 486.4ms | Allocations: 37124)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/resource/index.html.erb within layouts/trestle/admin (Duration: 531.9ms | Allocations: 41239)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_title.html.erb (Duration: 0.9ms | Allocations: 321)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_sidebar.html.erb (Duration: 18.6ms | Allocations: 1726)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_header.html.erb (Duration: 3.7ms | Allocations: 132)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_footer.html.erb (Duration: 0.7ms | Allocations: 188)
+Completed 200 OK in 866ms (Views: 851.6ms | ActiveRecord: 9.5ms | Allocations: 181348)
+
+
+Started GET "/admin/products" for ::1 at 2019-09-19 14:56:25 +0300
+Processing by ProductsAdmin::AdminController#index as HTML
+  Rendering admin/products/index.html.erb within layouts/trestle/admin
+  Rendered admin/products/index.html.erb within layouts/trestle/admin (Duration: 1.2ms | Allocations: 1289)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms | Allocations: 8900)
+
+
+
+NoMethodError - undefined method `order' for nil:NilClass:
+  app/views/admin/products/index.html.erb:7
+
+Started POST "/admin/__better_errors/136aa8684ac2cf1f/variables" for ::1 at 2019-09-19 14:56:25 +0300
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" LIMIT $1 OFFSET $2[0m  [["LIMIT", 11], ["OFFSET", 0]]
+Started GET "/admin/carts" for ::1 at 2019-09-19 14:56:27 +0300
+Processing by CartsAdmin::AdminController#index as HTML
+  Rendering /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/resource/index.html.erb within layouts/trestle/admin
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_header.html.erb (Duration: 1.3ms | Allocations: 885)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/flash/_flash.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_utilities.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_tabs.html.erb (Duration: 0.1ms | Allocations: 15)
+  [1m[36mCart Load (5.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/table/_table.html.erb (Duration: 25.4ms | Allocations: 8918)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/table/_pagination.html.erb (Duration: 0.5ms | Allocations: 233)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_layout.html.erb (Duration: 37.7ms | Allocations: 10657)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/resource/index.html.erb within layouts/trestle/admin (Duration: 38.9ms | Allocations: 11142)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_title.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_sidebar.html.erb (Duration: 1.4ms | Allocations: 609)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_header.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_footer.html.erb (Duration: 0.1ms | Allocations: 43)
+Completed 200 OK in 168ms (Views: 160.4ms | ActiveRecord: 6.1ms | Allocations: 129869)
+
+
+Started GET "/admin/carts" for ::1 at 2019-09-19 14:56:27 +0300
+Processing by CartsAdmin::AdminController#index as HTML
+  Rendering /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/resource/index.html.erb within layouts/trestle/admin
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_header.html.erb (Duration: 1.5ms | Allocations: 879)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/flash/_flash.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_utilities.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_tabs.html.erb (Duration: 0.0ms | Allocations: 12)
+  [1m[36mCart Load (2.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" LIMIT $1 OFFSET $2[0m  [["LIMIT", 25], ["OFFSET", 0]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/table/_table.html.erb (Duration: 18.9ms | Allocations: 8868)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/table/_pagination.html.erb (Duration: 0.4ms | Allocations: 232)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_layout.html.erb (Duration: 22.3ms | Allocations: 10592)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/resource/index.html.erb within layouts/trestle/admin (Duration: 23.2ms | Allocations: 11074)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_title.html.erb (Duration: 0.0ms | Allocations: 25)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_sidebar.html.erb (Duration: 0.9ms | Allocations: 608)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_header.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_footer.html.erb (Duration: 0.1ms | Allocations: 43)
+Completed 200 OK in 142ms (Views: 137.6ms | ActiveRecord: 2.9ms | Allocations: 128991)
+
+
+Started GET "/admin/carts/new" for ::1 at 2019-09-19 14:56:35 +0300
+Processing by CartsAdmin::AdminController#new as HTML
+  Rendering /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/resource/new.html.erb within layouts/trestle/admin
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_header.html.erb (Duration: 1.0ms | Allocations: 686)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/flash/_flash.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_utilities.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_tabs.html.erb (Duration: 0.0ms | Allocations: 15)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/resource/_form.html.erb (Duration: 76.4ms | Allocations: 5938)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/resource/new.html.erb within layouts/trestle/admin (Duration: 158.9ms | Allocations: 15895)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_title.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_sidebar.html.erb (Duration: 1.1ms | Allocations: 612)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_header.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_footer.html.erb (Duration: 0.1ms | Allocations: 43)
+Completed 200 OK in 254ms (Views: 251.7ms | ActiveRecord: 0.4ms | Allocations: 134565)
+
+
+Started GET "/admin/carts/new" for ::1 at 2019-09-19 14:56:44 +0300
+Processing by CartsAdmin::AdminController#new as HTML
+  Rendering /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/resource/new.html.erb within layouts/trestle/admin
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_header.html.erb (Duration: 1.6ms | Allocations: 653)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/flash/_flash.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_utilities.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_tabs.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/resource/_form.html.erb (Duration: 9.2ms | Allocations: 4666)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/resource/new.html.erb within layouts/trestle/admin (Duration: 11.2ms | Allocations: 5601)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_title.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_sidebar.html.erb (Duration: 1.1ms | Allocations: 611)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_header.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_footer.html.erb (Duration: 0.1ms | Allocations: 43)
+Completed 200 OK in 115ms (Views: 114.0ms | ActiveRecord: 0.5ms | Allocations: 123452)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:04:59 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (7.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 41.6ms | Allocations: 13345)
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.5ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 71.1ms | Allocations: 23608)
+Completed 200 OK in 1374ms (Views: 1314.6ms | ActiveRecord: 22.8ms | Allocations: 81218)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:05:06 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 14.5ms | Allocations: 3276)
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (1.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.4ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 25.6ms | Allocations: 6963)
+Completed 200 OK in 59ms (Views: 48.9ms | ActiveRecord: 6.4ms | Allocations: 37553)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:13:17 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.6ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 41.6ms | Allocations: 12957)
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 2.1ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 61.8ms | Allocations: 23031)
+Completed 200 OK in 150ms (Views: 89.8ms | ActiveRecord: 6.1ms | Allocations: 65542)
+
+
+Started GET "/admin" for ::1 at 2019-09-19 15:13:23 +0300
+Processing by Trestle::DashboardController#index as HTML
+  Rendering /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/dashboard/index.html.erb within layouts/trestle/admin
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_header.html.erb (Duration: 0.2ms | Allocations: 114)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/flash/_flash.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_utilities.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_tabs.html.erb (Duration: 0.0ms | Allocations: 16)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_layout.html.erb (Duration: 3.1ms | Allocations: 2160)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/dashboard/index.html.erb within layouts/trestle/admin (Duration: 59.6ms | Allocations: 2977)
+Started GET "/admin" for ::1 at 2019-09-19 15:13:31 +0300
+Processing by Trestle::DashboardController#index as HTML
+  Rendering /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/dashboard/index.html.erb within layouts/trestle/admin
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_header.html.erb (Duration: 0.2ms | Allocations: 107)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/flash/_flash.html.erb (Duration: 0.0ms | Allocations: 21)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_utilities.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_tabs.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/application/_layout.html.erb (Duration: 2.7ms | Allocations: 498)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/dashboard/index.html.erb within layouts/trestle/admin (Duration: 3.8ms | Allocations: 799)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_title.html.erb (Duration: 0.1ms | Allocations: 25)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_sidebar.html.erb (Duration: 6.6ms | Allocations: 201)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_header.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_footer.html.erb (Duration: 0.1ms | Allocations: 43)
+Completed 200 OK in 8673ms (Views: 8664.2ms | ActiveRecord: 0.0ms | Allocations: 3571322)
+
+
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_title.html.erb (Duration: 0.0ms | Allocations: 25)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_sidebar.html.erb (Duration: 0.4ms | Allocations: 201)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_header.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered /home/dev/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/trestle-0.8.13/app/views/trestle/shared/_footer.html.erb (Duration: 0.1ms | Allocations: 43)
+Completed 200 OK in 552ms (Views: 551.6ms | ActiveRecord: 0.0ms | Allocations: 213987)
+
+
+Started GET "/admin/users" for ::1 at 2019-09-19 15:13:57 +0300
+Processing by Admin::UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :check_if_admin rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 1.1ms | Allocations: 1980)
+
+
+Started GET "/users/6" for ::1 at 2019-09-19 15:31:27 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"authenticity_token"=>"0XskIW4MT8U70iA2anwOcRw6BDXBmqZQWg8zrQsAkz9HIl1V5m5aE7gL3BwarwcGv5QTCbiHcJkpEjh7i+Z3pg==", "id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:58
+  Rendered users/show.html.erb within layouts/application (Duration: 53.8ms | Allocations: 3279)
+Completed 200 OK in 411ms (Views: 370.9ms | ActiveRecord: 1.2ms | Allocations: 43219)
+
+
+Started POST "/carts.2" for ::1 at 2019-09-19 15:31:38 +0300
+Processing by CartsController#create as 
+  Parameters: {"authenticity_token"=>"6BvNkhI9rexOC6lYKsOjsUgItE/0q8LZRMFgc36oJKB+QrTmml+4Os3SVXJaEKrG66ajc422FBA33Gul/k7AOQ=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:4:in `create'
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1 AND "products"."id" = $2 LIMIT $3[0m  [["cart_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:11:in `create'
+  [1m[36mCartProduct Load (0.4ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1 AND "cart_products"."product_id" = $2 LIMIT $3[0m  [["cart_id", 1], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:11:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+  [1m[36mCartProduct Update (19.9ms)[0m  [1m[33mUPDATE "cart_products" SET "quantity" = $1, "updated_at" = $2 WHERE "cart_products"."id" = $3[0m  [["quantity", 3], ["updated_at", "2019-09-19 12:31:38.685196"], ["id", 5]]
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+  [1m[35m (49.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 254ms (ActiveRecord: 76.7ms | Allocations: 28763)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:31:38 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (1.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 44.9ms | Allocations: 6634)
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 15.8ms | Allocations: 998)
+  Rendered products/index.html.erb within layouts/application (Duration: 109.8ms | Allocations: 11908)
+Completed 200 OK in 152ms (Views: 143.6ms | ActiveRecord: 5.2ms | Allocations: 42984)
+
+
+Started GET "/carts/6" for ::1 at 2019-09-19 15:31:41 +0300
+Processing by CartsController#show as HTML
+  Parameters: {"authenticity_token"=>"VvjAHgfLfjJ33oX+pmYWOk4dUlSN4EWoj+Mm3Zr03pHAoblqj6lr5PQHedTWtR9N7bNFaPT9k2H8/i0LGhI6CA==", "id"=>"6"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:24:in `show'
+  [1m[36mCart Load (1.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:26:in `show'
+  [1m[36mCartProduct Load (0.3ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/carts_controller.rb:27:in `show'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 7.6ms | Allocations: 2546)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.9ms | Allocations: 801)
+  Rendered carts/show.html.erb within layouts/application (Duration: 31.4ms | Allocations: 6063)
+Completed 200 OK in 81ms (Views: 65.4ms | ActiveRecord: 6.8ms | Allocations: 40085)
+
+
+Started GET "/charges/new" for ::1 at 2019-09-19 15:31:43 +0300
+Processing by ChargesController#new as HTML
+  Parameters: {"authenticity_token"=>"wezSszd3ZAY7tYHu8Dkn+mXQAY4zQqcDbxvvKd9egUNXtavHvxVx0LhsfcSA6i6Nxn4WskpfccocBuT/X7hl2g=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (2.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:4:in `new'
+  [1m[36mCartProduct Load (0.5ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:9:in `new'
+  [1m[36mProduct Load (3.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  Rendering charges/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 6.2ms | Allocations: 2547)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.3ms | Allocations: 801)
+  Rendered charges/new.html.erb within layouts/application (Duration: 16.2ms | Allocations: 4028)
+Completed 200 OK in 68ms (Views: 51.3ms | ActiveRecord: 7.8ms | Allocations: 38616)
+
+
+Started POST "/charges" for ::1 at 2019-09-19 15:32:19 +0300
+Processing by ChargesController#create as HTML
+  Parameters: {"authenticity_token"=>"dMniOIBZ/w3suoFMomi5YcjXmj6pC15y0F/kkL+pvS/ikJtMCDvq229jfWbSu7AWa3mNAtAWiLujQu9GP09Ztg==", "stripeToken"=>"tok_1FKOo02eZvKYlo2CdAPo3p9G", "stripeTokenType"=>"card", "stripeEmail"=>"rrianasoaonimalala@gmail.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (1.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:15:in `create'
+  [1m[36mCartProduct Load (1.9ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:19:in `create'
+  [1m[36mProduct Load (2.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:20:in `block in create'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:20:in `block in create'
+Completed 500 Internal Server Error in 3136ms (ActiveRecord: 5.7ms | Allocations: 8785)
+
+
+
+Stripe::InvalidRequestError - Invalid integer: 2500000.0:
+  app/controllers/charges_controller.rb:28:in `create'
+
+Started POST "/__better_errors/2ee32d3effa5bd67/variables" for ::1 at 2019-09-19 15:32:22 +0300
+Started POST "/charges" for ::1 at 2019-09-19 15:32:37 +0300
+Processing by ChargesController#create as HTML
+  Parameters: {"authenticity_token"=>"dMniOIBZ/w3suoFMomi5YcjXmj6pC15y0F/kkL+pvS/ikJtMCDvq229jfWbSu7AWa3mNAtAWiLujQu9GP09Ztg==", "stripeToken"=>"tok_1FKOo02eZvKYlo2CdAPo3p9G", "stripeTokenType"=>"card", "stripeEmail"=>"rrianasoaonimalala@gmail.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (1.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:15:in `create'
+  [1m[36mCartProduct Load (1.6ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:20:in `block in create'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:20:in `block in create'
+Completed 500 Internal Server Error in 2194ms (ActiveRecord: 4.2ms | Allocations: 5978)
+
+
+
+Stripe::InvalidRequestError - You cannot use a Stripe token more than once: tok_1FKOo02eZvKYlo2CdAPo3p9G.:
+  app/controllers/charges_controller.rb:23:in `create'
+
+Started POST "/__better_errors/0836305b91017217/variables" for ::1 at 2019-09-19 15:32:39 +0300
+Started GET "/charges" for ::1 at 2019-09-19 15:34:41 +0300
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/charges"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/charges" for ::1 at 2019-09-19 15:34:44 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/charges"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2019-09-19 15:34:47 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.6ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 139.0ms | Allocations: 16613)
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 2.1ms | Allocations: 1004)
+  Rendered products/index.html.erb within layouts/application (Duration: 161.4ms | Allocations: 28200)
+Started GET "/" for ::1 at 2019-09-19 15:34:51 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (22.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (35.7ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (15.9ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (22.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 203.3ms | Allocations: 3315)
+  [1m[36mProduct Load (177.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (39.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 24.4ms | Allocations: 806)
+  Rendered products/index.html.erb within layouts/application (Duration: 771.5ms | Allocations: 7035)
+Completed 200 OK in 44984ms (Views: 44888.5ms | ActiveRecord: 37.5ms | Allocations: 10075712)
+
+
+Completed 200 OK in 40850ms (Views: 40521.2ms | ActiveRecord: 314.2ms | Allocations: 9758371)
+
+
+Started GET "/carts/6" for ::1 at 2019-09-19 15:35:37 +0300
+Processing by CartsController#show as HTML
+  Parameters: {"authenticity_token"=>"cJw/VAAukdBNKGu2bQy49pX5aqeeduxKuOaEACqoPPHmxUYgiEyEBs7xl5wd37GBNld9m+drOoPL+4/Wqk7YaA==", "id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:24:in `show'
+  [1m[36mCart Load (1.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:26:in `show'
+  [1m[36mCartProduct Load (0.4ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/carts_controller.rb:27:in `show'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 8.7ms | Allocations: 2547)
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.3ms | Allocations: 801)
+  Rendered carts/show.html.erb within layouts/application (Duration: 17.2ms | Allocations: 6074)
+Completed 200 OK in 95ms (Views: 47.7ms | ActiveRecord: 9.7ms | Allocations: 42795)
+
+
+Started GET "/charges/new" for ::1 at 2019-09-19 15:35:39 +0300
+Processing by ChargesController#new as HTML
+  Parameters: {"authenticity_token"=>"cc6pUQcpUelzqoc0aDUDfdewFBoit/TDmr5CrsLOwlznl9Alj0tEP/Bzex4Y5goKdB4DJluqIgrpo0l4QigmxQ=="}
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.8ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:4:in `new'
+  [1m[36mCartProduct Load (0.6ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:9:in `new'
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  Rendering charges/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (3.8ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 12.5ms | Allocations: 2547)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.3ms | Allocations: 801)
+  Rendered charges/new.html.erb within layouts/application (Duration: 15.7ms | Allocations: 4037)
+Completed 200 OK in 59ms (Views: 37.5ms | ActiveRecord: 12.5ms | Allocations: 36765)
+
+
+Started POST "/charges" for ::1 at 2019-09-19 15:36:20 +0300
+Processing by ChargesController#create as HTML
+  Parameters: {"authenticity_token"=>"EI7FK7I++8dGbXKqkwiYimmd312/9iRwyXfNG0k3AdqG17xfOlzuEcW0joDj25H9yjPIYcbr8rm6asbNydHlQw==", "stripeToken"=>"tok_1FKOrt2eZvKYlo2CLJeHnyBB", "stripeTokenType"=>"card", "stripeEmail"=>"rrianasoaonimalala@gmail.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:15:in `create'
+  [1m[36mCartProduct Load (0.3ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:20:in `block in create'
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:20:in `block in create'
+Completed 500 Internal Server Error in 3308ms (ActiveRecord: 2.0ms | Allocations: 8765)
+
+
+
+Stripe::InvalidRequestError - Invalid currency: ar. Stripe currently supports these currencies: usd, aed, afn, all, amd, ang, aoa, ars, aud, awg, azn, bam, bbd, bdt, bgn, bif, bmd, bnd, bob, brl, bsd, bwp, bzd, cad, cdf, chf, clp, cny, cop, crc, cve, czk, djf, dkk, dop, dzd, egp, etb, eur, fjd, fkp, gbp, gel, gip, gmd, gnf, gtq, gyd, hkd, hnl, hrk, htg, huf, idr, ils, inr, isk, jmd, jpy, kes, kgs, khr, kmf, krw, kyd, kzt, lak, lbp, lkr, lrd, lsl, mad, mdl, mga, mkd, mmk, mnt, mop, mro, mur, mvr, mwk, mxn, myr, mzn, nad, ngn, nio, nok, npr, nzd, pab, pen, pgk, php, pkr, pln, pyg, qar, ron, rsd, rub, rwf, sar, sbd, scr, sek, sgd, shp, sll, sos, srd, std, szl, thb, tjs, top, try, ttd, twd, tzs, uah, ugx, uyu, uzs, vnd, vuv, wst, xaf, xcd, xof, xpf, yer, zar, zmw, eek, lvl, svc, vef, ltl:
+  app/controllers/charges_controller.rb:28:in `create'
+
+Started POST "/__better_errors/514795b855f0802a/variables" for ::1 at 2019-09-19 15:36:23 +0300
+Started POST "/charges" for ::1 at 2019-09-19 15:39:18 +0300
+Processing by ChargesController#create as HTML
+  Parameters: {"authenticity_token"=>"EI7FK7I++8dGbXKqkwiYimmd312/9iRwyXfNG0k3AdqG17xfOlzuEcW0joDj25H9yjPIYcbr8rm6asbNydHlQw==", "stripeToken"=>"tok_1FKOrt2eZvKYlo2CLJeHnyBB", "stripeTokenType"=>"card", "stripeEmail"=>"rrianasoaonimalala@gmail.com"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:15:in `create'
+  [1m[36mCartProduct Load (0.5ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:20:in `block in create'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:20:in `block in create'
+Completed 500 Internal Server Error in 1997ms (ActiveRecord: 18.0ms | Allocations: 33698)
+
+
+
+Stripe::InvalidRequestError - You cannot use a Stripe token more than once: tok_1FKOrt2eZvKYlo2CLJeHnyBB.:
+  app/controllers/charges_controller.rb:23:in `create'
+
+Started POST "/__better_errors/5cbd35123b07d275/variables" for ::1 at 2019-09-19 15:39:20 +0300
+Started GET "/" for ::1 at 2019-09-19 15:39:26 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (2.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (1.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (1.8ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 23.5ms | Allocations: 7068)
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.6ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 37.9ms | Allocations: 12429)
+Completed 200 OK in 85ms (Views: 68.2ms | ActiveRecord: 14.8ms | Allocations: 40966)
+
+
+Started GET "/carts/6" for ::1 at 2019-09-19 15:39:44 +0300
+Processing by CartsController#show as HTML
+  Parameters: {"authenticity_token"=>"SAJS2rAT9/iGLhshiG3n7qfw4MfhCJQpkbOyp6uI1BneWyuuOHHiLgX35wv4vu6ZBF73+5gVQuDirrlxK24wgA==", "id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:24:in `show'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:26:in `show'
+  [1m[36mCartProduct Load (1.8ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/carts_controller.rb:27:in `show'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 5.4ms | Allocations: 2547)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.4ms | Allocations: 801)
+  Rendered carts/show.html.erb within layouts/application (Duration: 14.2ms | Allocations: 5517)
+Completed 200 OK in 53ms (Views: 38.5ms | ActiveRecord: 4.7ms | Allocations: 36813)
+
+
+Started GET "/charges/new" for ::1 at 2019-09-19 15:39:46 +0300
+Processing by ChargesController#new as HTML
+  Parameters: {"authenticity_token"=>"adq9xMhpaVaae3ltQXYGz5hO0An8GQbw0AeWZH5mzLP/g8SwQAt8gBmihUcxpQ+4O+DHNYUE0DmjGp2y/oAoKg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:4:in `new'
+  [1m[36mCartProduct Load (0.3ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:9:in `new'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  Rendering charges/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 10.5ms | Allocations: 2547)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.4ms | Allocations: 801)
+  Rendered charges/new.html.erb within layouts/application (Duration: 12.8ms | Allocations: 3605)
+Completed 200 OK in 56ms (Views: 38.7ms | ActiveRecord: 4.6ms | Allocations: 35541)
+
+
+Started POST "/charges" for ::1 at 2019-09-19 15:40:31 +0300
+Processing by ChargesController#create as HTML
+  Parameters: {"authenticity_token"=>"N46AFw9AROq9TfxeN8QjhgqdvZUHZGkaRrIzWO2fUNSh1/ljhyJRPD6UAHRHFyrxqTOqqX55v9M1rziObXm0TQ==", "stripeToken"=>"tok_1FKOvw2eZvKYlo2ChbNSVykM", "stripeTokenType"=>"card", "stripeEmail"=>"rrina@gmail.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (1.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:15:in `create'
+  [1m[36mCartProduct Load (0.9ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:19:in `create'
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:20:in `block in create'
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:20:in `block in create'
+Completed 500 Internal Server Error in 3833ms (ActiveRecord: 3.9ms | Allocations: 8471)
+
+
+
+Stripe::InvalidRequestError - Invalid integer: 2500000.0:
+  app/controllers/charges_controller.rb:28:in `create'
+
+Started POST "/__better_errors/e4ca20a7d0e426d5/variables" for ::1 at 2019-09-19 15:40:35 +0300
+Started GET "/charges/new" for ::1 at 2019-09-19 15:40:48 +0300
+Processing by ChargesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:4:in `new'
+  [1m[36mCartProduct Load (0.3ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:9:in `new'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  Rendering charges/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 6.4ms | Allocations: 2537)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.8ms | Allocations: 801)
+  Rendered charges/new.html.erb within layouts/application (Duration: 9.4ms | Allocations: 3591)
+Completed 200 OK in 50ms (Views: 38.8ms | ActiveRecord: 2.8ms | Allocations: 35363)
+
+
+Started GET "/charges/new" for ::1 at 2019-09-19 15:41:08 +0300
+Processing by ChargesController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:4:in `new'
+  [1m[36mCartProduct Load (0.3ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:9:in `new'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  Rendering charges/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 14.2ms | Allocations: 5663)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.5ms | Allocations: 801)
+  Rendered charges/new.html.erb within layouts/application (Duration: 16.6ms | Allocations: 6722)
+Completed 200 OK in 125ms (Views: 48.1ms | ActiveRecord: 24.1ms | Allocations: 66593)
+
+
+Started POST "/charges" for ::1 at 2019-09-19 15:41:34 +0300
+Processing by ChargesController#create as HTML
+  Parameters: {"authenticity_token"=>"YZXTTek0cuM6bqY/Rn5c9jrhH0pWfON64fC1UP7+ji33zKo5YVZnNbm3WhU2rVWBmU8Idi9hNbOS7b6GfhhqtA==", "stripeToken"=>"tok_1FKOwx2eZvKYlo2CZUpgy5jt", "stripeTokenType"=>"card", "stripeEmail"=>"rrina@gmail.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:15:in `create'
+  [1m[36mCartProduct Load (0.2ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:19:in `create'
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:20:in `block in create'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:20:in `block in create'
+Completed 500 Internal Server Error in 3959ms (ActiveRecord: 1.4ms | Allocations: 8472)
+
+
+
+Stripe::InvalidRequestError - Invalid integer: 25000.0:
+  app/controllers/charges_controller.rb:28:in `create'
+
+Started POST "/__better_errors/dcb0e98f6918756c/variables" for ::1 at 2019-09-19 15:41:38 +0300
+Started POST "/charges" for ::1 at 2019-09-19 15:43:24 +0300
+Processing by ChargesController#create as HTML
+  Parameters: {"authenticity_token"=>"YZXTTek0cuM6bqY/Rn5c9jrhH0pWfON64fC1UP7+ji33zKo5YVZnNbm3WhU2rVWBmU8Idi9hNbOS7b6GfhhqtA==", "stripeToken"=>"tok_1FKOwx2eZvKYlo2CZUpgy5jt", "stripeTokenType"=>"card", "stripeEmail"=>"rrina@gmail.com"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:15:in `create'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM("products"."price") FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/models/cart.rb:9:in `total_price'
+Completed 500 Internal Server Error in 9925ms (ActiveRecord: 14.5ms | Allocations: 23881)
+
+
+
+Stripe::InvalidRequestError - You cannot use a Stripe token more than once: tok_1FKOwx2eZvKYlo2CZUpgy5jt.:
+  app/controllers/charges_controller.rb:19:in `create'
+
+Started POST "/__better_errors/cf5065b2da988ba4/variables" for ::1 at 2019-09-19 15:43:34 +0300
+Started GET "/" for ::1 at 2019-09-19 15:44:00 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 33.0ms | Allocations: 13728)
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.2ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 50.7ms | Allocations: 23960)
+Completed 200 OK in 110ms (Views: 69.4ms | ActiveRecord: 18.7ms | Allocations: 64894)
+
+
+Started GET "/carts/6" for ::1 at 2019-09-19 15:44:02 +0300
+Processing by CartsController#show as HTML
+  Parameters: {"authenticity_token"=>"A3SShYz2Qv3thcx3oweXXaGwIU1NUdMZRxqaWkD+Hc6VLevxBJRXK25cMF3T1J4qAh42cTRMBdA0B5GMwBj5Vw==", "id"=>"6"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:24:in `show'
+  [1m[36mCart Load (1.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:26:in `show'
+  [1m[36mCartProduct Load (0.9ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/carts_controller.rb:27:in `show'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (3.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 12.2ms | Allocations: 2548)
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.1ms | Allocations: 801)
+  Rendered carts/show.html.erb within layouts/application (Duration: 17.9ms | Allocations: 5518)
+Completed 200 OK in 71ms (Views: 44.1ms | ActiveRecord: 12.7ms | Allocations: 40928)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:44:14 +0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (1.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 48.6ms | Allocations: 16659)
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 2.1ms | Allocations: 1004)
+  Rendered products/index.html.erb within layouts/application (Duration: 75.1ms | Allocations: 28372)
+Completed 200 OK in 1320ms (Views: 1262.4ms | ActiveRecord: 29.6ms | Allocations: 1416962)
+
+
+Started GET "/carts/6" for ::1 at 2019-09-19 15:44:17 +0300
+Processing by CartsController#show as HTML
+  Parameters: {"authenticity_token"=>"ILMog6GZ6YXZoUSMrN3ULyW2Ujaky5m5v5d5bHXrRba26lH3Kfv8U1p4uKbcDt1YhhhFCt3WT3DMinK69Q2hLw==", "id"=>"6"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:24:in `show'
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:26:in `show'
+  [1m[36mCartProduct Load (0.3ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/carts_controller.rb:27:in `show'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (1.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 8.1ms | Allocations: 2547)
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 3.8ms | Allocations: 801)
+  Rendered carts/show.html.erb within layouts/application (Duration: 22.4ms | Allocations: 6074)
+Completed 200 OK in 88ms (Views: 58.1ms | ActiveRecord: 11.4ms | Allocations: 42565)
+
+
+Started GET "/charges/new" for ::1 at 2019-09-19 15:44:19 +0300
+Processing by ChargesController#new as HTML
+  Parameters: {"authenticity_token"=>"fbuPpc/WU/MRAG1f9Q2+KKTkEMvVCbLWr2MUYLcowJ/r4vbRR7RGJZLZkXWF3rdfB0oH96wUZB/cfh+2N84kBg=="}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (1.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:4:in `new'
+  [1m[36mCartProduct Load (2.4ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:9:in `new'
+  [1m[36mProduct Load (1.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  Rendering charges/new.html.erb within layouts/application
+  [1m[36mCategory Load (3.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 47.6ms | Allocations: 2549)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 4.8ms | Allocations: 801)
+  Rendered charges/new.html.erb within layouts/application (Duration: 54.0ms | Allocations: 4044)
+Completed 200 OK in 132ms (Views: 103.9ms | ActiveRecord: 14.7ms | Allocations: 36779)
+
+
+Started POST "/charges" for ::1 at 2019-09-19 15:44:49 +0300
+Processing by ChargesController#create as HTML
+  Parameters: {"authenticity_token"=>"XlSJUTxMXU9/6lGwkvMRao2S6PZO2MzApWFlkvntiSrIDfAltC5ImfwzrZriIBgdLjz/yjfFGgnWfG5EeQttsw==", "stripeToken"=>"tok_1FKP062eZvKYlo2CPcdAyYWZ", "stripeTokenType"=>"card", "stripeEmail"=>"rrina@gmail.com"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:15:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("products"."price") FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/models/cart.rb:9:in `total_price'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/charges_controller.rb:35:in `create'
+  [1m[36mCommand Create (21.4ms)[0m  [1m[32mINSERT INTO "commands" ("stripe_customer_id", "customer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["stripe_customer_id", "cus_Fq5AUbG4eCFnoI"], ["customer_id", 6], ["created_at", "2019-09-19 12:44:53.313165"], ["updated_at", "2019-09-19 12:44:53.313165"]]
+  ↳ app/controllers/charges_controller.rb:35:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/mailers/user_mailer.rb:20:in `command_email'
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/mailers/user_mailer.rb:23:in `command_email'
+  Rendering user_mailer/command_email.html.erb within layouts/mailer
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/user_mailer/command_email.html.erb:14
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/user_mailer/command_email.html.erb:19
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/user_mailer/command_email.html.erb:19
+  Rendered user_mailer/command_email.html.erb within layouts/mailer (Duration: 10.4ms | Allocations: 3655)
+  Rendering user_mailer/command_email.text.erb within layouts/mailer
+  Rendered user_mailer/command_email.text.erb within layouts/mailer (Duration: 0.5ms | Allocations: 209)
+UserMailer#command_email: processed outbound mail in 56.3ms
+Delivered mail 5d8378456ef9b_51d52af9e53c868821d@lenovoa18.mail (185.9ms)
+Date: Thu, 19 Sep 2019 15:44:53 +0300
+From: madamarket.mg
+To: test@gmail.com
+Message-ID: <5d8378456ef9b_51d52af9e53c868821d@lenovoa18.mail>
+Subject: Merci pour votre commande!
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d83784568489_51d52af9e53c86881a8";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d83784568489_51d52af9e53c86881a8
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Bonjour test@gmail.com et merci pour votre commande=0D
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=0D
+=0D
+Vous venez juste de confirmer votre commande !=0D
+=0D
+Voil=C3=A0 votre commande:=0D
+=0D
+<!-- We do a loop in order to display in the mail the title and the image=
+ -->=0D
+=0D
+Sakoa=0D
+=0D
+ Vous pouvez acc=C3=A9der sur ce lien d'image https://scontent.cdninstagr=
+am.com/vp/df4c9701f614f2e7ccfbc0e4301c7979/5DAC2049/t51.2885-15/e35/s480x=
+480/12724953_770026423097258_151561849_n.jpg?_nc_ht=3Dscontent-frx5-1.cdn=
+instagram.com=0D
+=0D
+=0D
+Harona=0D
+=0D
+ Vous pouvez acc=C3=A9der sur ce lien d'image https://pictures.attention-=
+ngn.com/portal/31/398829/products/1537996611.757_115_o.jpg=0D
+=0D
+=0D
+Bonne visite sur notre site http://mada-market.herokuapp.com !=0D
+
+----==_mimepart_5d83784568489_51d52af9e53c86881a8
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+<head>=0D
+	<meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Type'=
+ />=0D
+</head>=0D
+<body>=0D
+	<h1>Bonjour test@gmail.com et merci pour votre commande !</h1>=0D
+	<p>=0D
+		Vous venez juste de confirmer votre commande!=0D
+	</p>=0D
+	<p>Voil=C3=A0 votre commande :</p>=0D
+	=0D
+	<!-- We do a loop in order to display in the mail the title and the imag=
+e -->=0D
+	<h2>=0D
+		Sakoa=0D
+	</h2>=0D
+	<p>=0D
+		<img src=3D"https://scontent.cdninstagram.com/vp/df4c9701f614f2e7ccfbc0=
+e4301c7979/5DAC2049/t51.2885-15/e35/s480x480/12724953_770026423097258_151=
+561849_n.jpg?_nc_ht=3Dscontent-frx5-1.cdninstagram.com" width=3D"600" hei=
+ght=3D"auto" alt=3D"Sakoa image">=0D
+	</p>=0D
+	<h2>=0D
+		Harona=0D
+	</h2>=0D
+	<p>=0D
+		<img src=3D"https://pictures.attention-ngn.com/portal/31/398829/product=
+s/1537996611.757_115_o.jpg" width=3D"600" height=3D"auto" alt=3D"Harona i=
+mage">=0D
+	</p>=0D
+	<p>=0D
+		 Bonne visite sur notre site <a href=3D"http://mada-market.herokuapp.co=
+m">http://mada-market.herokuapp.com</a> !=0D
+	</p>=0D
+</body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d83784568489_51d52af9e53c86881a8--
+
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/charges_controller.rb:35:in `create'
+Completed 500 Internal Server Error in 4311ms (ActiveRecord: 30.0ms | Allocations: 68890)
+
+
+
+NoMethodError - undefined method `order_email' for AdminMailer:Class:
+  app/models/command.rb:11:in `command_send'
+  app/controllers/charges_controller.rb:35:in `create'
+
+Started POST "/__better_errors/c0e18cc4dc904069/variables" for ::1 at 2019-09-19 15:44:53 +0300
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1 LIMIT $2[0m  [["cart_id", 1], ["LIMIT", 11]]
+Started POST "/charges" for ::1 at 2019-09-19 15:45:33 +0300
+Processing by ChargesController#create as HTML
+  Parameters: {"authenticity_token"=>"XlSJUTxMXU9/6lGwkvMRao2S6PZO2MzApWFlkvntiSrIDfAltC5ImfwzrZriIBgdLjz/yjfFGgnWfG5EeQttsw==", "stripeToken"=>"tok_1FKP062eZvKYlo2CPcdAyYWZ", "stripeTokenType"=>"card", "stripeEmail"=>"rrina@gmail.com"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:15:in `create'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("products"."price") FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/models/cart.rb:9:in `total_price'
+Completed 500 Internal Server Error in 1960ms (ActiveRecord: 18.5ms | Allocations: 23856)
+
+
+
+Stripe::InvalidRequestError - You cannot use a Stripe token more than once: tok_1FKP062eZvKYlo2CPcdAyYWZ.:
+  app/controllers/charges_controller.rb:19:in `create'
+
+Started POST "/__better_errors/e18cae4c87c2b659/variables" for ::1 at 2019-09-19 15:45:35 +0300
+Started GET "/" for ::1 at 2019-09-19 15:45:49 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (1.8ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (1.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 19.7ms | Allocations: 6419)
+  [1m[36mProduct Load (2.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.6ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 46.1ms | Allocations: 16770)
+Completed 200 OK in 84ms (Views: 68.3ms | ActiveRecord: 13.1ms | Allocations: 45309)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:45:52 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (1.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 15.3ms | Allocations: 3260)
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (3.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 3.8ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 31.9ms | Allocations: 6901)
+Completed 200 OK in 78ms (Views: 65.6ms | ActiveRecord: 10.1ms | Allocations: 35307)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:45:53 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (9.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.7ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (7.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 27.9ms | Allocations: 3260)
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 6.3ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 45.5ms | Allocations: 6903)
+Completed 200 OK in 105ms (Views: 81.7ms | ActiveRecord: 19.1ms | Allocations: 35317)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:45:55 +0300
+Processing by ProductsController#index as HTML
+  Parameters: {"authenticity_token"=>"aekQWrO1g4aJ2zqsx5F+YliN7qjWmHfKzgqWkIGSt0P/sGkuO9eWUAoCxoa3QncV+yP5lK+FoQO9F51GAXRT2g=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (3.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 20.5ms | Allocations: 3260)
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (3.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 3.7ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 39.8ms | Allocations: 6903)
+Completed 200 OK in 147ms (Views: 129.4ms | ActiveRecord: 12.7ms | Allocations: 35337)
+
+
+Started GET "/accueil" for ::1 at 2019-09-19 15:45:56 +0300
+Processing by AccueilController#index as HTML
+  Parameters: {"authenticity_token"=>"wmTeSl4vKyEIih6Qj8i2mWkFXVRbmOHsaqtu0+bilu9UPac+1k0+94tT4rr/G7/uyqtKaCKFNyUZtmUFZgRydg=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/accueil_controller.rb:4:in `index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/accueil_controller.rb:4:in `index'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" BETWEEN $1 AND $2 LIMIT $3[0m  [["id", 1], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/accueil_controller.rb:4:in `index'
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:33
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 12.6ms | Allocations: 4173)
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/accueil/index.html.erb:20
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:21
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:21
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/accueil/index.html.erb:38
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:48
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:48
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.3ms | Allocations: 801)
+  Rendered accueil/index.html.erb within layouts/application (Duration: 46.2ms | Allocations: 11217)
+Completed 200 OK in 97ms (Views: 84.9ms | ActiveRecord: 5.8ms | Allocations: 41731)
+
+
+Started GET "/carts/6" for ::1 at 2019-09-19 15:45:58 +0300
+Processing by CartsController#show as HTML
+  Parameters: {"authenticity_token"=>"TUaUy9Qmxum2Al0Qo0u1KTorI0+2BcostIgi/6kGwRnbH+2/XETTPzXboTrTmLxemYU0c88YHOXHlSkpKeAlgA==", "id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:24:in `show'
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:26:in `show'
+  [1m[36mCartProduct Load (0.3ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/carts_controller.rb:27:in `show'
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 8.8ms | Allocations: 2547)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.1ms | Allocations: 801)
+  Rendered carts/show.html.erb within layouts/application (Duration: 14.0ms | Allocations: 5517)
+Completed 200 OK in 65ms (Views: 41.9ms | ActiveRecord: 8.5ms | Allocations: 40955)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:46:18 +0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 45.4ms | Allocations: 16659)
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 2.1ms | Allocations: 1004)
+  Rendered products/index.html.erb within layouts/application (Duration: 75.3ms | Allocations: 28372)
+Completed 200 OK in 1264ms (Views: 1210.6ms | ActiveRecord: 24.0ms | Allocations: 1416963)
+
+
+Started POST "/carts.2" for ::1 at 2019-09-19 15:46:22 +0300
+Processing by CartsController#create as 
+  Parameters: {"authenticity_token"=>"wvgI4IiAqgnV4f/0DtElxXTANA9U8D0RgjEVey371g5UoXGUAOK/31Y4A95+Aiyy124jMy3t69jxLB6trR0ylw=="}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:4:in `create'
+  [1m[36mCart Load (1.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1 AND "products"."id" = $2 LIMIT $3[0m  [["cart_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:11:in `create'
+  [1m[36mCartProduct Load (0.3ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1 AND "cart_products"."product_id" = $2 LIMIT $3[0m  [["cart_id", 1], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:11:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+  [1m[36mCartProduct Update (0.5ms)[0m  [1m[33mUPDATE "cart_products" SET "quantity" = $1, "updated_at" = $2 WHERE "cart_products"."id" = $3[0m  [["quantity", 4], ["updated_at", "2019-09-19 12:46:22.850296"], ["id", 5]]
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+  [1m[35m (48.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 89ms (ActiveRecord: 57.5ms | Allocations: 13756)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:46:22 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 9.7ms | Allocations: 3268)
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (1.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.5ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 19.5ms | Allocations: 6912)
+Completed 200 OK in 48ms (Views: 41.2ms | ActiveRecord: 4.5ms | Allocations: 35320)
+
+
+Started POST "/carts.1" for ::1 at 2019-09-19 15:46:25 +0300
+Processing by CartsController#create as 
+  Parameters: {"authenticity_token"=>"5oF50COxcIA+oAC8bAfMpr08FbF7F3zGmWYMVH9LZClw2ACkq9NlVr15/JYc1MXRHpICjQIKqg/qeweC/62AsA=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:4:in `create'
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1 AND "products"."id" = $2 LIMIT $3[0m  [["cart_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:11:in `create'
+  [1m[36mCartProduct Load (0.3ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1 AND "cart_products"."product_id" = $2 LIMIT $3[0m  [["cart_id", 1], ["product_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:11:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+  [1m[36mCartProduct Update (0.5ms)[0m  [1m[33mUPDATE "cart_products" SET "quantity" = $1, "updated_at" = $2 WHERE "cart_products"."id" = $3[0m  [["quantity", 3], ["updated_at", "2019-09-19 12:46:25.442118"], ["id", 6]]
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+  [1m[35m (51.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 75ms (ActiveRecord: 55.5ms | Allocations: 8652)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:46:25 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 10.4ms | Allocations: 3260)
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.9ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 20.6ms | Allocations: 6903)
+Completed 200 OK in 61ms (Views: 53.4ms | ActiveRecord: 5.1ms | Allocations: 35313)
+
+
+Started GET "/carts/6" for ::1 at 2019-09-19 15:46:26 +0300
+Processing by CartsController#show as HTML
+  Parameters: {"authenticity_token"=>"yOAvdIn8bQuYjhekRUoItq0W8z3PKtbDxl1NNafA0u1euVYAAZ543RtX6441mQHBDrjkAbY3AAq1QEbjJyY2dA==", "id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:24:in `show'
+  [1m[36mCart Load (2.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:26:in `show'
+  [1m[36mCartProduct Load (1.2ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/carts_controller.rb:27:in `show'
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mCategory Load (4.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 15.2ms | Allocations: 2546)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.2ms | Allocations: 801)
+  Rendered carts/show.html.erb within layouts/application (Duration: 21.5ms | Allocations: 6073)
+Completed 200 OK in 90ms (Views: 60.8ms | ActiveRecord: 14.0ms | Allocations: 38246)
+
+
+Started GET "/charges/new" for ::1 at 2019-09-19 15:46:31 +0300
+Processing by ChargesController#new as HTML
+  Parameters: {"authenticity_token"=>"B9Qibvq6HZekgCmq3+0c0JgTDtMfOKPk0jbSo1HDxTmRjVsactgIQSdZ1YCvPhWnO70Z72YldS2hK9l10SUhoA=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.4ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:4:in `new'
+  [1m[36mCartProduct Load (0.4ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:9:in `new'
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  Rendering charges/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 8.4ms | Allocations: 2547)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.1ms | Allocations: 801)
+  Rendered charges/new.html.erb within layouts/application (Duration: 11.5ms | Allocations: 4041)
+Completed 200 OK in 55ms (Views: 39.4ms | ActiveRecord: 3.2ms | Allocations: 36750)
+
+
+Started POST "/charges" for ::1 at 2019-09-19 15:46:59 +0300
+Processing by ChargesController#create as HTML
+  Parameters: {"authenticity_token"=>"8FfJSC63bTUb7+Stid7eaKDR7FULQhrTz5370dq6e2BmDrA8ptV445g2GIf5DdcfA3/7aXJfzBq8gPAHWlyf+Q==", "stripeToken"=>"tok_1FKP2C2eZvKYlo2C5GuDtWUS", "stripeTokenType"=>"card", "stripeEmail"=>"rrianasoaonimalala@gmail.com"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:15:in `create'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT SUM("products"."price") FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/models/cart.rb:9:in `total_price'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/charges_controller.rb:35:in `create'
+  [1m[36mCommand Create (0.6ms)[0m  [1m[32mINSERT INTO "commands" ("stripe_customer_id", "customer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["stripe_customer_id", "cus_Fq5CD8qyUFqAis"], ["customer_id", 6], ["created_at", "2019-09-19 12:47:03.835928"], ["updated_at", "2019-09-19 12:47:03.835928"]]
+  ↳ app/controllers/charges_controller.rb:35:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/mailers/user_mailer.rb:20:in `command_email'
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/mailers/user_mailer.rb:23:in `command_email'
+  Rendering user_mailer/command_email.html.erb within layouts/mailer
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/user_mailer/command_email.html.erb:14
+  [1m[36mActiveStorage::Attachment Load (3.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/user_mailer/command_email.html.erb:19
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/user_mailer/command_email.html.erb:19
+  Rendered user_mailer/command_email.html.erb within layouts/mailer (Duration: 11.0ms | Allocations: 3340)
+  Rendering user_mailer/command_email.text.erb within layouts/mailer
+  Rendered user_mailer/command_email.text.erb within layouts/mailer (Duration: 0.6ms | Allocations: 209)
+UserMailer#command_email: processed outbound mail in 25.4ms
+Delivered mail 5d8378c7d4fec_53622afd500f0a8c761f7@lenovoa18.mail (81.8ms)
+Date: Thu, 19 Sep 2019 15:47:03 +0300
+From: madamarket.mg
+To: test@gmail.com
+Message-ID: <5d8378c7d4fec_53622afd500f0a8c761f7@lenovoa18.mail>
+Subject: Merci pour votre commande!
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d8378c7d4166_53622afd500f0a8c760cd";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d8378c7d4166_53622afd500f0a8c760cd
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Bonjour test@gmail.com et merci pour votre commande=0D
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=0D
+=0D
+Vous venez juste de confirmer votre commande !=0D
+=0D
+Voil=C3=A0 votre commande:=0D
+=0D
+<!-- We do a loop in order to display in the mail the title and the image=
+ -->=0D
+=0D
+Sakoa=0D
+=0D
+ Vous pouvez acc=C3=A9der sur ce lien d'image https://scontent.cdninstagr=
+am.com/vp/df4c9701f614f2e7ccfbc0e4301c7979/5DAC2049/t51.2885-15/e35/s480x=
+480/12724953_770026423097258_151561849_n.jpg?_nc_ht=3Dscontent-frx5-1.cdn=
+instagram.com=0D
+=0D
+=0D
+Harona=0D
+=0D
+ Vous pouvez acc=C3=A9der sur ce lien d'image https://pictures.attention-=
+ngn.com/portal/31/398829/products/1537996611.757_115_o.jpg=0D
+=0D
+=0D
+Bonne visite sur notre site http://mada-market.herokuapp.com !=0D
+
+----==_mimepart_5d8378c7d4166_53622afd500f0a8c760cd
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+<head>=0D
+	<meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Type'=
+ />=0D
+</head>=0D
+<body>=0D
+	<h1>Bonjour test@gmail.com et merci pour votre commande !</h1>=0D
+	<p>=0D
+		Vous venez juste de confirmer votre commande!=0D
+	</p>=0D
+	<p>Voil=C3=A0 votre commande :</p>=0D
+	=0D
+	<!-- We do a loop in order to display in the mail the title and the imag=
+e -->=0D
+	<h2>=0D
+		Sakoa=0D
+	</h2>=0D
+	<p>=0D
+		<img src=3D"https://scontent.cdninstagram.com/vp/df4c9701f614f2e7ccfbc0=
+e4301c7979/5DAC2049/t51.2885-15/e35/s480x480/12724953_770026423097258_151=
+561849_n.jpg?_nc_ht=3Dscontent-frx5-1.cdninstagram.com" width=3D"600" hei=
+ght=3D"auto" alt=3D"Sakoa image">=0D
+	</p>=0D
+	<h2>=0D
+		Harona=0D
+	</h2>=0D
+	<p>=0D
+		<img src=3D"https://pictures.attention-ngn.com/portal/31/398829/product=
+s/1537996611.757_115_o.jpg" width=3D"600" height=3D"auto" alt=3D"Harona i=
+mage">=0D
+	</p>=0D
+	<p>=0D
+		 Bonne visite sur notre site <a href=3D"http://mada-market.herokuapp.co=
+m">http://mada-market.herokuapp.com</a> !=0D
+	</p>=0D
+</body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d8378c7d4166_53622afd500f0a8c760cd--
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."is_admin" = $1[0m  [["is_admin", true]]
+  ↳ app/mailers/admin_mailer.rb:19:in `command_email'
+AdminMailer#command_email: processed outbound mail in 6.1ms
+  [1m[35m (53.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/charges_controller.rb:35:in `create'
+  [1m[36mCartProduct Load (0.3ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/controllers/charges_controller.rb:40:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/charges_controller.rb:41:in `block in create'
+  [1m[36mCartProduct Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cart_products" WHERE "cart_products"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/charges_controller.rb:41:in `block in create'
+  [1m[35m (39.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/charges_controller.rb:41:in `block in create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/charges_controller.rb:41:in `block in create'
+  [1m[36mCartProduct Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cart_products" WHERE "cart_products"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/charges_controller.rb:41:in `block in create'
+  [1m[35m (130.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/charges_controller.rb:41:in `block in create'
+Redirected to http://localhost:3000/commands
+Completed 302 Found in 4640ms (ActiveRecord: 239.1ms | Allocations: 72033)
+
+
+Started GET "/commands" for ::1 at 2019-09-19 15:47:04 +0300
+Processing by CommandsController#index as HTML
+  Rendering commands/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:33
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.7ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 10.2ms | Allocations: 4174)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.6ms | Allocations: 801)
+  Rendered commands/index.html.erb within layouts/application (Duration: 29.3ms | Allocations: 5246)
+Completed 200 OK in 93ms (Views: 90.0ms | ActiveRecord: 2.1ms | Allocations: 33666)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2019-09-19 15:47:17 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8/6Vl7NB07z38zDgTWPVzXqpN0ZAvFgc4zjdMZuCItJlp+zjOyPGanQqzMo9sNy62QcgejmhjtWQJdbnG2TGSw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 232ms (ActiveRecord: 0.3ms | Allocations: 183080)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:47:17 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 2.5ms | Allocations: 1059)
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.9ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 4701)
+Completed 200 OK in 41ms (Views: 37.0ms | ActiveRecord: 1.3ms | Allocations: 32372)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-09-19 15:47:21 +0300
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"wNo7nUrn7lDgR6mb2wzt/E6B5BFNkXiX8rZXLGkkEYJKJAwNIBLPR9W7jzIh+w7Uxs4tuJnzitblJFH8iZzI2w=="}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 15.4ms | Allocations: 644)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 78.6ms | Allocations: 2444)
+Completed 200 OK in 119ms (Views: 117.8ms | ActiveRecord: 0.0ms | Allocations: 31741)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-09-19 15:47:28 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"CK8JSVeeDv5VMq0FcSGJ3oh2EWKpRyRZeKrbmaYc0UaCUT7ZPWsv6WDOi6yL1mr2ADnYy30l1hhvON1JRqQIHw==", "user"=>{"email"=>"madamarket@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Se connecter"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "madamarket@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 366ms (ActiveRecord: 0.3ms | Allocations: 1984)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"CK8JSVeeDv5VMq0FcSGJ3oh2EWKpRyRZeKrbmaYc0UaCUT7ZPWsv6WDOi6yL1mr2ADnYy30l1hhvON1JRqQIHw==", "user"=>{"email"=>"madamarket@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Se connecter"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 132)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 626)
+Completed 200 OK in 1356ms (Views: 36.8ms | ActiveRecord: 0.0ms | Allocations: 28925)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-09-19 15:47:41 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"76ekVSUYywNM8tMR7XvlXwtduI2jHckwcXxto16XHFVlWZPFT+3qFHkO9bgXjAZ3gxJxJHd/O3Fm7mtzvi/FDA==", "user"=>{"email"=>"rrianasoaonimalala@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Se connecter"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rrianasoaonimalala@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.4ms | Allocations: 1859)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"76ekVSUYywNM8tMR7XvlXwtduI2jHckwcXxto16XHFVlWZPFT+3qFHkO9bgXjAZ3gxJxJHd/O3Fm7mtzvi/FDA==", "user"=>{"email"=>"rrianasoaonimalala@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Se connecter"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 132)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 619)
+Completed 200 OK in 190ms (Views: 36.6ms | ActiveRecord: 0.0ms | Allocations: 28364)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-09-19 15:47:51 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"hckzW7sfUgXt+JS29g5uaXhnByB8mR5RkXODYoaOoc4PNwTL0epzEtgEsh8M+Y1B8CjOiaj77BCG4YWyZjZ4lw==", "user"=>{"email"=>"test@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Se connecter"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 184ms (ActiveRecord: 0.5ms | Allocations: 6661)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:47:51 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:6:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 1]]
+  ↳ app/views/layouts/_nav.html.erb:58
+  Rendered layouts/_nav.html.erb (Duration: 8.0ms | Allocations: 3270)
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.6ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 24.1ms | Allocations: 6913)
+Completed 200 OK in 75ms (Views: 70.1ms | ActiveRecord: 2.4ms | Allocations: 35319)
+
+
+Started GET "/users/6" for ::1 at 2019-09-19 15:47:54 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"authenticity_token"=>"OfkFZ2HOtL4gdotCVcBqApWBvf3KahRo9NGxm3GUxLrHpHJT2Cqv1fLj+BNjtXVCdX762GKk5osADJjmmGtLsQ==", "id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:58
+  Rendered users/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 2245)
+Completed 200 OK in 38ms (Views: 34.8ms | ActiveRecord: 0.6ms | Allocations: 32055)
+
+
+Started GET "/users/6/edit" for ::1 at 2019-09-19 15:47:58 +0300
+Processing by UsersController#edit as HTML
+  Parameters: {"authenticity_token"=>"VtJnFNCqcKh4SRI0YEOImqFmE2oDhqgMMlgUqCqznxKojxAgaU5rw6rcYWVWNpfaQZlUT6tIWu/GhT3Vw0wQGQ==", "id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `edit'
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (Duration: 17.1ms | Allocations: 1996)
+Completed 200 OK in 50ms (Views: 47.4ms | ActiveRecord: 0.3ms | Allocations: 30545)
+
+
+Started PUT "/users/6" for ::1 at 2019-09-19 15:48:01 +0300
+Processing by UsersController#update as HTML
+  Parameters: {"authenticity_token"=>"wlzSDDaSN22cvJgJqrNEmKugCWKGqulOH4h/a3qzLko8AaU4j3YsBk4p61icxlvYS19ORy5kG63rVVYWk0yhQQ==", "first_name"=>"eterte", "last_name"=>"rezrz", "email"=>"test@gmail.com", "is_admin"=>"1", "commit"=>"Modifier le profil", "id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `update'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16:in `update'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", true], ["updated_at", "2019-09-19 12:48:01.022302"], ["id", 6]]
+  ↳ app/controllers/users_controller.rb:16:in `update'
+  [1m[35m (19.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:21:in `update'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:21:in `update'
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 67ms (ActiveRecord: 21.2ms | Allocations: 6516)
+
+
+Started GET "/users/6" for ::1 at 2019-09-19 15:48:01 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:58
+  Rendered users/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1242)
+  Rendered layouts/_admin_nav.html.erb (Duration: 9.5ms | Allocations: 381)
+Completed 200 OK in 78ms (Views: 74.3ms | ActiveRecord: 1.5ms | Allocations: 30819)
+
+
+Started GET "/admin/products/new" for ::1 at 2019-09-19 15:48:02 +0300
+Processing by Admin::ProductsController#new as HTML
+  Parameters: {"authenticity_token"=>"PG5cdb9nug26Nv/7TqvvsI1KMBmIvJ4Ckd/4Ss1HiQvCMytBBoOhZmijjKp43vDwbbV3PCBybOFlAtE3JLgGAA=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering admin/products/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/admin/products/new.html.erb:22:in `collect'
+  Rendered admin/products/new.html.erb within layouts/application (Duration: 26.6ms | Allocations: 1960)
+  Rendered layouts/_admin_nav.html.erb (Duration: 0.3ms | Allocations: 75)
+Completed 200 OK in 58ms (Views: 53.7ms | ActiveRecord: 0.7ms | Allocations: 32046)
+
+
+Started GET "/admin/products" for ::1 at 2019-09-19 15:48:04 +0300
+Processing by Admin::ProductsController#index as HTML
+  Parameters: {"authenticity_token"=>"i/NNtoXcl9O48OIMYHDKh6D6piAuOL2o/sx8fWMexzZ1rjqCPDiMuGplkV1WBdXHQAXhBYb2T0sKEVUAiuFIPQ=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering admin/products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."provider_id" = $1 ORDER BY "products"."created_at" DESC[0m  [["provider_id", 6]]
+  ↳ app/views/admin/products/index.html.erb:7
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/admin/products/index.html.erb:14
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/admin/products/index.html.erb:14
+  Rendered admin/products/index.html.erb within layouts/application (Duration: 19.9ms | Allocations: 3061)
+  Rendered layouts/_admin_nav.html.erb (Duration: 0.2ms | Allocations: 73)
+Completed 200 OK in 51ms (Views: 46.3ms | ActiveRecord: 1.4ms | Allocations: 32403)
+
+
+Started GET "/admin/users" for ::1 at 2019-09-19 15:48:06 +0300
+Processing by Admin::UsersController#index as HTML
+  Parameters: {"authenticity_token"=>"yaBv3o1HPSv7xJf1fdMwuoAPii8t8ZPBWReBJK0UdRQ3/RjqNKMmQClR5KRLpi/6YPDNCoU/YSKtyqhZROv6Hw=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering admin/users/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/admin/users/index.html.erb:3
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/admin/users/index.html.erb:4
+  [1m[36mCartProduct Load (0.4ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/admin/users/index.html.erb:5
+  [1m[36mCommandProduct Load (42.3ms)[0m  [1m[34mSELECT "command_products".* FROM "command_products" WHERE "command_products"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/admin/users/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/admin/users/index.html.erb:4
+  [1m[36mCartProduct Load (0.3ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/admin/users/index.html.erb:5
+  [1m[36mCommandProduct Load (0.4ms)[0m  [1m[34mSELECT "command_products".* FROM "command_products" WHERE "command_products"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/admin/users/index.html.erb:19
+  Rendered admin/users/index.html.erb within layouts/application (Duration: 91.0ms | Allocations: 8045)
+  Rendered layouts/_admin_nav.html.erb (Duration: 0.2ms | Allocations: 99)
+Completed 200 OK in 124ms (Views: 74.6ms | ActiveRecord: 46.7ms | Allocations: 38055)
+
+
+Started GET "/admin/products" for ::1 at 2019-09-19 15:48:07 +0300
+Processing by Admin::ProductsController#index as HTML
+  Parameters: {"authenticity_token"=>"7kSgCROc3swpHLKK5lVJEyNuh0tlPCaWhLgDbYgAqHEQGdc9qnjFp/uJwdvQIFZTw5HAbs3y1HVwZSoQYf8neg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering admin/products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."provider_id" = $1 ORDER BY "products"."created_at" DESC[0m  [["provider_id", 6]]
+  ↳ app/views/admin/products/index.html.erb:7
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/admin/products/index.html.erb:14
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/admin/products/index.html.erb:14
+  Rendered admin/products/index.html.erb within layouts/application (Duration: 8.0ms | Allocations: 2742)
+  Rendered layouts/_admin_nav.html.erb (Duration: 0.2ms | Allocations: 73)
+Completed 200 OK in 54ms (Views: 50.0ms | ActiveRecord: 1.2ms | Allocations: 31933)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2019-09-19 15:48:12 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SAJo+bdkA3S2Gw902qd5J/u1EbDI0uZw477zVAdmlMe2Xx/NDoAYH2SOfCXs0mZnG0pWlWAcFJMXY9op7pkbzA=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.2ms | Allocations: 2213)
+
+
+Started GET "/" for ::1 at 2019-09-19 15:48:12 +0300
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 2.2ms | Allocations: 1057)
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" ASC[0m
+  ↳ app/views/products/index.html.erb:72
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:82
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.3ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 10.1ms | Allocations: 4700)
+Completed 200 OK in 34ms (Views: 31.2ms | ActiveRecord: 1.4ms | Allocations: 32360)
+
+

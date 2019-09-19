@@ -8,6 +8,7 @@ class Command < ApplicationRecord
 	# This method calls the order_email method from user_mailer, passing the order as an argument
 	def command_send
 		UserMailer.command_email(self).deliver_now
+		AdminMailer.command_email(self).deliver_now
 	end
 	
 

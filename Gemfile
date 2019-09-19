@@ -59,4 +59,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'table_print'
 gem 'better_errors'
 gem 'stripe'
+gem 'trestle'
 

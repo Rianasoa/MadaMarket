@@ -122,7 +122,7 @@ h2 {
                         <p class="color">Devenir Fournisseur   <%= check_box_tag :is_admin,1, @user.is_admin , data: {url: user_path(@user.id), params:{ id:@user.id, is_admin: @user.is_admin}.to_param, method: "put" }%>
                         </div></p>
 
-                       <center> <%= submit_tag "Modifier le profil", class: 'btn btn-sm btn-secondary' %></center>
+                       <center> <%= submit_tag "Modifier", class: 'btn btn-sm btn-secondary' %></center>
                       
                  <%end%>
 

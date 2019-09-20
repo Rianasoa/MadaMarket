@@ -1,7 +1,6 @@
-<%= @command_user.email %> a fait une commande!
+<%= @command_user.email %> a fait une commande suivante:
 ==========================================================
 
-Voilà leur commande:
 
 <!-- We do a loop in order to display in the mail the title and the image -->
 <% @cart_products_ordered.each do |product| %>
@@ -10,4 +9,3 @@ Voilà leur commande:
 
 <% end %>
 
-Une nouvelle commande a été faite !

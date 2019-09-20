@@ -4,10 +4,8 @@
 	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-	<h1><%= @command_user.email %> a fait une commande!</h1>
+	<h1><%= @command_user.email %> a fait la commande suivante</h1>
 
-	<p>Voilà leur commandes:</p>
-	
 	
 	<% @cart_products_ordered.each do |product| %>
 	<h2>
@@ -20,10 +18,6 @@
 		<img src="<%= product.image_url%>" width="600" height="auto" alt="<%= product.title%> image">
         <% end %></p>
 	<% end %>
-
-	<p>
-		Une nouvelle commande a été faite !
-	</p>
 
 </body>
 </html>

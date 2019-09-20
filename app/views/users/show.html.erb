@@ -86,7 +86,7 @@ span:hover, a:hover {
                 
                 </div>
                 <div class="form-group">
-                <%= submit_tag "Modifier profil", class: 'btn btn-secondary btn-sm' %>
+                <%= submit_tag "Modifier la photo de profil", class: 'btn btn-secondary btn-sm' %>
                 </div>
               <%end%>
 ​
@@ -103,7 +103,7 @@ span:hover, a:hover {
     </div>
 
     <div class="col-md-6">
-        <p><span class="btn btn-sm btn-secondary" style="margin-bottom: 15px;"><%= link_to "Modifier", edit_user_path(current_user), :method => 'get', style: "color:white;"%></span></p>
+        <p><span class="btn btn-sm btn-secondary" style="margin-bottom: 15px;"><%= link_to "Modifier le profil", edit_user_path(current_user), :method => 'get', style: "color:white;"%></span></p>
     </div>
 
   </div>

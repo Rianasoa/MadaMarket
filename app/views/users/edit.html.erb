@@ -118,12 +118,16 @@ h2 {
                             
                            
                         </div><br>
-
-                        <p class="color">Devenir Fournisseur   <%= check_box_tag :is_admin,1, @user.is_admin , data: {url: user_path(@user.id), params:{ id:@user.id, is_admin: @user.is_admin}.to_param, method: "put" }%>
+                        <div>
+                        <p class="color">Devenir Fournisseur   <%= check_box_tag :is_admin,1, @user.is_admin , data: {url: user_path(@user.id), params:{ id:@user.id, is_admin: @user.is_admin}.to_param, method: "put", class: 'form-control' }%>
                         </div></p>
 
-                       <center> <%= submit_tag "Modifier le profil", class: 'btn btn-sm btn-secondary' %></center>
-                      
+                
+                      <center>
+                      <%= link_to "Accueil", root_path , class: "btn btn-sm btn-secondary"%>
+        
+                       <%= submit_tag "Modifier le profil", class: 'btn btn-sm btn-secondary' %>
+                      </center>
                  <%end%>
 
 

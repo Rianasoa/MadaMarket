@@ -9,17 +9,13 @@
 
 
 Category.destroy_all
-      c1 = Category.create!(title: "Artisanals")
+      c1 = Category.create!(title: "Artisanats")
       c2 = Category.create!(title: "Boissons")
-      c3 = Category.create!(title: "Produits laitiers")
-      c4 = Category.create!(title: "Charcuteries")
-      c5 = Category.create!(title: "Fruits et Légumes")
       c6 = Category.create!(title: "Conserves")
-      c7 = Category.create!(title: "Produits de la mer")
+      c7 = Category.create!(title: "Fruits de mer")
       c8 = Category.create!(title: "Graines")
-      c9 = Category.create!(title: "Assaisonnement")
-      c10 = Category.create!(title: "Produits alimentaires")
-      c11 = Category.create!(title: "Produits agricoles")
+      c10 = Category.create!(title: "Tsakitsaky")
+      c11 = Category.create!(title: "Comestibles")
 
 
 puts "Catégories créées"

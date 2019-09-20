@@ -41,7 +41,7 @@
 
 				 <div class="form-group">	
 				 		<%= link_to "Editer", edit_admin_product_path(@product.id), class: "btn btn-primary" %>
-					    <%= link_to 'Supprimer', admin_product_path(@product.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger ml-3" %>
+					    <%= link_to 'Supprimer', admin_product_path(@product.id), method: :delete, data: { confirm: 'Voulez vous vraiment supprimer?' }, class: "btn btn-danger ml-3" %>
 				 </div>
 	          		
           </div>

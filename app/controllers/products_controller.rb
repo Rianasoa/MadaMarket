@@ -1,8 +1,10 @@
 class ProductsController < ApplicationController
 
   def index
-    
-    @products = Product.all
+    @products = Product.where(validation: true)
+    @q = Product.search(params[:q])
+    @products = @q.result
+
     if user_signed_in? && current_user.is_admin == true
     	redirect_to admin_products_path
     end	

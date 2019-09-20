@@ -1,7 +1,7 @@
 class AccueilController < ApplicationController
   def index
   	@products = Product.all
-  	@provider = User.find(rand(User.first.id)..(User.last.id))
+  	@provider = User.where(is_admin: true)
   end
 
   def show

@@ -34,6 +34,7 @@ class Admin::ProductsController < ApplicationController
       flash[:alert] = "Erreur existe"
       render 'edit'
     end
+    
   end
 
   def destroy

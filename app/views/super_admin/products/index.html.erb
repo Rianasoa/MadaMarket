@@ -1,0 +1,30 @@
+<%= render 'layouts/super_admin_nav' %>
+<div class="container">
+
+<table class="table table-bordered table-dark">
+	<h2>Listes des produits en attente</h2>
+	  <thead>
+	    <tr>
+	      <th scope="col">Id</th>
+	      <th scope="col">Titre</th>
+	      <th scope="col">Prix</th>
+	      <th scope="col">Image</th>
+	      <th scope="col">Fournisseur</th>
+	      <th scope="col">Action</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	      <% @products.each do |product|%>
+	    <tr>
+	      <th scope="row"><%=product.id%></th>
+	      <td><%=product.title%></td>
+	      <td><%=product.price%></td>
+	      <td><img src="<%=product.image_url%>" height="100px" width="100px"></td>
+	      <td><%= product.provider.first_name%></td>
+	      <td><a href="/super_admin/products/<%=product.id%>" data-method="put" class="btn btn-success">Valider</a>
+	      	<a href="/super_admin/products/<%=product.id%>" data-method="delete" class="btn btn-danger">Refuser</a></td>
+	    </tr>
+	      <%end%>
+	  </tbody>
+</table>
+</div>

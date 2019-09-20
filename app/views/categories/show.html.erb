@@ -1,7 +1,7 @@
 <div class="site-wrap">
     <%= render "layouts/nav"%>
 
-   <div class="site-blocks-cover" style="background-image: url('https://cdn.pixabay.com/photo/2015/09/21/14/24/supermarket-949913__340.jpg');">
+   <div class="site-blocks-cover" style="background-image: url('https://www.missions-mmm.com/wp-content/uploads/2019/04/francfort-dusseldorf-retail-store-tour-allemagne-missions-mmm-tendances-bio-2.jpg');">
       <div class="container">
         <div class="row">
           <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
@@ -66,21 +66,21 @@
             <h2 class="text-uppercase"><%= @category.title%></h2>
             <div class="row">
             <%prod = []%>
-          <%@products.order(created_at: :ASC).each do |product|%>
+          <%@products.order(created_at: :DESC).each do |product|%>
           <%if product.category == @category%>
             <%prod << product%>
           <%end%>
           <%end%>
            <%if prod.length == 0%>
             <h3>Pas de produits pour <%= @category.title%></h3>
-           <%else%>
-
+          
+           <%elsif prod.length <= 6%>
           <% for i in 0..prod.length-1%>
 
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
             <span class="tag">Sale</span>
                 <%if prod[i].picture.attached?%>
-                  <%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top" %>
+                  <%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top", height:"300px" %>
                 <%else%>
                 <img class="card-img-top" height="300px" src="<%= prod[i].image_url %>" alt="Card image cap">
                 <%end%>
@@ -89,12 +89,34 @@
                 <a href="<%= carts_path(prod[i].id)%>" class="btn btn-warning btn-sm" data-method="post">Ajouter au panier</a>
           </div>
           <%end%>
+          <%else%>
+           <% for i in 0..5%>
+
+          <div class="col-sm-6 col-lg-4 text-center item mb-4">
+            <span class="tag">Sale</span>
+                <%if prod[i].picture.attached?%>
+                  <%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top", height: "300px" %>
+                <%else%>
+                <img class="card-img-top" height="300px" src="<%= prod[i].image_url %>" alt="Card image cap">
+                <%end%>
+                <h3 class="text-dark"><a href="/products/<%=prod[i].id%>" data-method="get"><%= prod[i].title%></a></h3>
+                <p class="price"><%= prod[i].price%></p>
+                <a href="<%= carts_path(prod[i].id)%>" class="btn btn-warning btn-sm" data-method="post">Ajouter au panier</a>
+          </div>
+          <%end%>
+
           <%end%>
 
       </div>
+       <div class="row mt-5">
+           <%unless prod.length == 0%>
+          <div class="col-12 text-center" style="margin-bottom: 7%;">
+            <a href="<%=accueil_index_path%>" class="btn btn-warning px-4 py-3">Voir tous les produits</a>
           </div>
+       <%end%>
         </div>
-       
+      </div>
+    </div>       
     </div>
 
 

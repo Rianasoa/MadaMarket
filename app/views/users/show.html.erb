@@ -66,7 +66,14 @@ span:hover, a:hover {
 <body>
 
 <div class="card-top">
+
     <h1 style="color:black;">Mon profil</h1>
+    <%if current_user.is_admin == true%>
+    <p class="color">Votre demande est validée <strong>Vous êtes fournisseur</strong></p>
+    <%end%>
+    <%if current_user.is_admin == nil%>
+    <p class="color">Votre demande en tant que fournisseur est en attente de validation</p>
+     <%end%>
     <%if current_user.avatar.attached?%>
                 <%= image_tag current_user.avatar, alt: 'avatar', class:"image" %>
                 <%else%>
@@ -87,6 +94,7 @@ span:hover, a:hover {
   <p class="color"><%=current_user.last_name%></p>
   <p class="color"><%=current_user.email%></p>
   <p class="color"><%=current_user.address%></p>
+
 ​
   <div class="row">
     <div class="col-md-6">

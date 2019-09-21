@@ -2617,3 +2617,1590 @@ DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please us
 Completed 200 OK in 79ms (Views: 72.5ms | ActiveRecord: 5.5ms | Allocations: 42135)
 
 
+Started GET "/" for ::1 at 2019-09-21 14:13:04 +0300
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/dev/Documents/riana/THP5/MadaMarket/app/controllers/products_controller.rb:5)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:7:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.6ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[36mCart Load (1.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 6]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 188.6ms | Allocations: 16045)
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:123
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:133
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 8]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 8]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:133
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 7]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 7]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:133
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 4]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 4]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:133
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 20.7ms | Allocations: 1008)
+  Rendered products/index.html.erb within layouts/application (Duration: 337.2ms | Allocations: 39596)
+Completed 200 OK in 21383ms (Views: 21109.8ms | ActiveRecord: 37.0ms | Allocations: 1370045)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2019-09-21 14:13:41 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"lUGYtHkPtuhOFiSJVSGxaoLczdO1L77RsdvucgT9LosjIMe1ZX7zxuYOyV0fv5ZNfnudnInMt5mDOaHDay6B+A=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 2119ms (ActiveRecord: 0.5ms | Allocations: 184577)
+
+
+Started GET "/" for ::1 at 2019-09-21 14:13:43 +0300
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/dev/Documents/riana/THP5/MadaMarket/app/controllers/products_controller.rb:5)
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 2.2ms | Allocations: 1058)
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:327
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 8]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 8]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 7]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 7]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 4]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 4]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 3.0ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 30.3ms | Allocations: 12639)
+Completed 200 OK in 65ms (Views: 57.4ms | ActiveRecord: 4.8ms | Allocations: 42213)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-09-21 14:13:46 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Parameters: {"authenticity_token"=>"SC8rsMLTHkR4MMhXLw/taKW3AVGI0VZA02FEq9l5ilJwQ7BWWvUEqhW8H5ANRZn5GmCRMcvbF5iPQz6mKUT36w=="}
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 13.8ms | Allocations: 550)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 58.3ms | Allocations: 2338)
+Completed 200 OK in 90ms (Views: 88.5ms | ActiveRecord: 0.0ms | Allocations: 32983)
+
+
+Started POST "/users" for ::1 at 2019-09-21 14:14:10 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"QQVM7Q/Plxotr19SMvWhsV4o8IjJTMl9Az2CwBo7hUt5adcLl+mN9EAjiJUQv9Ug4f9g6IpGiKVfH/jN6gb48g==", "user"=>{"first_name"=>"ra", "last_name"=>"be", "email"=>"fournisseur@gmail.com", "address"=>"tana", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"S'inscrire"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fournisseur@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 759)
+Completed 200 OK in 418ms (Views: 39.7ms | ActiveRecord: 1.6ms | Allocations: 40062)
+
+
+Started POST "/users" for ::1 at 2019-09-21 14:14:18 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"MU1vfSMpsxpzmL13JDWm2gT9C0N48z5jnh8EpztcZaYJIfSbuw+p9B4UarAGf9JLuyqbIzv5f7vCPX6qy2EYHw==", "user"=>{"first_name"=>"ra", "last_name"=>"be", "email"=>"fournisseur@gmail.com", "address"=>"tana", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"S'inscrire"}
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fournisseur@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (1.4ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 78)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 749)
+Completed 200 OK in 231ms (Views: 61.6ms | ActiveRecord: 4.6ms | Allocations: 35808)
+
+
+Started POST "/users" for ::1 at 2019-09-21 14:14:42 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"itTE7gOd+GFUgg9rQzL2VPZl4SOh+onGoi4cg0FtE+SyuF8Im7vijzkO2KxheILFSbJxQ+LwyB7+DGaOsVBuXQ==", "user"=>{"first_name"=>"rabe", "last_name"=>"bebe", "email"=>"fournisseur@gmail.com", "address"=>"tana", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"S'inscrire"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fournisseur@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 750)
+Completed 200 OK in 204ms (Views: 32.1ms | ActiveRecord: 0.8ms | Allocations: 35837)
+
+
+Started POST "/users" for ::1 at 2019-09-21 14:14:59 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"/rR7oq8mFr+PFK8I+byVu+5qGrW+EzzxCNXP5KvvexrG2OBENwAMUeKYeM/b9uEqUb2K1f0ZfSlU97XpW9IGow==", "user"=>{"first_name"=>"rabea", "last_name"=>"bebe", "email"=>"fournisseur@gmail.com", "address"=>"tana", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"S'inscrire"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fournisseur@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 750)
+Completed 200 OK in 246ms (Views: 55.7ms | ActiveRecord: 2.5ms | Allocations: 36330)
+
+
+Started POST "/users" for ::1 at 2019-09-21 14:15:08 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"s+QHSWdwfqVubYNEVqyzLtQmHrkL93V6VAcoaeUY2RqLiJyv/1ZkSwPhVIN05se/a/GO2Uj9NKIIJVJkFSWkow==", "user"=>{"first_name"=>"rabea", "last_name"=>"bebe", "email"=>"fournisseur1@gmail.com", "address"=>"tana", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"S'inscrire"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fournisseur1@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "address", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "rabea"], ["last_name", "bebe"], ["email", "fournisseur1@gmail.com"], ["address", "tana"], ["encrypted_password", "$2a$11$xk9Zf68/bcvFqunIChFCXuIemhPAZbouItJcRRfGQMLzQfYikca8S"], ["created_at", "2019-09-21 11:15:08.768194"], ["updated_at", "2019-09-21 11:15:08.768194"]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 16.7ms | Allocations: 147)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 0.6ms | Allocations: 130)
+UserMailer#welcome_email: processed outbound mail in 44.3ms
+Delivered mail 5d86063ce04dd_43672ac354ff9a2850072@lenovoa18.mail (4811.6ms)
+Date: Sat, 21 Sep 2019 14:15:08 +0300
+From: madamarket.mg
+To: fournisseur1@gmail.com
+Message-ID: <5d86063ce04dd_43672ac354ff9a2850072@lenovoa18.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d86063cd98e6_43672ac354ff9a28499e0";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d86063cd98e6_43672ac354ff9a28499e0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+Qm9uam91ciByYWJlYSBldCBiaWVudmVudWUgY2hleiBub3VzICENCj09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT0NCiANClR1IHQnZXMgaW5zY3JpdCBzdXIgbWFkYW1hcmtldCBl
+biB1dGlsaXNhbnQgbCdlLW1haWwgc3VpdmFudCA6IGZvdXJuaXNzZXVyMUBn
+bWFpbC5jb20uDQogDQogDQrDgCB0csOocyB2aXRlIHN1ciBtYWRhbWFya2V0
+ICENCg==
+
+----==_mimepart_5d86063cd98e6_43672ac354ff9a28499e0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut rabea et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : four=
+nisseur1@gmail.com.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d86063cd98e6_43672ac354ff9a28499e0--
+
+  [1m[36mCart Create (0.7ms)[0m  [1m[32mINSERT INTO "carts" ("customer_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["customer_id", 7], ["created_at", "2019-09-21 11:15:13.705707"], ["updated_at", "2019-09-21 11:15:13.705707"]]
+  ↳ app/models/user.rb:26:in `add_cart'
+  [1m[35m (29.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5134ms (ActiveRecord: 31.1ms | Allocations: 30463)
+
+
+Started GET "/" for ::1 at 2019-09-21 14:15:13 +0300
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/dev/Documents/riana/THP5/MadaMarket/app/controllers/products_controller.rb:5)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:7:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 7]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 6.8ms | Allocations: 3286)
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:123
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:133
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 8]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 8]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:133
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 7]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 7]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:133
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 4]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 4]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:133
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:141
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 25.5ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 60.8ms | Allocations: 14806)
+Completed 200 OK in 94ms (Views: 84.4ms | ActiveRecord: 6.0ms | Allocations: 45112)
+
+
+Started GET "/users/7/edit" for ::1 at 2019-09-21 14:15:15 +0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `edit'
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (Duration: 15.2ms | Allocations: 2191)
+Completed 200 OK in 49ms (Views: 44.8ms | ActiveRecord: 0.6ms | Allocations: 33034)
+
+
+Started PUT "/users/7" for ::1 at 2019-09-21 14:15:18 +0300
+Processing by UsersController#update as HTML
+  Parameters: {"authenticity_token"=>"SPXW2lnyp8ddVehuPnSoTvFFFiOv6fAlOY/AdMKsfqlGx9yw+ww37/msywO9G19Smux/u+flEmNOfInLs2/LBg==", "first_name"=>"rabea", "last_name"=>"bebe", "email"=>"fournisseur1@gmail.com", "is_admin"=>"1", "commit"=>"Modifier le profil", "id"=>"7"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `update'
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:19:in `update'
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", nil], ["updated_at", "2019-09-21 11:15:18.145260"], ["id", 7]]
+  ↳ app/controllers/users_controller.rb:19:in `update'
+  [1m[35m (25.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:19:in `update'
+Redirected to http://localhost:3000/users/7
+Completed 302 Found in 36ms (ActiveRecord: 28.7ms | Allocations: 3938)
+
+
+Started GET "/users/7" for ::1 at 2019-09-21 14:15:18 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:77
+  Rendered users/show.html.erb within layouts/application (Duration: 15.2ms | Allocations: 2316)
+Completed 200 OK in 57ms (Views: 46.6ms | ActiveRecord: 5.5ms | Allocations: 33724)
+
+
+Started GET "/" for 127.0.0.1 at 2019-09-21 14:15:31 +0300
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/dev/Documents/riana/THP5/MadaMarket/app/controllers/products_controller.rb:5)
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 2.8ms | Allocations: 1058)
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:327
+  [1m[36mActiveStorage::Attachment Load (2.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 8]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 8]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 7]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 7]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 4]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 4]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.2ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 38.4ms | Allocations: 12636)
+Completed 200 OK in 66ms (Views: 58.5ms | ActiveRecord: 5.7ms | Allocations: 42166)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-09-21 14:15:36 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Parameters: {"authenticity_token"=>"SSKO4wEiRzhMamWyGWbNbBQSfUZDUU76j1Nq9gSuRLFtp00Q+n7SFxUjIeoMDh6EiATDY84v7rmlA8u36oTzvg=="}
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 79)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 759)
+Completed 200 OK in 35ms (Views: 33.8ms | ActiveRecord: 0.0ms | Allocations: 30212)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-09-21 14:15:42 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 213)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 123.6ms | Allocations: 3545)
+Completed 200 OK in 151ms (Views: 150.2ms | ActiveRecord: 0.0ms | Allocations: 33633)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2019-09-21 14:16:12 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"4Pdxt5ursZmKydx3x3TOGHiAPxeYxHevmShUcMRCs/Tk0rjv5WUedwPxaQ8ofBOmvL5JL57/iDbSaKuzyd7F5w==", "user"=>{"email"=>"admin@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Se connecter"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 250ms (ActiveRecord: 0.4ms | Allocations: 3228)
+
+
+Started GET "/" for 127.0.0.1 at 2019-09-21 14:16:12 +0300
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/dev/Documents/riana/THP5/MadaMarket/app/controllers/products_controller.rb:5)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:7:in `index'
+  Rendering products/index.html.erb within layouts/application
+  Rendered layouts/_super_admin_nav.html.erb (Duration: 18.6ms | Allocations: 371)
+  Rendered products/index.html.erb within layouts/application (Duration: 19.1ms | Allocations: 587)
+Completed 200 OK in 50ms (Views: 47.2ms | ActiveRecord: 0.3ms | Allocations: 30859)
+
+
+Started GET "/super_admin/users" for 127.0.0.1 at 2019-09-21 14:16:16 +0300
+Processing by SuperAdmin::UsersController#index as HTML
+  Parameters: {"authenticity_token"=>"3LaWomgg5pvmKScnylmGC/EdLMqHG+ODaGKKuBDdSKszsPhsxxuCgNikmmRfjjsJqk6k8uUG4hAaVfP6rbcw/w=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering super_admin/users/index.html.erb within layouts/application
+  Rendered layouts/_super_admin_nav.html.erb (Duration: 0.4ms | Allocations: 89)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."is_admin" = $1[0m  [["is_admin", true]]
+  ↳ app/views/super_admin/users/index.html.erb:15
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."is_admin" IS NULL[0m
+  ↳ app/views/super_admin/users/index.html.erb:39
+  Rendered super_admin/users/index.html.erb within layouts/application (Duration: 140.8ms | Allocations: 1870)
+Completed 200 OK in 202ms (Views: 196.4ms | ActiveRecord: 1.3ms | Allocations: 33325)
+
+
+Started PUT "/super_admin/users/7" for 127.0.0.1 at 2019-09-21 14:16:26 +0300
+Processing by SuperAdmin::UsersController#update as HTML
+  Parameters: {"authenticity_token"=>"uwZwi4EFRgsaW695vXLCErNEkW0WFXMIcx+zG/DRP2dUAB5FLj4iECTWEjoopX8Q6BcZVXQIcpsBKMpZTbtHMw==", "id"=>"7"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/super_admin/users_controller.rb:19:in `update'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/super_admin/users_controller.rb:20:in `update'
+  [1m[36mUser Update (89.1ms)[0m  [1m[33mUPDATE "users" SET "is_admin" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["is_admin", true], ["updated_at", "2019-09-21 11:16:26.806645"], ["id", 7]]
+  ↳ app/controllers/super_admin/users_controller.rb:20:in `update'
+  [1m[35m (68.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/super_admin/users_controller.rb:20:in `update'
+Redirected to http://localhost:3000/super_admin/users
+Completed 302 Found in 166ms (ActiveRecord: 158.3ms | Allocations: 4678)
+
+
+Started GET "/super_admin/users" for 127.0.0.1 at 2019-09-21 14:16:26 +0300
+Processing by SuperAdmin::UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering super_admin/users/index.html.erb within layouts/application
+  Rendered layouts/_super_admin_nav.html.erb (Duration: 0.2ms | Allocations: 80)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."is_admin" = $1[0m  [["is_admin", true]]
+  ↳ app/views/super_admin/users/index.html.erb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."is_admin" IS NULL[0m
+  ↳ app/views/super_admin/users/index.html.erb:39
+  Rendered super_admin/users/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1488)
+Completed 200 OK in 59ms (Views: 55.5ms | ActiveRecord: 1.1ms | Allocations: 32247)
+
+
+Started GET "/" for ::1 at 2019-09-21 14:16:36 +0300
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/dev/Documents/riana/THP5/MadaMarket/app/controllers/products_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:7:in `index'
+Redirected to http://localhost:3000/admin/products
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms | Allocations: 1410)
+
+
+Started GET "/admin/products" for ::1 at 2019-09-21 14:16:36 +0300
+Processing by Admin::ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering admin/products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."provider_id" = $1 ORDER BY "products"."created_at" DESC[0m  [["provider_id", 7]]
+  ↳ app/views/admin/products/index.html.erb:7
+  Rendered admin/products/index.html.erb within layouts/application (Duration: 34.7ms | Allocations: 971)
+  Rendered layouts/_admin_nav.html.erb (Duration: 26.7ms | Allocations: 396)
+Completed 200 OK in 93ms (Views: 89.7ms | ActiveRecord: 0.7ms | Allocations: 33070)
+
+
+Started GET "/admin/products/new" for ::1 at 2019-09-21 14:16:39 +0300
+Processing by Admin::ProductsController#new as HTML
+  Parameters: {"authenticity_token"=>"2jf4jza2esSh5ipGBt7/2ptuGYOlG7EP4uQsLNp8vq/iW2NprpBgKsxq/YEklItLJLmJ4+YR8Ne+xlYhKkHDFg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering admin/products/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/admin/products/new.html.erb:72:in `collect'
+  Rendered admin/products/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1864)
+  Rendered layouts/_admin_nav.html.erb (Duration: 0.2ms | Allocations: 75)
+Completed 200 OK in 43ms (Views: 38.9ms | ActiveRecord: 0.7ms | Allocations: 32876)
+
+
+Started POST "/admin/products" for ::1 at 2019-09-21 14:16:47 +0300
+Processing by Admin::ProductsController#create as HTML
+  Parameters: {"authenticity_token"=>"Mwlj9OkKCJrl1/y9bsI+crwqN7DQloxNwlNcZV37eK0LZfgScSwSdIhbK3pMiErjA/2n0JOczZWecSZorcYFFA==", "title"=>"THP", "description"=>"tsara be", "price"=>"5000", "image_url"=>"https://pictures.attention-ngn.com/portal/31/398829/products/1537996611.757_115_o.jpg", "category_id"=>"1", "commit"=>"Ajouter"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/admin/products_controller.rb:19:in `create'
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/admin/products_controller.rb:19:in `create'
+  [1m[36mProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "provider_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "THP"], ["description", "tsara be"], ["price", 5000.0], ["image_url", "https://pictures.attention-ngn.com/portal/31/398829/products/1537996611.757_115_o.jpg"], ["provider_id", 7], ["category_id", 1], ["created_at", "2019-09-21 11:16:47.498895"], ["updated_at", "2019-09-21 11:16:47.498895"]]
+  ↳ app/controllers/admin/products_controller.rb:19:in `create'
+  [1m[35m (35.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/admin/products_controller.rb:19:in `create'
+Redirected to http://localhost:3000/admin/products
+Completed 302 Found in 107ms (ActiveRecord: 37.0ms | Allocations: 8555)
+
+
+Started GET "/admin/products" for ::1 at 2019-09-21 14:16:47 +0300
+Processing by Admin::ProductsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering admin/products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."provider_id" = $1 ORDER BY "products"."created_at" DESC[0m  [["provider_id", 7]]
+  ↳ app/views/admin/products/index.html.erb:7
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/admin/products/index.html.erb:14
+  Rendered admin/products/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 1710)
+  Rendered layouts/_admin_nav.html.erb (Duration: 0.2ms | Allocations: 68)
+Completed 200 OK in 44ms (Views: 39.6ms | ActiveRecord: 1.7ms | Allocations: 32586)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2019-09-21 14:16:50 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"hgUT8n/qTLxxV+ZW8VuhajO+TJcHXm6uBoLs5bbJ5/W+aYgU58xWUhzbMZHTEdX7jGnc90RUL3ZaoJboRvSaTA=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.2ms | Allocations: 2251)
+
+
+Started GET "/" for ::1 at 2019-09-21 14:16:50 +0300
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/dev/Documents/riana/THP5/MadaMarket/app/controllers/products_controller.rb:5)
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 2.2ms | Allocations: 1057)
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:327
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 8]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 8]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 7]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 7]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 4]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 4]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.8ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 29.6ms | Allocations: 12637)
+Completed 200 OK in 58ms (Views: 52.9ms | ActiveRecord: 3.8ms | Allocations: 42190)
+
+
+Started GET "/products/8" for ::1 at 2019-09-21 14:16:53 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"j+QopoLNfei9EHd5WADIspzvfE7dcORVzb/y0vkgpDs21pRzpBAt7PUb5Y6cB1rkU16ecfixIvoYXoBuR6JDgw==", "id"=>"8"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:13:in `show'
+  Rendering products/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 2.0ms | Allocations: 1058)
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/show.html.erb:9
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.3ms | Allocations: 801)
+  Rendered products/show.html.erb within layouts/application (Duration: 23.7ms | Allocations: 3317)
+Completed 200 OK in 61ms (Views: 57.9ms | ActiveRecord: 0.9ms | Allocations: 33449)
+
+
+Started GET "/accueil" for ::1 at 2019-09-21 14:16:55 +0300
+Processing by AccueilController#index as HTML
+  Parameters: {"authenticity_token"=>"rUM2X0wC3pE+YOcDNxsCsQNmmS4Lvn5XyYA3CHqzHnEUcYqKat+OlXZrdfTzHJDnzNd7ES5/uPgcYUW0xDH5yQ=="}
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 2.6ms | Allocations: 1105)
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:65
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."is_admin" = $1[0m  [["is_admin", true]]
+  ↳ app/views/accueil/index.html.erb:72
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" ASC[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:84
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.4ms | Allocations: 801)
+  Rendered accueil/index.html.erb within layouts/application (Duration: 33.0ms | Allocations: 12522)
+Completed 200 OK in 92ms (Views: 84.6ms | ActiveRecord: 6.1ms | Allocations: 42471)
+
+
+Started GET "/accueil" for ::1 at 2019-09-21 14:17:27 +0300
+Processing by AccueilController#index as HTML
+  Parameters: {"authenticity_token"=>"67bGDar9OtuY8diBy93TPs6ytcxzf/zeoVXNEkB85yxShHrYjCBq39D6SnYP2kFoAQNX81a+OnF0tL+u/v4AlA=="}
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 4.3ms | Allocations: 1530)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."is_admin" = $1[0m  [["is_admin", true]]
+  ↳ app/views/accueil/index.html.erb:68
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" ASC[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:80
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:90
+  [1m[36mActiveStorage::Attachment Load (5.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:90
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:90
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:90
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 3.2ms | Allocations: 998)
+  Rendered accueil/index.html.erb within layouts/application (Duration: 29.1ms | Allocations: 9080)
+Completed 200 OK in 90ms (Views: 78.2ms | ActiveRecord: 10.4ms | Allocations: 39600)
+
+
+Started GET "/accueil/7" for ::1 at 2019-09-21 14:17:38 +0300
+Processing by AccueilController#show as HTML
+  Parameters: {"authenticity_token"=>"tE1pGJ8MHK5rRORhWRCzUF2aBMJqgK6vNjf1vbO6UGUNf9XNudFMqiNPdpadFyEGkivm/U9BaADj1ocBDTi33Q==", "id"=>"7"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accueil_controller.rb:11:in `show'
+  Rendering accueil/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 2.2ms | Allocations: 1104)
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/accueil/show.html.erb:68
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."provider_id" = $1[0m  [["provider_id", 7]]
+  ↳ app/views/accueil/show.html.erb:93
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:96
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.4ms | Allocations: 801)
+  Rendered accueil/show.html.erb within layouts/application (Duration: 31.3ms | Allocations: 8574)
+Completed 200 OK in 75ms (Views: 65.7ms | ActiveRecord: 7.3ms | Allocations: 38538)
+
+
+Started GET "/accueil/7" for ::1 at 2019-09-21 14:18:19 +0300
+Processing by AccueilController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accueil_controller.rb:11:in `show'
+  Rendering accueil/show.html.erb within layouts/application
+  [1m[36mCategory Load (3.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 7.9ms | Allocations: 1530)
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/accueil/show.html.erb:68
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."provider_id" = $1[0m  [["provider_id", 7]]
+  ↳ app/views/accueil/show.html.erb:93
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:96
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.8ms | Allocations: 998)
+  Rendered accueil/show.html.erb within layouts/application (Duration: 31.8ms | Allocations: 9458)
+Completed 200 OK in 64ms (Views: 56.3ms | ActiveRecord: 6.1ms | Allocations: 40445)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2019-09-21 14:22:55 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ecF71itIXMl9ZJyzeusu5n6rIwRDQiKyO91Zb6ol/O+WxxUYhHM40kPpIfDvPJPkJfirPCFfIyFJ6iAtF0+Euw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.3ms | Allocations: 2197)
+
+
+Started GET "/" for 127.0.0.1 at 2019-09-21 14:22:55 +0300
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/dev/Documents/riana/THP5/MadaMarket/app/controllers/products_controller.rb:5)
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 2.6ms | Allocations: 1057)
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:327
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 8]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 8]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 7]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 7]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 4]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 4]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:337
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:345
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.2ms | Allocations: 801)
+  Rendered products/index.html.erb within layouts/application (Duration: 32.2ms | Allocations: 14966)
+Completed 200 OK in 61ms (Views: 54.3ms | ActiveRecord: 5.1ms | Allocations: 45180)
+
+
+Started GET "/accueil" for 127.0.0.1 at 2019-09-21 14:23:38 +0300
+Processing by AccueilController#index as HTML
+  Parameters: {"authenticity_token"=>"Tq1PHRaY0NKRZFbAUqIUQc5bCRP0t1xC3nopi5mwFTLZUUl2xroZu0Wf02QRJngMKknB8jfF5PfZKAkPFhbiGQ=="}
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 3.5ms | Allocations: 1530)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."is_admin" = $1[0m  [["is_admin", true]]
+  ↳ app/views/accueil/index.html.erb:67
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" ASC[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:79
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:89
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:89
+  [1m[36mActiveStorage::Attachment Load (1.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:89
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:89
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.7ms | Allocations: 998)
+  Rendered accueil/index.html.erb within layouts/application (Duration: 21.2ms | Allocations: 9072)
+Completed 200 OK in 49ms (Views: 42.9ms | ActiveRecord: 5.1ms | Allocations: 39554)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2019-09-21 14:23:51 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"IjfVodVOp755nXdVQIftw+dedzvF4JW3dhn1JzTnuwK1y9PKBWxu161m8vEDA4GOA0y/2gaSLQJxS9Wju0FMKQ==", "id"=>"1"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:13:in `show'
+  Rendering products/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 2.2ms | Allocations: 1058)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/show.html.erb:9
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.4ms | Allocations: 801)
+  Rendered products/show.html.erb within layouts/application (Duration: 6.8ms | Allocations: 3302)
+Completed 200 OK in 37ms (Views: 33.9ms | ActiveRecord: 1.1ms | Allocations: 33857)
+
+
+Started GET "/accueil" for 127.0.0.1 at 2019-09-21 14:23:56 +0300
+Processing by AccueilController#index as HTML
+  Parameters: {"authenticity_token"=>"IjfVodVOp755nXdVQIftw+dedzvF4JW3dhn1JzTnuwK1y9PKBWxu161m8vEDA4GOA0y/2gaSLQJxS9Wju0FMKQ=="}
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 2.6ms | Allocations: 1104)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."is_admin" = $1[0m  [["is_admin", true]]
+  ↳ app/views/accueil/index.html.erb:67
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" ASC[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:79
+  [1m[36mActiveStorage::Attachment Load (5.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:89
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:89
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:89
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:89
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.1ms | Allocations: 801)
+  Rendered accueil/index.html.erb within layouts/application (Duration: 21.4ms | Allocations: 7557)
+Completed 200 OK in 75ms (Views: 64.6ms | ActiveRecord: 9.1ms | Allocations: 36886)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/aos.css.map"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/accueil/7" for ::1 at 2019-09-21 14:25:38 +0300
+Processing by AccueilController#show as HTML
+  Parameters: {"authenticity_token"=>"q303+/5qZQLybsteZCYUo+f4VcYczzBKxBgGPb3UYTYST4su2Lc1BrplWamgIYb1KEm3+TkO9uUR+XSBA1aGjg==", "id"=>"7"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accueil_controller.rb:11:in `show'
+  Rendering accueil/show.html.erb within layouts/application
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 3.5ms | Allocations: 1104)
+  [1m[36mProduct Load (2.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/accueil/show.html.erb:68
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."provider_id" = $1[0m  [["provider_id", 7]]
+  ↳ app/views/accueil/show.html.erb:93
+  [1m[36mActiveStorage::Attachment Load (1.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:96
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.3ms | Allocations: 801)
+  Rendered accueil/show.html.erb within layouts/application (Duration: 31.6ms | Allocations: 8571)
+Completed 200 OK in 67ms (Views: 54.8ms | ActiveRecord: 9.7ms | Allocations: 38528)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/aos.css.map"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/accueil" for 127.0.0.1 at 2019-09-21 14:40:58 +0300
+Processing by AccueilController#index as HTML
+  Parameters: {"authenticity_token"=>"RYQbmmD/pYvmVFkW3NO41a5Hlg1GgjzHlTnVkDo0+PDSeB3xsN1s4jKv3LKfV9SYSlVe7IXwhHKSa/UUtZIP2w=="}
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 2.9ms | Allocations: 1156)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."is_admin" = $1[0m  [["is_admin", true]]
+  ↳ app/views/accueil/index.html.erb:67
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" ASC[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:79
+  [1m[36mActiveStorage::Attachment Load (15.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:89
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:89
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:89
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:89
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.5ms | Allocations: 801)
+  Rendered accueil/index.html.erb within layouts/application (Duration: 41.0ms | Allocations: 7714)
+Completed 200 OK in 108ms (Views: 88.6ms | ActiveRecord: 18.8ms | Allocations: 37037)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."is_admin" = $1[0m  [["is_admin", true]]
+Started GET "/products/9" for ::1 at 2019-09-21 14:45:30 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"JHzEpk/w84HloEdjlh1iGf7VW/pngCrbgxIwYmhPMiSdTnhzaS2jha2r1ZRSGvBPMWS5xUJB7HRW80Le1s3VnA==", "id"=>"9"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:13:in `show'
+  Rendering products/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 26.3ms | Allocations: 1484)
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/show.html.erb:9
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 17.1ms | Allocations: 998)
+  Rendered products/show.html.erb within layouts/application (Duration: 60.6ms | Allocations: 4206)
+Started GET "/accueil/7" for ::1 at 2019-09-21 14:45:30 +0300
+Processing by AccueilController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/accueil_controller.rb:11:in `show'
+  Rendering accueil/show.html.erb within layouts/application
+  [1m[36mCategory Load (1.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 5.1ms | Allocations: 1106)
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/accueil/show.html.erb:68
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mProduct Load (1.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."provider_id" = $1[0m  [["provider_id", 7]]
+  ↳ app/views/accueil/show.html.erb:93
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:96
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.4ms | Allocations: 801)
+  Rendered accueil/show.html.erb within layouts/application (Duration: 46.8ms | Allocations: 9640)
+Completed 200 OK in 474ms (Views: 462.6ms | ActiveRecord: 8.6ms | Allocations: 54122)
+
+
+Completed 200 OK in 1265ms (Views: 1261.0ms | ActiveRecord: 1.3ms | Allocations: 78106)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/aos.css.map"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/accueil" for ::1 at 2019-09-21 14:45:37 +0300
+Processing by AccueilController#index as HTML
+  Parameters: {"authenticity_token"=>"eDEXnL0OlT6j9K6bkQjx+U6F6tMRi8SkokZ03nlLrhPBA6tJm9PFOuv/PGxVD2OvgTQI7DRKAgt3pwZix8lJqw=="}
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 3.6ms | Allocations: 1103)
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:65
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" ASC[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:84
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.5ms | Allocations: 801)
+  Rendered accueil/index.html.erb within layouts/application (Duration: 34.8ms | Allocations: 11072)
+Completed 200 OK in 80ms (Views: 71.3ms | ActiveRecord: 5.4ms | Allocations: 40564)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/aos.css.map"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/accueil/4" for ::1 at 2019-09-21 14:47:06 +0300
+Processing by AccueilController#show as HTML
+  Parameters: {"authenticity_token"=>"Jm1noBgN9qzYJaZ80lK/n0MYJxE5rCu/WhzKb3dLaMCfX9t1PtCmqJAuNIsWVS3JjKnFLhxt7RCP/bjTycmPeA==", "id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accueil_controller.rb:11:in `show'
+  Rendering accueil/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 3.3ms | Allocations: 1096)
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/accueil/show.html.erb:68
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."provider_id" = $1[0m  [["provider_id", 4]]
+  ↳ app/views/accueil/show.html.erb:93
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:96
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 2.4ms | Allocations: 801)
+  Rendered accueil/show.html.erb within layouts/application (Duration: 27.8ms | Allocations: 7936)
+Completed 200 OK in 92ms (Views: 84.3ms | ActiveRecord: 5.9ms | Allocations: 37758)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/aos.css.map"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/accueil/4" for ::1 at 2019-09-21 14:47:46 +0300
+Processing by AccueilController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accueil_controller.rb:11:in `show'
+  Rendering accueil/show.html.erb within layouts/application
+  [1m[36mCategory Load (3.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 6.4ms | Allocations: 1530)
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/accueil/show.html.erb:68
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."provider_id" = $1[0m  [["provider_id", 4]]
+  ↳ app/views/accueil/show.html.erb:93
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:96
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 6.7ms | Allocations: 998)
+  Rendered accueil/show.html.erb within layouts/application (Duration: 45.2ms | Allocations: 9460)
+Completed 200 OK in 104ms (Views: 88.8ms | ActiveRecord: 13.2ms | Allocations: 40465)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/aos.css.map"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/accueil" for ::1 at 2019-09-21 14:47:49 +0300
+Processing by AccueilController#index as HTML
+  Parameters: {"authenticity_token"=>"uYv20dqGiKyUApPHnP6xr5mjBNF+dKlaKuqnWsnXAT8AuUoE/FvYqNwJATBY+SP5VhLm7lu1b/X/C9Xmd1Xmhw=="}
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mCategory Load (2.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 4.5ms | Allocations: 1103)
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:65
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" ASC[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:84
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 1.7ms | Allocations: 801)
+  Rendered accueil/index.html.erb within layouts/application (Duration: 31.2ms | Allocations: 11066)
+Completed 200 OK in 76ms (Views: 67.7ms | ActiveRecord: 6.9ms | Allocations: 40563)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/aos.css.map"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/accueil" for ::1 at 2019-09-21 14:48:10 +0300
+Processing by AccueilController#index as HTML
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 5.0ms | Allocations: 1529)
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:65
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" ASC[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:84
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 4.6ms | Allocations: 998)
+  Rendered accueil/index.html.erb within layouts/application (Duration: 54.1ms | Allocations: 11968)
+Completed 200 OK in 107ms (Views: 99.3ms | ActiveRecord: 6.6ms | Allocations: 42487)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/aos.css.map"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/products/1" for ::1 at 2019-09-21 14:49:45 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"authenticity_token"=>"iK3lU2id8++rb9bGXeQpaJ9GJYt4RWTeabFldKMbICQxn1mGTkCj6+NkRDGZ47s+UPfHtF2EonG8UBfIHZnHnA==", "id"=>"1"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:13:in `show'
+  Rendering products/show.html.erb within layouts/application
+  [1m[36mCategory Load (3.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 8.2ms | Allocations: 1484)
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/show.html.erb:9
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 2.2ms | Allocations: 998)
+  Rendered products/show.html.erb within layouts/application (Duration: 20.9ms | Allocations: 4205)
+Completed 200 OK in 93ms (Views: 86.1ms | ActiveRecord: 3.7ms | Allocations: 35286)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/aos.css.map"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/accueil" for ::1 at 2019-09-21 14:49:46 +0300
+Processing by AccueilController#index as HTML
+  Parameters: {"authenticity_token"=>"1nfpW1hUHmCOfU5q8RmnbfgDRv2DgaICwwljW5WUGNlvRVWOfolOZMZ23J01HjU7N7KkwqZAZK0W6BHnKxb/YQ=="}
+  Rendering accueil/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 3.4ms | Allocations: 1103)
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:65
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:66
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" ASC[0m  [["validation", true]]
+  ↳ app/views/accueil/index.html.erb:84
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/index.html.erb:94
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 2.1ms | Allocations: 801)
+  Rendered accueil/index.html.erb within layouts/application (Duration: 43.9ms | Allocations: 11087)
+Completed 200 OK in 105ms (Views: 98.3ms | ActiveRecord: 6.0ms | Allocations: 41132)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/aos.css.map"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/accueil/4" for ::1 at 2019-09-21 14:49:49 +0300
+Processing by AccueilController#show as HTML
+  Parameters: {"authenticity_token"=>"5wgUXB2UPda+6M9x+ZouRakPI4+RA3W5xg17eFrvm1BeOqiJO0lt0vbjXYY9nbwTZr7BsLTCsxYT7AnE5G186A==", "id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/accueil_controller.rb:11:in `show'
+  Rendering accueil/show.html.erb within layouts/application
+  [1m[36mCategory Load (3.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  Rendered layouts/_nav.html.erb (Duration: 8.8ms | Allocations: 1104)
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/accueil/show.html.erb:68
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:69
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."provider_id" = $1[0m  [["provider_id", 4]]
+  ↳ app/views/accueil/show.html.erb:93
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/accueil/show.html.erb:96
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 3.3ms | Allocations: 801)
+  Rendered accueil/show.html.erb within layouts/application (Duration: 40.6ms | Allocations: 8558)
+Completed 200 OK in 102ms (Views: 91.8ms | ActiveRecord: 7.9ms | Allocations: 38516)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/aos.css.map"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:64:in `block (3 levels) in broadcast'
+activesupport (6.0.0) lib/active_support/logger_silence.rb:36:in `silence'
+activesupport (6.0.0) lib/active_support/logger.rb:62:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'

@@ -69,11 +69,11 @@
           <%end%>
           <div class="dropdown">
                <span class="dropbtn">Fournisseur🔽</span>
-               <%fournisseur.each do |f|%>
                <div class="dropdown-content">
-               <a href="/accueil/<%= f.id%>" data-method="get">👉 <%=f.first_name%></a>
-               </div>
+               <%fournisseur.each do |f|%>
+               <a href="/accueil/<%= f.id%>" data-method="get">👉 <%=f.first_name%></a><br>
                 <%end%>
+               </div>
               </div>
           
           </div>

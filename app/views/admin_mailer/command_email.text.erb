@@ -1,0 +1,11 @@
+<%= @command_user.email %> a fait une commande suivante:
+==========================================================
+
+
+<!-- We do a loop in order to display in the mail the title and the image -->
+<% @cart_products_ordered.each do |product| %>
+
+<%= product.title %>
+
+<% end %>
+

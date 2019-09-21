@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_063650) do
   end
 
   create_table "cart_products", force: :cascade do |t|
+    t.integer "quantity"
     t.bigint "cart_id"
     t.bigint "product_id"
     t.datetime "created_at", precision: 6, null: false
@@ -98,6 +99,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_063650) do
     t.string "image_url"
     t.bigint "provider_id"
     t.bigint "category_id"
+    t.boolean "validation", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_products_on_category_id"
@@ -116,6 +118,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_063650) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_admin", default: false
+    t.boolean "is_super_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

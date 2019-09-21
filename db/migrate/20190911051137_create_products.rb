@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.string :image_url
       t.references :provider, index: true
       t.belongs_to :category, index: true
-
+      t.boolean :validation, default: false
       t.timestamps
     end
   end

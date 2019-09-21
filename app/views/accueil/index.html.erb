@@ -1,4 +1,49 @@
-  <div class="site-wrap">
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    .dropbtn {
+ 
+  color: #FF8C00;
+  padding: 16px;
+  font-size: 16px;
+  
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #FF8C00;
+  padding: 12px 16px;
+  text-decoration: none;
+  
+}
+
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+  </style>
+</head>
+<body>
+    <div class="site-wrap">
     <%= render "layouts/nav"%>
 
       <div class="bg-light py-3">
@@ -22,29 +67,41 @@
             <%fournisseur << product.provider%>
           <%end%>
           <%end%>
-          <span class="dropdown-toggle"><a href="">Fournisseur</a></span>
-              <ul class="dropdown">                   
-          <%fournisseur.each do |f|%>
-                    <li><a href="/accueil/<%= f.id%>" data-method="get"><%=f.first_name%></a></li>
-                     
-         <%end%>
-             </ul>
+          <div class="dropdown">
+               <span class="dropbtn">Fournisseur🔽</span>
+               <%fournisseur.each do |f|%>
+               <div class="dropdown-content">
+               <a href="/accueil/<%= f.id%>" data-method="get">👉 <%=f.first_name%></a>
+               </div>
+                <%end%>
+              </div>
           
           </div>
         </div>
     
         <div class="row">
-          <%Product.where(provider_id: @provider.id).each do |p|%>
+          <%prod = []%>
+          <%@products.order(created_at: :ASC).each do |product|%>
+            <%prod << product%>
+          <%end%>
+          <%if prod.length == 0%>
+            <h3>Pas de produits pour le moment</h3>
+          <%else%>
+          <% for i in 0..prod.length-1%>
+
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
             <span class="tag">Sale</span>
-            <%if p.picture.attached?%>
-                <a href="/products/<%=p.id%>" data-method="get"><%= image_tag p.picture, alt: 'picture', class:"card-img-top" %></a>
-            <%else%>
-                <a href="/products/<%=p.id%>" data-method="get"><img class="card-img-top" height="300px" src="<%= p.image_url %>" alt="Card image cap"></a>
-            <%end%>
-            <h3 class="text-dark"><a href="/products/<%=p.id%>"><%=p.title%></a></h3>
-            <p class="price"><%=p.price%></p>
+                <%if prod[i].picture.attached?%>
+                  <a href="/products/<%=prod[i].id%>" data-method="get"><%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top", height:"300px" %></a>
+                <%else%>
+                 <a href="/products/<%=prod[i].id%>" data-method="get"><img class="card-img-top" height="300px" src="<%= prod[i].image_url %>" alt="Card image cap"></a>
+                <%end%>
+                <h3 class="text-dark"><a href="/products/<%=prod[i].id%>" data-method="get"><%= prod[i].title%></a></h3>
+                <p class="price"><%= prod[i].price%> Ar</p>
+                <a href="<%= carts_path(prod[i].id)%>" class="btn btn-warning btn-sm" data-method="post">Ajouter au panier</a>
+             
           </div>
+          <%end%>
           <%end%>
         </div>
       </div>
@@ -54,5 +111,8 @@
        <%= render 'layouts/footer'%>
     </span>
   </div>
+</body>
+</html>
+  
 
 

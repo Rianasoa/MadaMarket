@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+	<h1><%= @command_user.email %> a fait la commande suivante</h1>
+
+	
+	<% @cart_products_ordered.each do |product| %>
+	<h2>
+		<%= product.title %>
+	</h2>
+	<p>
+		<%if product.picture.attached?%>
+            <%= image_tag product.picture, alt: 'picture', class:"card-img-top", height:"300px" %>
+        <%else%>     
+		<img src="<%= product.image_url%>" width="600" height="auto" alt="<%= product.title%> image">
+        <% end %></p>
+	<% end %>
+
+</body>
+</html>

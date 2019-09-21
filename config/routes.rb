@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :super_admin do
+    resources :users   
+    resources :products
+  end
   resources :products do
     resources :likes
   end

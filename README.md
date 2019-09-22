@@ -27,7 +27,10 @@ Lien GitHub : https://github.com/Rianasoa/MadaMarket.git
 	Une fois que l'utilisateur clique sur le menu devenir fournisseur sur le navbar du site, il se redirige vers la page de modification de son profil et il clique sur le checkbox pour qu'il soit fournisseur mais sa demande est encore en attente car l'admnistrateur doit vérifier son profil et ce dernier lui valide.
 
 	Tous les produits que les fournisseurs entrent sur le site passent toujours sur le dashboard de l'administrateur et ce dernier qui valide que ces produits seront affichés sur le site.
-
+	
+Pour se connecter en tant que super admin (pour valider les produits et les comptes des fournisseurs):
+email: madamarketthp@gmail.com
+password: madamarket2019
 
 
 ##Localement :

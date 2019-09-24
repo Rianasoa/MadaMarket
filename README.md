@@ -49,7 +49,8 @@ Se rendre sur localhost:3000 via votre navigateur
 
 
 ##SUPER-TEAM :
-	1)-Mlle Rianasoa: https://github.com/Rianasoa , @Rianasoa                             (Back-end) 
+
+    1)-Mlle Rianasoa: https://github.com/Rianasoa , @Rianasoa                             (Back-end) 
 
     2)-Mr Rado: https://github.com/RADONARINDRA ; @Rado Narindra                          (Front-end)
     

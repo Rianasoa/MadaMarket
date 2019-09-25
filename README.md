@@ -29,7 +29,9 @@ Lien GitHub : https://github.com/Rianasoa/MadaMarket.git
 	Tous les produits que les fournisseurs entrent sur le site passent toujours sur le dashboard de l'administrateur et ce dernier qui valide que ces produits seront affichés sur le site.
 	
 Pour se connecter en tant que super admin (pour valider les produits et les comptes des fournisseurs):
+
 email: madamarketthp@gmail.com
+
 password: madamarket2019
 
 

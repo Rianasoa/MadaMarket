@@ -58,7 +58,7 @@ Se rendre sur localhost:3000 via votre navigateur
     
     3)-Mr Patrick: https://github.com/safidypatrick , @rakotondrarimanana safidy patrick  (Back-end)
     
-    4)-Mr Manaly: https://github.com/manalintsoa , @HARINJATOVONASOAVINA Aina Manalintsoa (Front-end)
+    4)-Mr Manaly: https://github.com/manalintsoa , @HARINJATOVONASOAVINA Aina Manalintsoa (Back-end)
     
     5)-Mr Mihary: https://github.com/Miharyrakotonanahary , @mihari                       (Front-end)
     

@@ -68,12 +68,14 @@
                       <%= text_field_tag 'image_url', @product.image_url, placeholder: "ex: https://my_image", class: "form-control", placeholder: "lien image"  %>
                   </div>
                     
-                      
+                  
+                    
                   <%=select_tag 'category_id', options_for_select(Category.all.collect{ |c| [c.title, c.id] }), class: "form-input"%>
                     <%= submit_tag "Ajouter", class: "btn btn-warning col-12 mb-4 mt-3" %>
 
                     <% end %>
-                  </div>
+         
+             
 
                   <% if @product.errors.any? %>
                   <div class="alert alert-danger" role="alert">

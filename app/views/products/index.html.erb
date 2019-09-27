@@ -21,6 +21,9 @@
  
   margin-top: -72.5px;
 }
+.site-blocks-cover{
+  -webkit-filter: saturate(150%);
+}
 </style>
 
 
@@ -29,13 +32,13 @@
 
 </div>
 
-    <div class="site-blocks-cover" style="background-image: url('https://www.missions-mmm.com/wp-content/uploads/2019/04/francfort-dusseldorf-retail-store-tour-allemagne-missions-mmm-tendances-bio-2.jpg');">
+    <div class="site-blocks-cover" style="background-image: url('https://scontent-cdt1-1.cdninstagram.com/v/t51.2885-15/e35/70493368_133813537910568_432263744102368020_n.jpg?_nc_ht=scontent-cdt1-1.cdninstagram.com&_nc_cat=100&se=7&oh=0db8d1a5f636404b3ee594928edc123c&oe=5E2DE872&ig_cache_key=MjE0MDE0ODI3NDk4Mzk5OTgzOA%3D%3D.2');">
       <div class="container">
         <div class="row">
           <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
             <div class="site-block-cover-content text-center">
-              <h2 class="sub-title"  id="body">Idée Voandalana</h2>
-              <h1>FAITES VOS ACHATS EN LIGNE</h1>
+              <h2 class="sub-title"  id="body" style="font-size: 30px;">FAITES VOS ACHATS EN LIGNE</h2>
+              <h1>Idée voandalana</h1>
               <p>
                 <a href="#acheter" class="btn btn-warning px-5 py-3" data-method="get">ACHETER MAINTENANT</a>
               </p>
@@ -129,7 +132,7 @@
           <% for i in 0..prod.length-1%>
 
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <span class="tag">Sale</span>
+            <span class="tag">A vendre</span>
                 <%if prod[i].picture.attached?%>
                     <a href="/products/<%=prod[i].id%>" data-method="get"><%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top", height:"300px" %></a>
                   <%else%>
@@ -146,14 +149,14 @@
            <% for i in 0..5%>
 
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <span class="tag">Sale</span>
+            <span class="tag">A vendre</span>
             <%if prod[i].picture.attached?%>
                 <a href="/products/<%=prod[i].id%>" data-method="get"><%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top", height:"300px" %></a>
                   <%else%>
                   <a href="/products/<%=prod[i].id%>" data-method="get"><img class="card-img-top" height="300px" src="<%= prod[i].image_url %>" alt="Card image cap"></a>
                 <%end%>
                 <h3 class="text-dark"><a href="/products/<%=prod[i].id%>" data-method="get"><%= prod[i].title%></a></h3>
-                <p class="price"><%= prod[i].price%></p>
+                <p class="price"><%= prod[i].price%> Ar</p>
                 <a href="<%= carts_path(prod[i].id)%>" class="btn btn-warning btn-sm" data-method="post">Ajouter au panier</a>
                   <%= prod[i].likes.count %> <%= (prod[i].likes.count) > 1 ? 'likes' : ''%><%= link_to '👍', product_likes_path(prod[i]), method: :post%>
           </div>
@@ -225,6 +228,10 @@
  
   margin-top: -72.5px;
 }
+.site-blocks-cover{
+  -webkit-filter: saturate(150%);
+}
+
 </style>
 
 
@@ -233,13 +240,13 @@
 
 </div>
 
-    <div class="site-blocks-cover" style="background-image: url('https://www.missions-mmm.com/wp-content/uploads/2019/04/francfort-dusseldorf-retail-store-tour-allemagne-missions-mmm-tendances-bio-2.jpg');">
+    <div class="site-blocks-cover" style="background-image: url('https://scontent-cdt1-1.cdninstagram.com/v/t51.2885-15/e35/70493368_133813537910568_432263744102368020_n.jpg?_nc_ht=scontent-cdt1-1.cdninstagram.com&_nc_cat=100&se=7&oh=0db8d1a5f636404b3ee594928edc123c&oe=5E2DE872&ig_cache_key=MjE0MDE0ODI3NDk4Mzk5OTgzOA%3D%3D.2');">
       <div class="container">
         <div class="row">
           <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
             <div class="site-block-cover-content text-center">
-              <h2 class="sub-title"  id="body">Idée Voandalana</h2>
-              <h1>FAITES VOS ACHATS EN LIGNE</h1>
+              <h2 class="sub-title"  id="body" style="font-size: 30px;">FAITES VOS ACHATS EN LIGNE</h2>
+              <h1>Idée voandalana</h1>
               <p>
                 <a href="#acheter" class="btn btn-warning px-5 py-3" data-method="get">ACHETER MAINTENANT</a>
               </p>
@@ -333,7 +340,7 @@
           <% for i in 0..prod.length-1%>
 
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <span class="tag">Sale</span>
+           
                 <%if prod[i].picture.attached?%>
                     <a href="/products/<%=prod[i].id%>" data-method="get"><%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top", height:"300px" %></a>
                   <%else%>
@@ -410,5 +417,3 @@
    
   </div>
 <%end%>
-
-

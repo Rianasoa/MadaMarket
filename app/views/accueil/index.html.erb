@@ -90,7 +90,6 @@
           <% for i in 0..prod.length-1%>
 
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <span class="tag">Sale</span>
                 <%if prod[i].picture.attached?%>
                   <a href="/products/<%=prod[i].id%>" data-method="get"><%= image_tag prod[i].picture, alt: 'picture', class:"card-img-top", height:"300px" %></a>
                 <%else%>

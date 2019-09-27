@@ -40,14 +40,14 @@
                       <h2 class="h5 text-black">
                       	<%= cart_product.product.title%> </h2>
                     </td>
-                    <td><%=cart_product.product.price %></td>
+                    <td><%=cart_product.product.price %>Ar</td>
                     <td>
                       <div class="input-group mb-3" style="max-width: 120px;">
                         <div class="input-group-prepend">
                         <%= cart_product.quantity %>
                       </div>
                     </td>
-                    <td><%= cart_product.product.price * cart_product.quantity %></td>
+                    <td><%= cart_product.product.price * cart_product.quantity %>Ar</td>
                     <td><a href= "<%=cart_path(cart_product.product.id)%>" data-method='delete' class= "btn btn-warning height-auto btn-sm" data-confirm='Etes-vous sûre de vouloir supprimer?'>X</a></td>
                   </tr>
                      <%end%>

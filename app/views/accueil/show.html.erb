@@ -92,14 +92,13 @@
         <div class="row show">
           <%Product.where(provider_id: @provider.id).each do |p|%>
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <span class="tag">Sale</span>
             <%if p.picture.attached?%>
                 <a href="/products/<%=p.id%>" data-method="get"><%= image_tag p.picture, alt: 'picture', class:"card-img-top", height: "300px" %></a>
             <%else%>
                 <a href="/products/<%=p.id%>" data-method="get"><img class="card-img-top" height="300px" src="<%= p.image_url %>" alt="Card image cap" height="300px"></a>
             <%end%>
             <h3 class="text-dark"><a href="/products/<%=p.id%>"><%=p.title%></a></h3>
-            <p class="price"><%=p.price%></p>
+            <p class="price"><%=p.price%> Ar</p>
           </div>
           <%end%>
           

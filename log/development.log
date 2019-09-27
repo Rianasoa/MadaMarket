@@ -14573,3 +14573,945 @@ Processing by ActiveStorage::DiskController#show as JPEG
 Completed 304 Not Modified in 7ms (ActiveRecord: 0.0ms | Allocations: 344)
 
 
+Started GET "/users/sign_up" for ::1 at 2019-09-27 11:21:30 +0300
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Parameters: {"authenticity_token"=>"6asyrl0qoc1BIb4Kn4YLarf5uyqchzpko5GwzepVR+epvHtBLPXfL1Ey7/311gxtyXuyHlgIa0nnxDrSdgyWQg=="}
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.9ms | Allocations: 555)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 43.2ms | Allocations: 2636)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `new'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+Completed 200 OK in 4951ms (Views: 4811.6ms | ActiveRecord: 31.8ms | Allocations: 1317219)
+
+
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started POST "/users" for ::1 at 2019-09-27 11:22:58 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"Ypj+299wUGgKYvaGaWiuA+UO6cSYzVu5EjjOzs0MBboij7c0rq8uihpxp3EDOKkEm4zg8FxCCpRWbUTRUVXUHw==", "user"=>{"first_name"=>"Walter", "last_name"=>"Veriza", "email"=>"walter@gmail.com", "address"=>"Tana", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"S'inscrire"}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (16.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "walter@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (28.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "address", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Walter"], ["last_name", "Veriza"], ["email", "walter@gmail.com"], ["address", "Tana"], ["encrypted_password", "$2a$11$nJINd0w5CnhQ76NLsgs9UOt/GFn6LVy.Xp0sNPTYxSwljCwH3ny7u"], ["created_at", "2019-09-27 08:22:58.806831"], ["updated_at", "2019-09-27 08:22:58.806831"]]
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 2.0ms | Allocations: 155)
+  Rendering user_mailer/welcome_email.text.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.text.erb within layouts/mailer (Duration: 1.1ms | Allocations: 130)
+UserMailer#welcome_email: processed outbound mail in 40.5ms
+Delivered mail 5d8dc6e2e722a_3bb82ac16a31d7f0931b7@rinasoa-X541SA.mail (8148.8ms)
+Date: Fri, 27 Sep 2019 11:22:58 +0300
+From: madamarket.mg
+To: walter@gmail.com
+Message-ID: <5d8dc6e2e722a_3bb82ac16a31d7f0931b7@rinasoa-X541SA.mail>
+Subject: Bienvenue chez nous !
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d8dc6e2df7f7_3bb82ac16a31d7f093051";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d8dc6e2df7f7_3bb82ac16a31d7f093051
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+Qm9uam91ciBXYWx0ZXIgZXQgYmllbnZlbnVlIGNoZXogbm91cyAhDQo9PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09DQogDQpUdSB0J2VzIGluc2NyaXQgc3VyIG1hZGFtYXJrZXQg
+ZW4gdXRpbGlzYW50IGwnZS1tYWlsIHN1aXZhbnQgOiB3YWx0ZXJAZ21haWwu
+Y29tLg0KIA0KIA0Kw4AgdHLDqHMgdml0ZSBzdXIgbWFkYW1hcmtldCAhDQo=
+
+----==_mimepart_5d8dc6e2df7f7_3bb82ac16a31d7f093051
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta content=3D'text/html; charset=3DUTF-8' http-equiv=3D'Content-Ty=
+pe' />=0D
+  </head>=0D
+  <body>=0D
+    <h1>Salut Walter et bienvenue chez nous !</h1>=0D
+    <p>=0D
+      Tu t'es inscrit sur madamarket en utilisant l'e-mail suivant : walt=
+er@gmail.com.=0D
+    </p>=0D
+  =0D
+    <p> =C3=80 tr=C3=A8s vite sur MadaMarket !=0D
+    </p>=0D
+  </body>=0D
+</html>=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_5d8dc6e2df7f7_3bb82ac16a31d7f093051--
+
+  [1m[36mCart Create (30.9ms)[0m  [1m[32mINSERT INTO "carts" ("customer_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["customer_id", 4], ["created_at", "2019-09-27 08:23:07.116333"], ["updated_at", "2019-09-27 08:23:07.116333"]]
+  ↳ app/models/user.rb:26:in `add_cart'
+  [1m[35m (48.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 9374ms (ActiveRecord: 131.6ms | Allocations: 214885)
+
+
+Started GET "/" for ::1 at 2019-09-27 11:23:07 +0300
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/rinasoa/Bureau/madamarket/MadaMarket/app/controllers/products_controller.rb:5)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:7:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[36mCart Load (2.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (28.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 146.1ms | Allocations: 12204)
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:126
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (2.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (2.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (1.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (4.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 12.0ms | Allocations: 907)
+  Rendered products/index.html.erb within layouts/application (Duration: 462.5ms | Allocations: 49935)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `new'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+Completed 200 OK in 1876ms (Views: 1718.4ms | ActiveRecord: 88.3ms | Allocations: 85858)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--36dd79b35d88bb871db389c47da800b2f0ee0c3d/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg" for ::1 at 2019-09-27 11:23:09 +0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--36dd79b35d88bb871db389c47da800b2f0ee0c3d", "filename"=>"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1"}
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[36m  Disk Storage (4.6ms) [0m[34mGenerated URL for file at key: o2a2fhsozwcm8x5krdz6aa7f22hq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QwODoyODowOS45MjBaIiwicHVyIjoiYmxvYl9rZXkifX0=--a81ab35447d13b4b19bb0f5888ee596e4a9ac65b/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg)[0m
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4fcd661d166acabc822177cfdce5d8b5db829a7e/fruit8.jpg" for ::1 at 2019-09-27 11:23:09 +0300
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QwODoyODowOS45MjBaIiwicHVyIjoiYmxvYl9rZXkifX0=--a81ab35447d13b4b19bb0f5888ee596e4a9ac65b/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg
+Completed 302 Found in 76ms (ActiveRecord: 0.9ms | Allocations: 4315)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e39633cd00f0868d60297b89a31d452103aa2298/l%C3%A9gumes.jpg" for ::1 at 2019-09-27 11:23:09 +0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e39633cd00f0868d60297b89a31d452103aa2298", "filename"=>"légumes"}
+  [1m[36mActiveStorage::Blob Load (2.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[36m  Disk Storage (1.2ms) [0m[34mGenerated URL for file at key: 1nmoqonvzvxqns4i4lepwqbtzra1 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMDg6Mjg6MDkuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--3882ab962a2fb92c4146fe54a2fde025de013b1c/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMDg6Mjg6MDkuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--3882ab962a2fb92c4146fe54a2fde025de013b1c/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg
+Completed 302 Found in 28ms (ActiveRecord: 2.2ms | Allocations: 2297)
+
+
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4fcd661d166acabc822177cfdce5d8b5db829a7e", "filename"=>"fruit8"}
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[36m  Disk Storage (5.9ms) [0m[34mGenerated URL for file at key: qyuw5v9l5p3938wumw59vrbqp0he (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjI4OjEwLjAxM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d3dc894310025f1ef7f90056da3498d2c097b668/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjI4OjEwLjAxM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d3dc894310025f1ef7f90056da3498d2c097b668/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg
+Completed 302 Found in 18ms (ActiveRecord: 1.5ms | Allocations: 1931)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QwODoyODowOS45MjBaIiwicHVyIjoiYmxvYl9rZXkifX0=--a81ab35447d13b4b19bb0f5888ee596e4a9ac65b/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg" for ::1 at 2019-09-27 11:23:10 +0300
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMDg6Mjg6MDkuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--3882ab962a2fb92c4146fe54a2fde025de013b1c/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg" for ::1 at 2019-09-27 11:23:10 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"legumes.jpg\"; filename*=UTF-8''l%C3%A9gumes.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMDg6Mjg6MDkuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--3882ab962a2fb92c4146fe54a2fde025de013b1c", "filename"=>"légumes"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 413)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjI4OjEwLjAxM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d3dc894310025f1ef7f90056da3498d2c097b668/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg" for ::1 at 2019-09-27 11:23:10 +0300
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg\"; filename*=UTF-8''artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QwODoyODowOS45MjBaIiwicHVyIjoiYmxvYl9rZXkifX0=--a81ab35447d13b4b19bb0f5888ee596e4a9ac65b", "filename"=>"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1"}
+Completed 200 OK in 4ms (ActiveRecord: 0.0ms | Allocations: 588)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"fruit8.jpg\"; filename*=UTF-8''fruit8.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjI4OjEwLjAxM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d3dc894310025f1ef7f90056da3498d2c097b668", "filename"=>"fruit8"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 368)
+
+
+Started POST "/carts.2" for ::1 at 2019-09-27 11:23:22 +0300
+Processing by CartsController#create as 
+  Parameters: {"authenticity_token"=>"j4yIfk2zCaIt/ElxzbqNMkkj9AReopJO1AlZKOiiS1vPm8GRPGx3QD3vGIan6oo1N6H9MJotw2OQXNM3dPua/g=="}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:4:in `create'
+  [1m[36mCart Load (0.9ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1 AND "products"."id" = $2 LIMIT $3[0m  [["cart_id", 4], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:7:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/carts_controller.rb:7:in `create'
+  [1m[36mCartProduct Create (18.5ms)[0m  [1m[32mINSERT INTO "cart_products" ("quantity", "cart_id", "product_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["quantity", 1], ["cart_id", 4], ["product_id", 2], ["created_at", "2019-09-27 08:23:22.132390"], ["updated_at", "2019-09-27 08:23:22.132390"]]
+  ↳ app/controllers/carts_controller.rb:7:in `create'
+  [1m[35m (19.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/carts_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 154ms (ActiveRecord: 51.4ms | Allocations: 10385)
+
+
+Started GET "/" for ::1 at 2019-09-27 11:23:22 +0300
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/rinasoa/Bureau/madamarket/MadaMarket/app/controllers/products_controller.rb:5)
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:7:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (2.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (1.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[36mCart Load (0.5ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 25.3ms | Allocations: 3182)
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:126
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (7.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (1.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (2.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (2.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 5.9ms | Allocations: 705)
+  Rendered products/index.html.erb within layouts/application (Duration: 158.3ms | Allocations: 15247)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `new'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+Completed 200 OK in 1461ms (Views: 1422.2ms | ActiveRecord: 31.8ms | Allocations: 44938)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QwODoyODowOS45MjBaIiwicHVyIjoiYmxvYl9rZXkifX0=--a81ab35447d13b4b19bb0f5888ee596e4a9ac65b/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg" for ::1 at 2019-09-27 11:23:23 +0300
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjI4OjEwLjAxM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d3dc894310025f1ef7f90056da3498d2c097b668/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg" for ::1 at 2019-09-27 11:23:23 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg\"; filename*=UTF-8''artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QwODoyODowOS45MjBaIiwicHVyIjoiYmxvYl9rZXkifX0=--a81ab35447d13b4b19bb0f5888ee596e4a9ac65b", "filename"=>"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1"}
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms | Allocations: 359)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"fruit8.jpg\"; filename*=UTF-8''fruit8.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjI4OjEwLjAxM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d3dc894310025f1ef7f90056da3498d2c097b668", "filename"=>"fruit8"}
+Completed 304 Not Modified in 5ms (ActiveRecord: 0.0ms | Allocations: 359)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMDg6Mjg6MDkuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--3882ab962a2fb92c4146fe54a2fde025de013b1c/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg" for ::1 at 2019-09-27 11:23:24 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"legumes.jpg\"; filename*=UTF-8''l%C3%A9gumes.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMDg6Mjg6MDkuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--3882ab962a2fb92c4146fe54a2fde025de013b1c", "filename"=>"légumes"}
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms | Allocations: 364)
+
+
+Started GET "/carts/4" for ::1 at 2019-09-27 11:23:26 +0300
+Processing by CartsController#show as HTML
+  Parameters: {"authenticity_token"=>"m10U5truzXH0rwgGtyYQUtwZ9m0/wrP1s6a4f9yKHujbSl0JqzGzk+S8WfHddhdVopv/WftN4tj38zJgQNPPTQ==", "id"=>"4"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:24:in `show'
+  [1m[36mCart Load (0.6ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:26:in `show'
+  [1m[36mCartProduct Load (0.7ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/controllers/carts_controller.rb:27:in `show'
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.7ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 13.2ms | Allocations: 2460)
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:33
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 3.7ms | Allocations: 705)
+  Rendered carts/show.html.erb within layouts/application (Duration: 45.5ms | Allocations: 5899)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `new'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+Completed 200 OK in 1352ms (Views: 1315.5ms | ActiveRecord: 9.8ms | Allocations: 38435)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjI4OjEwLjAxM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d3dc894310025f1ef7f90056da3498d2c097b668/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg" for ::1 at 2019-09-27 11:23:27 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"fruit8.jpg\"; filename*=UTF-8''fruit8.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjI4OjEwLjAxM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d3dc894310025f1ef7f90056da3498d2c097b668", "filename"=>"fruit8"}
+Completed 304 Not Modified in 3ms (ActiveRecord: 0.0ms | Allocations: 357)
+
+
+Started GET "/" for ::1 at 2019-09-27 11:23:41 +0300
+Processing by ProductsController#index as HTML
+  Parameters: {"authenticity_token"=>"02FAVYfjhkzWL+KpoeSq54TJ3EvqodrAJhx5Hkw7/mCTdgm69jz4rsY8s17LtK3g+kvVfy4ui+1iSfMB0GIvxQ=="}
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/rinasoa/Bureau/madamarket/MadaMarket/app/controllers/products_controller.rb:5)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:7:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (1.0ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[36mCart Load (0.8ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 25.5ms | Allocations: 3182)
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:126
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 3.2ms | Allocations: 705)
+  Rendered products/index.html.erb within layouts/application (Duration: 96.7ms | Allocations: 15229)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `new'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+Completed 200 OK in 1463ms (Views: 1444.3ms | ActiveRecord: 12.2ms | Allocations: 44922)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QwODoyODowOS45MjBaIiwicHVyIjoiYmxvYl9rZXkifX0=--a81ab35447d13b4b19bb0f5888ee596e4a9ac65b/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg" for ::1 at 2019-09-27 11:23:43 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg\"; filename*=UTF-8''artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QwODoyODowOS45MjBaIiwicHVyIjoiYmxvYl9rZXkifX0=--a81ab35447d13b4b19bb0f5888ee596e4a9ac65b", "filename"=>"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1"}
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms | Allocations: 361)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjI4OjEwLjAxM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d3dc894310025f1ef7f90056da3498d2c097b668/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg" for ::1 at 2019-09-27 11:23:43 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"fruit8.jpg\"; filename*=UTF-8''fruit8.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjI4OjEwLjAxM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d3dc894310025f1ef7f90056da3498d2c097b668", "filename"=>"fruit8"}
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms | Allocations: 361)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMDg6Mjg6MDkuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--3882ab962a2fb92c4146fe54a2fde025de013b1c/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg" for ::1 at 2019-09-27 11:23:43 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"legumes.jpg\"; filename*=UTF-8''l%C3%A9gumes.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMDg6Mjg6MDkuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--3882ab962a2fb92c4146fe54a2fde025de013b1c", "filename"=>"légumes"}
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms | Allocations: 360)
+
+
+Started GET "/" for ::1 at 2019-09-27 11:33:01 +0300
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/rinasoa/Bureau/madamarket/MadaMarket/app/controllers/products_controller.rb:5)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:7:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.8ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[36mCart Load (0.7ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 24.1ms | Allocations: 3616)
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:126
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 7.3ms | Allocations: 902)
+  Rendered products/index.html.erb within layouts/application (Duration: 131.6ms | Allocations: 18521)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `new'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+Completed 200 OK in 1531ms (Views: 1503.9ms | ActiveRecord: 16.9ms | Allocations: 49497)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--36dd79b35d88bb871db389c47da800b2f0ee0c3d/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg" for ::1 at 2019-09-27 11:33:03 +0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--36dd79b35d88bb871db389c47da800b2f0ee0c3d", "filename"=>"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1"}
+  [1m[36mActiveStorage::Blob Load (6.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[36m  Disk Storage (1.2ms) [0m[34mGenerated URL for file at key: o2a2fhsozwcm8x5krdz6aa7f22hq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QwODozODowMy4zMjJaIiwicHVyIjoiYmxvYl9rZXkifX0=--ec68d727137e5aaa412b909395e9c6380608ddcb/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QwODozODowMy4zMjJaIiwicHVyIjoiYmxvYl9rZXkifX0=--ec68d727137e5aaa412b909395e9c6380608ddcb/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg
+Completed 302 Found in 21ms (ActiveRecord: 6.5ms | Allocations: 1814)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4fcd661d166acabc822177cfdce5d8b5db829a7e/fruit8.jpg" for ::1 at 2019-09-27 11:33:03 +0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4fcd661d166acabc822177cfdce5d8b5db829a7e", "filename"=>"fruit8"}
+  [1m[36mActiveStorage::Blob Load (3.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[36m  Disk Storage (1.1ms) [0m[34mGenerated URL for file at key: qyuw5v9l5p3938wumw59vrbqp0he (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjM4OjAzLjM2OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--cf7a4cddd5d87efe25557ac8f73f8410aafdc675/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjM4OjAzLjM2OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--cf7a4cddd5d87efe25557ac8f73f8410aafdc675/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg
+Completed 302 Found in 16ms (ActiveRecord: 3.6ms | Allocations: 1824)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e39633cd00f0868d60297b89a31d452103aa2298/l%C3%A9gumes.jpg" for ::1 at 2019-09-27 11:33:03 +0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e39633cd00f0868d60297b89a31d452103aa2298", "filename"=>"légumes"}
+  [1m[36mActiveStorage::Blob Load (3.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[36m  Disk Storage (1.1ms) [0m[34mGenerated URL for file at key: 1nmoqonvzvxqns4i4lepwqbtzra1 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMDg6Mzg6MDMuNDYxWiIsInB1ciI6ImJsb2Jfa2V5In19--431644ae8515edccf67a428d101f85b4f0362f39/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMDg6Mzg6MDMuNDYxWiIsInB1ciI6ImJsb2Jfa2V5In19--431644ae8515edccf67a428d101f85b4f0362f39/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg
+Completed 302 Found in 16ms (ActiveRecord: 3.7ms | Allocations: 1845)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QwODozODowMy4zMjJaIiwicHVyIjoiYmxvYl9rZXkifX0=--ec68d727137e5aaa412b909395e9c6380608ddcb/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg" for ::1 at 2019-09-27 11:33:03 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg\"; filename*=UTF-8''artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QwODozODowMy4zMjJaIiwicHVyIjoiYmxvYl9rZXkifX0=--ec68d727137e5aaa412b909395e9c6380608ddcb", "filename"=>"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1"}
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjM4OjAzLjM2OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--cf7a4cddd5d87efe25557ac8f73f8410aafdc675/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg" for ::1 at 2019-09-27 11:33:03 +0300
+Completed 200 OK in 5ms (ActiveRecord: 0.0ms | Allocations: 796)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"fruit8.jpg\"; filename*=UTF-8''fruit8.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDA4OjM4OjAzLjM2OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--cf7a4cddd5d87efe25557ac8f73f8410aafdc675", "filename"=>"fruit8"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 369)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMDg6Mzg6MDMuNDYxWiIsInB1ciI6ImJsb2Jfa2V5In19--431644ae8515edccf67a428d101f85b4f0362f39/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg" for ::1 at 2019-09-27 11:33:03 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"legumes.jpg\"; filename*=UTF-8''l%C3%A9gumes.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMDg6Mzg6MDMuNDYxWiIsInB1ciI6ImJsb2Jfa2V5In19--431644ae8515edccf67a428d101f85b4f0362f39", "filename"=>"légumes"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 369)
+
+
+Started GET "/" for ::1 at 2019-09-27 20:01:17 +0300
+  [1m[35m (28.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/rinasoa/Bureau/madamarket/MadaMarket/app/controllers/products_controller.rb:5)
+  [1m[36mUser Load (26.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:7:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (5.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (31.9ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[36mCart Load (1.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (55.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 228.4ms | Allocations: 15929)
+  [1m[36mProduct Load (2.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:126
+  [1m[36mActiveStorage::Attachment Load (24.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (37.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (11.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (1.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (6.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (1.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 9.0ms | Allocations: 914)
+  Rendered products/index.html.erb within layouts/application (Duration: 716.8ms | Allocations: 53943)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `new'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+Completed 200 OK in 6227ms (Views: 5768.7ms | ActiveRecord: 313.4ms | Allocations: 1375472)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--36dd79b35d88bb871db389c47da800b2f0ee0c3d/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg" for ::1 at 2019-09-27 20:01:24 +0300
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4fcd661d166acabc822177cfdce5d8b5db829a7e/fruit8.jpg" for ::1 at 2019-09-27 20:01:24 +0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--36dd79b35d88bb871db389c47da800b2f0ee0c3d", "filename"=>"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1"}
+  [1m[36mActiveStorage::Blob Load (1.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e39633cd00f0868d60297b89a31d452103aa2298/l%C3%A9gumes.jpg" for ::1 at 2019-09-27 20:01:25 +0300
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4fcd661d166acabc822177cfdce5d8b5db829a7e", "filename"=>"fruit8"}
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e39633cd00f0868d60297b89a31d452103aa2298", "filename"=>"légumes"}
+  [1m[36mActiveStorage::Blob Load (104.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[36m  Disk Storage (615.2ms) [0m[34mGenerated URL for file at key: o2a2fhsozwcm8x5krdz6aa7f22hq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QxNzowNjoyNS42MzVaIiwicHVyIjoiYmxvYl9rZXkifX0=--bb5dbba6969f0c7808a6b1d353634102acaaee05/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QxNzowNjoyNS42MzVaIiwicHVyIjoiYmxvYl9rZXkifX0=--bb5dbba6969f0c7808a6b1d353634102acaaee05/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg
+  [1m[36mActiveStorage::Blob Load (68.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 302 Found in 835ms (ActiveRecord: 1.4ms | Allocations: 254048)
+
+
+[36m  Disk Storage (11.6ms) [0m[34mGenerated URL for file at key: 1nmoqonvzvxqns4i4lepwqbtzra1 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMTc6MDY6MjUuOTU2WiIsInB1ciI6ImJsb2Jfa2V5In19--d50ada15c0e3d5cf3c21fa79dc9c5e1621cd1102/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMTc6MDY6MjUuOTU2WiIsInB1ciI6ImJsb2Jfa2V5In19--d50ada15c0e3d5cf3c21fa79dc9c5e1621cd1102/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg
+Completed 302 Found in 717ms (ActiveRecord: 274.9ms | Allocations: 159198)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QxNzowNjoyNS42MzVaIiwicHVyIjoiYmxvYl9rZXkifX0=--bb5dbba6969f0c7808a6b1d353634102acaaee05/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg" for ::1 at 2019-09-27 20:01:26 +0300
+[36m  Disk Storage (698.1ms) [0m[34mGenerated URL for file at key: qyuw5v9l5p3938wumw59vrbqp0he (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDE3OjA2OjI2LjIwMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--02cc390cea121a1b77f4eeaeba24a67b8880c287/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDE3OjA2OjI2LjIwMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--02cc390cea121a1b77f4eeaeba24a67b8880c287/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg
+Completed 302 Found in 1056ms (ActiveRecord: 108.7ms | Allocations: 330066)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg\"; filename*=UTF-8''artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QxNzowNjoyNS42MzVaIiwicHVyIjoiYmxvYl9rZXkifX0=--bb5dbba6969f0c7808a6b1d353634102acaaee05", "filename"=>"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 425)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMTc6MDY6MjUuOTU2WiIsInB1ciI6ImJsb2Jfa2V5In19--d50ada15c0e3d5cf3c21fa79dc9c5e1621cd1102/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg" for ::1 at 2019-09-27 20:01:26 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"legumes.jpg\"; filename*=UTF-8''l%C3%A9gumes.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMTc6MDY6MjUuOTU2WiIsInB1ciI6ImJsb2Jfa2V5In19--d50ada15c0e3d5cf3c21fa79dc9c5e1621cd1102", "filename"=>"légumes"}
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDE3OjA2OjI2LjIwMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--02cc390cea121a1b77f4eeaeba24a67b8880c287/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg" for ::1 at 2019-09-27 20:01:26 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"fruit8.jpg\"; filename*=UTF-8''fruit8.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDE3OjA2OjI2LjIwMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--02cc390cea121a1b77f4eeaeba24a67b8880c287", "filename"=>"fruit8"}
+Completed 200 OK in 5ms (ActiveRecord: 0.0ms | Allocations: 403)
+
+
+Completed 200 OK in 5ms (ActiveRecord: 0.0ms | Allocations: 1235)
+
+
+Started GET "/carts/4" for ::1 at 2019-09-27 20:05:35 +0300
+Processing by CartsController#show as HTML
+  Parameters: {"authenticity_token"=>"4rxbFCXkzV56MvsTu9o/t4EcuJ3dBgsTM1jO6eXv8ySiqxL7VDuzvGohquTRijiw/56xqRmJWj53DUT2ebYigQ==", "id"=>"4"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:24:in `show'
+  [1m[36mCart Load (0.8ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:26:in `show'
+  [1m[36mCartProduct Load (1.1ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/controllers/carts_controller.rb:27:in `show'
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.6ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 17.3ms | Allocations: 2455)
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:33
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 3.8ms | Allocations: 705)
+  Rendered carts/show.html.erb within layouts/application (Duration: 58.4ms | Allocations: 5900)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `new'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+Completed 200 OK in 1506ms (Views: 1447.3ms | ActiveRecord: 16.3ms | Allocations: 42493)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDE3OjA2OjI2LjIwMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--02cc390cea121a1b77f4eeaeba24a67b8880c287/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg" for ::1 at 2019-09-27 20:05:36 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"fruit8.jpg\"; filename*=UTF-8''fruit8.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDE3OjA2OjI2LjIwMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--02cc390cea121a1b77f4eeaeba24a67b8880c287", "filename"=>"fruit8"}
+Completed 304 Not Modified in 5ms (ActiveRecord: 0.0ms | Allocations: 369)
+
+
+Started GET "/" for ::1 at 2019-09-27 20:05:46 +0300
+Processing by ProductsController#index as HTML
+  Parameters: {"authenticity_token"=>"AqFg1vk8LUAs6K8Mwd4bYGUs+3nYlsvHuWr/6xXPGSBCtik5iONTojz7/vurjhxnG67yTRwZmur9P3X0iZbIhQ=="}
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/rinasoa/Bureau/madamarket/MadaMarket/app/controllers/products_controller.rb:5)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:7:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (2.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.8ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[36mCart Load (0.9ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 31.7ms | Allocations: 3172)
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:126
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 4.0ms | Allocations: 705)
+  Rendered products/index.html.erb within layouts/application (Duration: 104.1ms | Allocations: 15232)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `new'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+Completed 200 OK in 1375ms (Views: 1351.5ms | ActiveRecord: 16.1ms | Allocations: 44937)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QxNzowNjoyNS42MzVaIiwicHVyIjoiYmxvYl9rZXkifX0=--bb5dbba6969f0c7808a6b1d353634102acaaee05/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg" for ::1 at 2019-09-27 20:05:48 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg\"; filename*=UTF-8''artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QxNzowNjoyNS42MzVaIiwicHVyIjoiYmxvYl9rZXkifX0=--bb5dbba6969f0c7808a6b1d353634102acaaee05", "filename"=>"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1"}
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms | Allocations: 364)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDE3OjA2OjI2LjIwMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--02cc390cea121a1b77f4eeaeba24a67b8880c287/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg" for ::1 at 2019-09-27 20:05:48 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"fruit8.jpg\"; filename*=UTF-8''fruit8.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDE3OjA2OjI2LjIwMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--02cc390cea121a1b77f4eeaeba24a67b8880c287", "filename"=>"fruit8"}
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms | Allocations: 362)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMTc6MDY6MjUuOTU2WiIsInB1ciI6ImJsb2Jfa2V5In19--d50ada15c0e3d5cf3c21fa79dc9c5e1621cd1102/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg" for ::1 at 2019-09-27 20:05:48 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"legumes.jpg\"; filename*=UTF-8''l%C3%A9gumes.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMTc6MDY6MjUuOTU2WiIsInB1ciI6ImJsb2Jfa2V5In19--d50ada15c0e3d5cf3c21fa79dc9c5e1621cd1102", "filename"=>"légumes"}
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms | Allocations: 366)
+
+
+Started POST "/carts.2" for ::1 at 2019-09-27 20:05:51 +0300
+Processing by CartsController#create as 
+  Parameters: {"authenticity_token"=>"jlZvY6JwPV/pTE6P4sbjzXIjd6Wsk497nw2ntwFI1mTOQSaM069DvflfH3iIluTKDKF+kWgc3lbbWC2onREHwQ=="}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:4:in `create'
+  [1m[36mCart Load (0.9ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1 AND "products"."id" = $2 LIMIT $3[0m  [["cart_id", 4], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mProduct Load (1.6ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/controllers/carts_controller.rb:6:in `create'
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:11:in `create'
+  [1m[36mCartProduct Load (0.8ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1 AND "cart_products"."product_id" = $2 LIMIT $3[0m  [["cart_id", 4], ["product_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:11:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+  [1m[36mProduct Load (2.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+  [1m[36mCartProduct Update (1.6ms)[0m  [1m[33mUPDATE "cart_products" SET "quantity" = $1, "updated_at" = $2 WHERE "cart_products"."id" = $3[0m  [["quantity", 2], ["updated_at", "2019-09-27 17:05:51.804849"], ["id", 2]]
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+  [1m[35m (33.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/carts_controller.rb:14:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 112ms (ActiveRecord: 46.6ms | Allocations: 9414)
+
+
+Started GET "/" for ::1 at 2019-09-27 20:05:51 +0300
+Processing by ProductsController#index as HTML
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from index at /home/rinasoa/Bureau/madamarket/MadaMarket/app/controllers/products_controller.rb:5)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:7:in `index'
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (3.8ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[36mCart Load (1.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 29.8ms | Allocations: 3166)
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."validation" = $1 ORDER BY "products"."created_at" DESC[0m  [["validation", true]]
+  ↳ app/views/products/index.html.erb:126
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 3]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (3.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (11.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 2]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mActiveStorage::Attachment Load (3.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:136
+  [1m[36mActiveStorage::Blob Load (8.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:137
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."product_id" = $1[0m  [["product_id", 1]]
+  ↳ app/views/products/index.html.erb:144
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 6.9ms | Allocations: 705)
+  Rendered products/index.html.erb within layouts/application (Duration: 162.1ms | Allocations: 15204)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `new'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+Completed 200 OK in 1426ms (Views: 1376.0ms | ActiveRecord: 43.4ms | Allocations: 44879)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QxNzowNjoyNS42MzVaIiwicHVyIjoiYmxvYl9rZXkifX0=--bb5dbba6969f0c7808a6b1d353634102acaaee05/artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg%22%3B+filename%2A%3DUTF-8%27%27artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg" for ::1 at 2019-09-27 20:05:53 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDE3OjA2OjI2LjIwMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--02cc390cea121a1b77f4eeaeba24a67b8880c287/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg" for ::1 at 2019-09-27 20:05:53 +0300
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg\"; filename*=UTF-8''artisanat-de-madagascar_baobab-en-raphia-sur-hautex1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhiekpoTW1ab2MyOTZkMk50T0hnMWEzSmtlalpoWVRkbU1qSm9jUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVpacGJteHBibVU3SUdacGJHVnVZVzFsUFNKaGNuUnBjMkZ1WVhRdFpHVXRiV0ZrWVdkaGMyTmhjbDlpWVc5aVlXSXRaVzR0Y21Gd2FHbGhMWE4xY2kxb1lYVjBaWGd4TG1wd1p5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZWEowYVhOaGJtRjBMV1JsTFcxaFpHRm5ZWE5qWVhKZlltRnZZbUZpTFdWdUxYSmhjR2hwWVMxemRYSXRhR0YxZEdWNE1TNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0wOS0yN1QxNzowNjoyNS42MzVaIiwicHVyIjoiYmxvYl9rZXkifX0=--bb5dbba6969f0c7808a6b1d353634102acaaee05", "filename"=>"artisanat-de-madagascar_baobab-en-raphia-sur-hautex1"}
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms | Allocations: 366)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"fruit8.jpg\"; filename*=UTF-8''fruit8.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDE3OjA2OjI2LjIwMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--02cc390cea121a1b77f4eeaeba24a67b8880c287", "filename"=>"fruit8"}
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms | Allocations: 366)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMTc6MDY6MjUuOTU2WiIsInB1ciI6ImJsb2Jfa2V5In19--d50ada15c0e3d5cf3c21fa79dc9c5e1621cd1102/l%C3%A9gumes.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22legumes.jpg%22%3B+filename%2A%3DUTF-8%27%27l%25C3%25A9gumes.jpg" for ::1 at 2019-09-27 20:05:53 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"legumes.jpg\"; filename*=UTF-8''l%C3%A9gumes.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhNVzV0YjNGdmJuWjZkbmh4Ym5NMGFUUnNaWEIzY1dKMGVuSmhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUm1sdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14bFozVnRaWE11YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHNKVU16SlVFNVozVnRaWE11YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDktMjdUMTc6MDY6MjUuOTU2WiIsInB1ciI6ImJsb2Jfa2V5In19--d50ada15c0e3d5cf3c21fa79dc9c5e1621cd1102", "filename"=>"légumes"}
+Completed 304 Not Modified in 2ms (ActiveRecord: 0.0ms | Allocations: 363)
+
+
+Started GET "/carts/4" for ::1 at 2019-09-27 20:05:56 +0300
+Processing by CartsController#show as HTML
+  Parameters: {"authenticity_token"=>"nsO9L15ul9Wi1kobozVdTAMIywhghgPUTLv6Do9SgM/e1PTAL7HpN7LFG+zJZVpLfYrCPKQJUvkI7nAREwtRag==", "id"=>"4"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:24:in `show'
+  [1m[36mCart Load (0.6ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:26:in `show'
+  [1m[36mCartProduct Load (0.7ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/controllers/carts_controller.rb:27:in `show'
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/carts_controller.rb:28:in `block in show'
+  Rendering carts/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (0.7ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 24.6ms | Allocations: 2440)
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Product"], ["name", "picture"], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:32
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/carts/show.html.erb:33
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 4.0ms | Allocations: 705)
+  Rendered carts/show.html.erb within layouts/application (Duration: 41.3ms | Allocations: 5309)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `new'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+Completed 200 OK in 1377ms (Views: 1352.1ms | ActiveRecord: 8.5ms | Allocations: 36812)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDE3OjA2OjI2LjIwMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--02cc390cea121a1b77f4eeaeba24a67b8880c287/fruit8.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22fruit8.jpg%22%3B+filename%2A%3DUTF-8%27%27fruit8.jpg" for ::1 at 2019-09-27 20:05:58 +0300
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"fruit8.jpg\"; filename*=UTF-8''fruit8.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjWGwxZHpWMk9XdzFjRE01TXpoM2RXMTNOVGwyY21KeGNEQm9aUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1aeWRXbDBPQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyWnlkV2wwT0M1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDE5LTA5LTI3VDE3OjA2OjI2LjIwMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--02cc390cea121a1b77f4eeaeba24a67b8880c287", "filename"=>"fruit8"}
+Completed 304 Not Modified in 8ms (ActiveRecord: 0.0ms | Allocations: 362)
+
+
+Started GET "/charges/new" for ::1 at 2019-09-27 20:06:10 +0300
+Processing by ChargesController#new as HTML
+  Parameters: {"authenticity_token"=>"t1f4aZix6zfCCv8dVvNSGbYUPEd7f4M9HS6toUag1W73QLGG6W6V1dIZruo8o1UeyJY1c7/w0hBZeye+2vkEyw=="}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCart Load (0.6ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."customer_id" = $1 LIMIT $2[0m  [["customer_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:4:in `new'
+  [1m[36mCartProduct Load (0.7ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/controllers/charges_controller.rb:9:in `new'
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/charges_controller.rb:10:in `block in new'
+  Rendering charges/new.html.erb within layouts/application
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_nav.html.erb:27
+  [1m[36mCart Load (1.7ms)[0m  [1m[34mSELECT "carts".* FROM "carts" WHERE "carts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" INNER JOIN "cart_products" ON "products"."id" = "cart_products"."product_id" WHERE "cart_products"."cart_id" = $1[0m  [["cart_id", 4]]
+  ↳ app/views/layouts/_nav.html.erb:59
+  Rendered layouts/_nav.html.erb (Duration: 17.6ms | Allocations: 2451)
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_footer.html.erb:15
+  Rendered layouts/_footer.html.erb (Duration: 6.1ms | Allocations: 705)
+  Rendered charges/new.html.erb within layouts/application (Duration: 34.9ms | Allocations: 3829)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+/home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in ``': No such file or directory - yarn (Errno::ENOENT)
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:13:in `initialize'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `new'
+	from /home/rinasoa/.rvm/gems/ruby-2.6.3/gems/webpacker-4.0.7/lib/webpacker/runner.rb:6:in `run'
+	from ./bin/webpack:18:in `block in <main>'
+	from ./bin/webpack:17:in `chdir'
+	from ./bin/webpack:17:in `<main>'
+
+Completed 200 OK in 1385ms (Views: 1355.2ms | ActiveRecord: 8.8ms | Allocations: 36703)
+
+

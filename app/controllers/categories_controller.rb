@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   def new
   end
   def show
-    @products = Product.all
+    @products = Product.where(validation: true)
     if user_signed_in? && current_user.is_admin == true
       redirect_to admin_products_path
     end 

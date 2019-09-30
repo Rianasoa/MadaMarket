@@ -8,7 +8,7 @@
 Application d'ecommerce spécialisé dans la vente de produits originaux de Madagascar. Possibilité d'ajouter des articles et de les vendre en tant que fournisseur avec un accès à un dashboard. Pour etre fournisseur il faut éditer son profil et cocher "devenir fournisseur" et vous auriez accès à un dashboard.
 
 
-Lien heroku : https://mada-market.herokuapp.com
+Lien heroku : https://id-voandala.herokuapp.com
 
 Lien Trello : https://trello.com/b/keA8UHV9/madamarket
 
